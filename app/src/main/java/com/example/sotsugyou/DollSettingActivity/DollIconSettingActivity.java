@@ -1,4 +1,4 @@
-package com.example.sotsugyou.SettingActivity;
+package com.example.sotsugyou.DollSettingActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
@@ -7,7 +7,6 @@ import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.view.RoundedCorner;
 import android.widget.ImageView;
 
 import com.example.sotsugyou.R;

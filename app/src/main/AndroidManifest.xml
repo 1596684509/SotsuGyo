@@ -13,7 +13,18 @@
         android:theme="@style/Theme.SotsuGyou"
         tools:targetApi="31">
         <activity
-            android:name=".SettingActivity.DollIconSettingActivity"
+            android:name=".UserSettingActivity.AccountSettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DollSettingActivity.DollNameSettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DollNameSettingActivity"
+            android:exported="false"
+            android:label="@string/title_activity_doll_name_setting"
+            android:theme="@style/Theme.SotsuGyou" />
+        <activity
+            android:name=".DollSettingActivity.DollIconSettingActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">SotsuGyou</string>
-    <string name="setting_dollIcon_title">ぬいぐるみ画像設定</string>
     <string name="next">次へ</string>
+    <string name="title_activity_doll_name_setting">DollNameSettingActivity</string>
+    
+    <string name="nameInputPleaseHint">名前を入力してください</string>
+    
+    <string name="logout_button_text">ログアウト</string>
+
+    <string name="setting_dollIcon_title">ぬいぐるみ画像設定</string>
+    <string name="setting_dollName_title">ぬいぐるみ名前設定</string>
+    <string name="setting_account_title">アカウント設定</string>
 </resources>
