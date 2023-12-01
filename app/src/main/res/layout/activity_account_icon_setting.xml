@@ -4,22 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/black"
-    tools:context=".Activity.DollSettingActivity.DollIconSettingActivity">
+    android:orientation="vertical"
+    tools:context=".Activity.UserSettingActivity.AccountIconSettingActivity">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/returnbuttonicon"
+        android:background="@color/black"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
         android:layout_marginTop="50dp"
-        android:text="@string/setting_dollIcon_title"
+        android:text="@string/setting_accountIcon_title"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="40dp" />
 
     <ImageView
-        android:id="@+id/ImageViewNowIcon"
+        android:id="@+id/account_setting_icon"
         android:layout_width="wrap_content"
         android:layout_height="120dp"/>
 
@@ -28,9 +34,10 @@
         android:layout_height="wrap_content"
         android:background="@drawable/nextbutton_background"
         android:textSize="24sp"
-        android:text="@string/next"
+        android:text="@string/save_button_text"
         android:layout_gravity="center"
         android:paddingHorizontal="50dp"
         android:textColor="@color/white"/>
+
 
 </LinearLayout>

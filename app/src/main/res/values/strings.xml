@@ -2,12 +2,18 @@
     <string name="app_name">SotsuGyou</string>
     <string name="next">次へ</string>
     <string name="title_activity_doll_name_setting">DollNameSettingActivity</string>
-    
+
     <string name="nameInputPleaseHint">名前を入力してください</string>
+    <string name="passwordInputHint_old">旧パスワード</string>
+    <string name="passwordInputHint_new">新パスワード</string>
     
     <string name="logout_button_text">ログアウト</string>
+    <string name="save_button_text">保存</string>
 
     <string name="setting_dollIcon_title">ぬいぐるみ画像設定</string>
     <string name="setting_dollName_title">ぬいぐるみ名前設定</string>
     <string name="setting_account_title">アカウント設定</string>
+    <string name="setting_accountName_title">表示名設定</string>
+    <string name="setting_accountPassword_title">パスワード変更</string>
+    <string name="setting_accountIcon_title">アイコン設定</string>
 </resources>

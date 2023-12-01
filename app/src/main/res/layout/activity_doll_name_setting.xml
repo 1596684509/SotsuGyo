@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/grey"
-    tools:context=".DollSettingActivity.DollNameSettingActivity">
+    tools:context=".Activity.DollSettingActivity.DollNameSettingActivity">
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/returnButtonIcon"
-        android:background=""/>
+        android:src="@drawable/returnbuttonicon"
+        android:background="@color/grey"/>
     
     <TextView
         android:layout_width="match_parent"
@@ -40,6 +40,7 @@
         android:textSize="24sp"
         android:text="@string/next"
         android:layout_gravity="center"
+        android:paddingHorizontal="50dp"
         android:layout_marginTop="120dp"
         android:textColor="@color/white"/>
 
