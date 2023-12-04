@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/black"
-    tools:context=".Activity.DollSettingActivity.DollIconSettingActivity">
+    tools:context=".Activity.SettingActivity.DollSettingActivity.DollIconSettingActivity">
 
     <TextView
         android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.example.sotsugyou.Activity.UserSettingActivity;
+package com.example.sotsugyou.Activity.SettingActivity.DollSettingActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.sotsugyou.R;
 
-public class AccountNameSettingActivity extends AppCompatActivity {
+public class DollNameSettingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account_name_setting);
+        setContentView(R.layout.activity_doll_name_setting);
     }
 }

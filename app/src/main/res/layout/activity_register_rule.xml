@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/grey"
     android:orientation="vertical"
-    tools:context=".Activity.SettingActivity.UserSettingActivity.AccountNameSettingActivity">
+    tools:context=".Activity.LoginActivity.RegisterRuleActivity">
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -17,32 +17,24 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/setting_accountName_title"
+        android:text="@string/login_title"
         android:gravity="center"
         android:textColor="@color/black"
         android:textSize="40dp"
+        android:textStyle="bold"
         android:layout_marginTop="50dp"
         android:layout_marginHorizontal="90dp"/>
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginHorizontal="30dp"
-        android:hint="@string/nameInputPleaseHint"
-        android:textAlignment="center"
-        android:background="@drawable/edittextbackground"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/nextbutton_background"
-        android:textSize="24sp"
-        android:text="@string/save_button_text"
-        android:layout_gravity="center"
-        android:layout_marginTop="120dp"
-        android:paddingHorizontal="50dp"
-        android:textColor="@color/white"/>
-
+        android:text="@string/login_rule_text"
+        android:gravity="center"
+        android:background="@drawable/edittextbackground"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:padding="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginHorizontal="90dp"/>
 
 </LinearLayout>

@@ -3,6 +3,11 @@ package com.example.sotsugyou.Object;
 public class User {
 
     private String name;
+    private boolean defaultUser = false;
+    private String id;
+    private Doll doll;
+    //TODO データベースに移動
+    private String passworld;
     private int iconId;
 
     public void initUser(String name, int iconId) {
@@ -10,6 +15,43 @@ public class User {
         this.name = name;
         this.iconId = iconId;
 
+    }
+
+    public void initDoll(String name, int photoId) {
+
+        if(name == null) {
+
+            return;
+
+        }
+
+        Doll doll = new Doll();
+        doll.initDoll(photoId, name);
+
+    }
+
+    public void initDoll(Doll doll) {
+
+        if(doll != null) {
+
+            this.doll = doll;
+
+        }
+
+    }
+
+    public Doll getDoll() {
+        return doll;
+    }
+
+    public void setDefaultUser() {
+
+        defaultUser = true;
+
+    }
+
+    public boolean isDefaultUser() {
+        return defaultUser;
     }
 
     public void setIconId(int iconId) {

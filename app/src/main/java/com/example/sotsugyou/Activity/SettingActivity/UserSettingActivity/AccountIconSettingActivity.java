@@ -1,4 +1,4 @@
-package com.example.sotsugyou.Activity.UserSettingActivity;
+package com.example.sotsugyou.Activity.SettingActivity.UserSettingActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -1,4 +1,4 @@
-package com.example.sotsugyou.Activity.UserSettingActivity;
+package com.example.sotsugyou.Activity.SettingActivity.UserSettingActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,8 +37,8 @@ public class AccountSettingActivity extends AppCompatActivity {
 
         listViewItems = new ArrayList<>();
         listViewItems.add(new ListViewItem("アイコン設定", user.getIconId()));
-        listViewItems.add(new ListViewItem("名前設定", user.getIconId()));
-        listViewItems.add(new ListViewItem("ぱすわーど設定", user.getIconId()));
+        listViewItems.add(new ListViewItem("名前設定", R.drawable.system_user_icon));
+        listViewItems.add(new ListViewItem("ぱすわーど設定", R.drawable.system_password_icon));
 
     }
     private void findView() {

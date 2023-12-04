@@ -5,12 +5,21 @@ import com.example.sotsugyou.R;
 public class AppObject {
 
     private static User user;
+    private static Doll doll;
 
     public AppObject() {
 
-        user = new User();
-        user.initUser("userTest", R.drawable.usericon1);
+        doll = new Doll();
+        doll.initDoll(R.drawable.dollicon1, "テストネーム");
 
+    }
+
+    public void setDoll(Doll doll) {
+        AppObject.doll = doll;
+    }
+
+    public Doll getDoll() {
+        return doll;
     }
 
     public void setUser(User user) {
@@ -18,6 +27,18 @@ public class AppObject {
     }
 
     public User getUser() {
+
+        if (user == null) {
+
+            user = new User();
+            user.setDefaultUser();
+            user.initUser("Default User", R.drawable.defaultusericon);
+            return user;
+
+        }
+
         return user;
+
     }
+
 }
