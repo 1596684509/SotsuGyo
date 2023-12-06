@@ -33,6 +33,7 @@ public class AppObject {
             user = new User();
             user.setDefaultUser();
             user.initUser("Default User", R.drawable.defaultusericon);
+            user.initDoll(doll);
             return user;
 
         }

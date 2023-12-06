@@ -112,7 +112,7 @@
         android:layout_height="wrap_content"
         android:paddingHorizontal="20dp"
         android:background="@drawable/loginbuttonbg"
-        android:text="@string/login_loginButton_text"/>
+        android:text="@string/login_registerButton_text"/>
 
 
 </LinearLayout>

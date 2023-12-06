@@ -7,6 +7,7 @@ import android.widget.ListView;
 
 import com.example.sotsugyou.Activity.View.ListViewAdapter;
 import com.example.sotsugyou.Activity.View.ListViewItem;
+import com.example.sotsugyou.Listener.SettingListViewOnClickImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.Object.User;
 import com.example.sotsugyou.R;
@@ -36,9 +37,9 @@ public class AccountSettingActivity extends AppCompatActivity {
     private void initListData() {
 
         listViewItems = new ArrayList<>();
-        listViewItems.add(new ListViewItem("アイコン設定", user.getIconId()));
-        listViewItems.add(new ListViewItem("名前設定", R.drawable.system_user_icon));
-        listViewItems.add(new ListViewItem("ぱすわーど設定", R.drawable.system_password_icon));
+        listViewItems.add(new ListViewItem("アイコン設定", user.getIconId(), AccountIconSettingActivity.class));
+        listViewItems.add(new ListViewItem("名前設定", R.drawable.system_user_icon, AccountNameSettingActivity.class));
+        listViewItems.add(new ListViewItem("ぱすわーど設定", R.drawable.system_password_icon, AccountPasswordSettingActivity.class));
 
     }
     private void findView() {
@@ -50,6 +51,7 @@ public class AccountSettingActivity extends AppCompatActivity {
     private void initView() {
 
         listView.setAdapter(new ListViewAdapter(listViewItems, this));
+        listView.setOnItemClickListener(new SettingListViewOnClickImp(this));
 
     }
 

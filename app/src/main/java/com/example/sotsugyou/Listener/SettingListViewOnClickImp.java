@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import com.example.sotsugyou.Activity.SettingActivity.SystemSettingActivity.SystemLanguageSettingActivity;
+import com.example.sotsugyou.Activity.View.ListViewItem;
 import com.example.sotsugyou.R;
 
 public class SettingListViewOnClickImp implements AdapterView.OnItemClickListener {
@@ -19,12 +20,26 @@ public class SettingListViewOnClickImp implements AdapterView.OnItemClickListene
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-        if(i == 2) {
+        if(adapterView.getItemAtPosition(i) instanceof ListViewItem) {
 
-            Intent intent = new Intent(context, SystemLanguageSettingActivity.class);
-            context.startActivity(intent);
+            ListViewItem item = (ListViewItem) adapterView.getItemAtPosition(i);
+
+            if(item.getTargetActivity() != null) {
+
+                Intent intent = new Intent(context, item.getTargetActivity());
+                context.startActivity(intent);
+
+            }
+
 
         }
+
+//        if(i == 2) {
+//
+//            Intent intent = new Intent(context, SystemLanguageSettingActivity.class);
+//            context.startActivity(intent);
+//
+//        }
 
     }
 }

@@ -25,7 +25,7 @@
     <string name="setting_account_setting_title">アカウント設定</string>
 
     <string name="setting_title">設定</string>
-    <string name="setting_dollIcon_title">ぬいぐるみ画像設定</string>
+    <string name="setting_dollIcon_title">ぬいぐるみオリジナル設定</string>
     <string name="setting_dollName_title">ぬいぐるみ名前設定</string>
     <string name="setting_dollSetting_title">ぬいぐるみ設定</string>
 
@@ -33,6 +33,10 @@
     <string name="setting_accountName_title">表示名設定</string>
     <string name="setting_accountPassword_title">パスワード変更</string>
     <string name="setting_accountIcon_title">アイコン設定</string>
+
+    <string name="setting_dollIcon_frame">太枠</string>
+    <string name="setting_dollIcon_hat">帽子</string>
+    <string name="setting_dollIcon_background">背景</string>
 
     <string name="setting_system_language_title">言語設定</string>
 

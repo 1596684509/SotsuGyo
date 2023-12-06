@@ -13,6 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.sotsugyou.Activity.SettingActivity.DollSettingActivity.DollSettingActivity;
+import com.example.sotsugyou.Activity.SettingActivity.SystemSettingActivity.SystemLanguageSettingActivity;
 import com.example.sotsugyou.Activity.View.ListViewAdapter;
 import com.example.sotsugyou.Activity.View.ListViewItem;
 import com.example.sotsugyou.Listener.Button.UserSettingClickImp;
@@ -38,14 +40,6 @@ public class SettingFragment extends Fragment {
     private LinearLayout userLinearLayout;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-
-
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -67,9 +61,9 @@ public class SettingFragment extends Fragment {
     private void initListData() {
 
         listViewDatas = new ArrayList<>();
-        listViewDatas.add(new ListViewItem("ぬいぐるみ設定", MainActivity.getApp().getDoll().getPhotoID()));
+        listViewDatas.add(new ListViewItem("ぬいぐるみ設定", MainActivity.getApp().getDoll().getPhotoID(), DollSettingActivity.class));
         listViewDatas.add(new ListViewItem("データ保存", R.drawable.updataicon));
-        listViewDatas.add(new ListViewItem("言語設定", R.drawable.languageicon));
+        listViewDatas.add(new ListViewItem("言語設定", R.drawable.languageicon, SystemLanguageSettingActivity.class));
         listViewDatas.add(new ListViewItem("ぬいぐるみと接続", R.drawable.bluetoothicon));
 
         adapter = new ListViewAdapter(listViewDatas, view.getContext());
@@ -82,6 +76,7 @@ public class SettingFragment extends Fragment {
         hintTextView = view.findViewById(R.id.setting_hint_textView);
         userIcon = view.findViewById(R.id.setting_userIcon_imageView);
         userNameTextView = view.findViewById(R.id.setting_userName_textView);
+        userLinearLayout = view.findViewById(R.id.setting_account_linearlayout);
 
     }
 

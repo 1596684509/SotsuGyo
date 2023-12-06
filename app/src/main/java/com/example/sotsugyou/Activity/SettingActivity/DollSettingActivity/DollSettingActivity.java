@@ -7,6 +7,7 @@ import android.widget.ListView;
 
 import com.example.sotsugyou.Activity.View.ListViewAdapter;
 import com.example.sotsugyou.Activity.View.ListViewItem;
+import com.example.sotsugyou.Listener.SettingListViewOnClickImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.Object.User;
 import com.example.sotsugyou.R;
@@ -36,8 +37,8 @@ public class DollSettingActivity extends AppCompatActivity {
     private void initListData() {
 
         listViewItems = new ArrayList<>();
-        listViewItems.add(new ListViewItem("オリジナル設定", user.getDoll().getPhotoID()));
-        listViewItems.add(new ListViewItem("名前設定", R.drawable.system_user_icon));
+        listViewItems.add(new ListViewItem("オリジナル設定", user.getDoll().getPhotoID(), DollIconSettingActivity.class));
+        listViewItems.add(new ListViewItem("名前設定", R.drawable.system_user_icon, DollNameSettingActivity.class));
         listViewItems.add(new ListViewItem("声設定", R.drawable.soundicon));
 
     }
@@ -49,7 +50,10 @@ public class DollSettingActivity extends AppCompatActivity {
 
     private void initView() {
 
-        listView.setAdapter(new ListViewAdapter(listViewItems, this));
+        adapter = new ListViewAdapter(listViewItems, this);
+
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new SettingListViewOnClickImp(this));
 
     }
 }

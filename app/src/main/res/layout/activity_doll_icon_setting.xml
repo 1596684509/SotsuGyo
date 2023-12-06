@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:text="@string/setting_dollIcon_title"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -20,8 +20,123 @@
 
     <ImageView
         android:id="@+id/ImageViewNowIcon"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
+        android:layout_gravity="center"
         android:layout_height="120dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_marginLeft="30dp"
+        android:text="@string/setting_dollIcon_frame"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginHorizontal="80dp"
+        android:background="@drawable/edittextbackground"/>
+
+    <com.example.sotsugyou.MyLinearLayout.FlowRadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="80dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/doll_setting_icon_frameR1"
+                android:layout_marginTop="15dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="15dp"
+                android:button="@null"
+                android:drawableStart="@drawable/radio_selector"
+                android:checked="true"
+                android:background="@drawable/usericon1"/>
+
+            <RadioButton
+                android:id="@+id/doll_setting_icon_frameR2"
+                android:layout_marginTop="15dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="15dp"
+                android:drawableStart="@drawable/radio_selector"
+                android:button="@null"
+                android:background="@drawable/usericon1"/>
+
+            <RadioButton
+                android:id="@+id/doll_setting_icon_frameR3"
+                android:layout_marginTop="15dp"
+                android:layout_width="50dp"
+                android:drawableStart="@drawable/radio_selector"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="15dp"
+                android:button="@null"
+                android:background="@drawable/usericon1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/doll_setting_icon_frameR4"
+                android:layout_marginTop="15dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="15dp"
+                android:button="@null"
+                android:drawableStart="@drawable/radio_selector"
+                android:background="@drawable/usericon1"/>
+
+            <RadioButton
+                android:id="@+id/doll_setting_icon_frameR5"
+                android:layout_marginTop="15dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="15dp"
+                android:drawableStart="@drawable/radio_selector"
+                android:button="@null"
+                android:background="@drawable/usericon1"/>
+
+            <RadioButton
+                android:id="@+id/doll_setting_icon_frameR6"
+                android:layout_marginTop="15dp"
+                android:layout_width="50dp"
+                android:drawableStart="@drawable/radio_selector"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="15dp"
+                android:button="@null"
+                android:background="@drawable/usericon1"/>
+
+        </LinearLayout>
+
+
+    </com.example.sotsugyou.MyLinearLayout.FlowRadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_marginLeft="30dp"
+        android:text="@string/setting_dollIcon_background"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginHorizontal="80dp"
+        android:background="@drawable/edittextbackground"/>
+
+
 
     <Button
         android:layout_width="wrap_content"

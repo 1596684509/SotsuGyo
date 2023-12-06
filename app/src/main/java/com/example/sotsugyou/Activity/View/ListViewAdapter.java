@@ -18,7 +18,7 @@ import java.util.List;
 
 public class ListViewAdapter extends BaseAdapter {
 
-    private List<ListViewItem> items = new ArrayList<>();
+    private List<ListViewItem> items;
     private Context context;
 
     public ListViewAdapter(List<ListViewItem> items, Context context) {

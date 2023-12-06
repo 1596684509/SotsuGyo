@@ -26,18 +26,108 @@
 
     <ImageView
         android:id="@+id/account_setting_icon"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
         android:layout_height="120dp"/>
+
+    <com.example.sotsugyou.MyLinearLayout.FlowRadioGroup
+        android:id="@+id/account_setting_icon_flowRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:orientation="vertical"
+        android:layout_marginLeft="70dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/account_setting_icon_iconR1"
+                android:layout_marginTop="15dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="15dp"
+                android:button="@null"
+                android:drawableStart="@drawable/radio_selector"
+                android:checked="true"
+                android:background="@drawable/usericon1"/>
+
+            <RadioButton
+                android:id="@+id/account_setting_icon_iconR2"
+                android:layout_marginTop="15dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="15dp"
+                android:drawableStart="@drawable/radio_selector"
+                android:button="@null"
+                android:background="@drawable/usericon1"/>
+
+            <RadioButton
+                android:id="@+id/account_setting_icon_iconR3"
+                android:layout_marginTop="15dp"
+                android:layout_width="50dp"
+                android:drawableStart="@drawable/radio_selector"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="15dp"
+                android:button="@null"
+                android:background="@drawable/usericon1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/account_setting_icon_iconR4"
+                android:layout_marginTop="15dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="15dp"
+                android:button="@null"
+                android:drawableStart="@drawable/radio_selector"
+                android:background="@drawable/usericon1"/>
+
+            <RadioButton
+                android:id="@+id/account_setting_icon_iconR5"
+                android:layout_marginTop="15dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="15dp"
+                android:drawableStart="@drawable/radio_selector"
+                android:button="@null"
+                android:background="@drawable/usericon1"/>
+
+            <RadioButton
+                android:id="@+id/account_setting_icon_iconR6"
+                android:layout_marginTop="15dp"
+                android:layout_width="50dp"
+                android:drawableStart="@drawable/radio_selector"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="15dp"
+                android:button="@null"
+                android:background="@drawable/usericon1"/>
+
+        </LinearLayout>
+
+    </com.example.sotsugyou.MyLinearLayout.FlowRadioGroup>
+
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
         android:background="@drawable/nextbutton_background"
         android:textSize="24sp"
         android:text="@string/save_button_text"
         android:layout_gravity="center"
         android:paddingHorizontal="50dp"
         android:textColor="@color/white"/>
-
 
 </LinearLayout>
