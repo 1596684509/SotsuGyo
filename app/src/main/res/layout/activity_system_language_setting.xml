@@ -9,6 +9,7 @@
     tools:context=".Activity.SettingActivity.SystemSettingActivity.SystemLanguageSettingActivity">
 
     <ImageButton
+        android:id="@+id/systemLanguageSetting_ImageButton_return"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/backicon"

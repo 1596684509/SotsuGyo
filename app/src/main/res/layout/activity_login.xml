@@ -8,6 +8,7 @@
     tools:context=".Activity.LoginActivity.LoginActivity">
 
     <ImageButton
+        android:id="@+id/login_imageButton_return"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/backicon"

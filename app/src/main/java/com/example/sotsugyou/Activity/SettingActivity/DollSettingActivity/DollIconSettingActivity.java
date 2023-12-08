@@ -3,9 +3,11 @@ package com.example.sotsugyou.Activity.SettingActivity.DollSettingActivity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 
+import com.example.sotsugyou.Listener.Button.ReturnButtonOnClickImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.Object.Doll;
 import com.example.sotsugyou.Utils.Util;
@@ -15,6 +17,8 @@ public class DollIconSettingActivity extends AppCompatActivity {
 
     private ImageView imageView;
     private Doll doll;
+
+    private ImageButton imageButton;
 
     private RadioButton frameR1;
     private RadioButton frameR2;
@@ -44,6 +48,8 @@ public class DollIconSettingActivity extends AppCompatActivity {
 
         imageView = findViewById(R.id.ImageViewNowIcon);
 
+        imageButton = findViewById(R.id.dollSettingIcon_ImageButton_return);
+
         frameR1 = findViewById(R.id.doll_setting_icon_frameR1);
         frameR2 = findViewById(R.id.doll_setting_icon_frameR2);
         frameR3 = findViewById(R.id.doll_setting_icon_frameR3);
@@ -56,6 +62,8 @@ public class DollIconSettingActivity extends AppCompatActivity {
     private void initView() {
 
         imageView.setImageDrawable(Util.getIconRadius(getResources() ,doll.getPhotoID()));
+
+        imageButton.setOnClickListener(new ReturnButtonOnClickImp(this));
 
         frameR1.setBackground(Util.getIconRadius(getResources(), R.drawable.usericon1));
         frameR2.setBackground(Util.getIconRadius(getResources(), R.drawable.usericon1));
