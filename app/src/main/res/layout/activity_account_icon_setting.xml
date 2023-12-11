@@ -9,6 +9,7 @@
     tools:context=".Activity.SettingActivity.UserSettingActivity.AccountIconSettingActivity">
 
     <ImageButton
+        android:id="@+id/setting_userIcon_backImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/backicon"
@@ -24,12 +25,25 @@
         android:textColor="@color/white"
         android:textSize="40dp" />
 
-    <ImageView
-        android:id="@+id/account_setting_icon"
+    <FrameLayout
         android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_gravity="center"
-        android:layout_marginTop="60dp"
-        android:layout_height="120dp"/>
+        android:layout_marginTop="60dp">
+
+<!--        <ImageView-->
+<!--            android:layout_width="120dp"-->
+<!--            android:background="@drawable/whiteround"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_height="120dp"/>-->
+
+        <ImageView
+            android:id="@+id/account_setting_icon"
+            android:layout_width="120dp"
+            android:layout_gravity="center"
+            android:layout_height="120dp"/>
+
+    </FrameLayout>
 
     <com.example.sotsugyou.MyLinearLayout.FlowRadioGroup
         android:id="@+id/account_setting_icon_flowRadioGroup"

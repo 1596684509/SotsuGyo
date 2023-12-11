@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.sotsugyou.Listener.Button.LanguageButtonimp;
-import com.example.sotsugyou.Listener.Button.ReturnButtonOnClickImp;
+import com.example.sotsugyou.Listener.EventClick.ReturnButtonOnClickImp;
 import com.example.sotsugyou.R;
 
 public class SystemLanguageSettingActivity extends AppCompatActivity {

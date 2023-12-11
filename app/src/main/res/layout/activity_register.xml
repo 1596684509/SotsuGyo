@@ -9,8 +9,10 @@
     tools:context=".Activity.LoginActivity.RegisterActivity">
 
     <ImageButton
+        android:id="@+id/register_imageButton_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/backicon"
         android:background="@color/grey"/>
 
     <TextView
@@ -99,10 +101,17 @@
             android:layout_height="wrap_content"
             android:background="@color/white"/>
         <TextView
+            android:id="@+id/register_textView_rule"
+            android:textColor="@color/blue_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:text="@string/login_registerRiyouCheck_title"/>
+            android:text="@string/login_registerRiyouCheck_title_1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:text="@string/login_registerRiyouCheck_title_2"/>
 
     </LinearLayout>
 

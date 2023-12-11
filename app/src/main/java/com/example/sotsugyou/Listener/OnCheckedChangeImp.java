@@ -23,23 +23,6 @@ public class OnCheckedChangeImp implements FlowRadioGroup.OnCheckedChangeListene
         this.context = context;
     }
 
-//    @Override
-//    public void onCheckedChanged(FlowRadioGroup radioGroup, int i) {
-//
-//        if(context instanceof AccountIconSettingActivity) {
-//
-//            AccountIconSettingActivity activity = (AccountIconSettingActivity) context;
-//
-//            ImageView imageView = activity.getIcon();
-//
-//            HashMap<Integer, Integer> imageRecourceIds = AccountIconSettingActivity.getImageResourceIDhsm();
-//
-//            imageView.setImageDrawable(Util.getIconRadius(context.getResources(), imageRecourceIds.get(i)));
-//
-//        }
-//
-//    }
-
     @Override
     public void onCheckedChanged(FlowRadioGroup radioGroup, int i) {
 
@@ -48,10 +31,27 @@ public class OnCheckedChangeImp implements FlowRadioGroup.OnCheckedChangeListene
             AccountIconSettingActivity activity = (AccountIconSettingActivity) context;
 
             ImageView imageView = activity.getIcon();
-            imageView.setImageDrawable(radioGroup.findViewById(i).getBackground());
+
+            HashMap<Integer, Integer> imageRecourceIds = AccountIconSettingActivity.getImageResourceIDhsm();
+
+            imageView.setImageDrawable(Util.getIconRadius(context.getResources(), imageRecourceIds.get(i)));
 
         }
 
     }
+
+//    @Override
+//    public void onCheckedChanged(FlowRadioGroup radioGroup, int i) {
+//
+//        if(context instanceof AccountIconSettingActivity) {
+//
+//            AccountIconSettingActivity activity = (AccountIconSettingActivity) context;
+//
+//            ImageView imageView = activity.getIcon();
+//            imageView.setImageDrawable(radioGroup.findViewById(i).getBackground());
+//
+//        }
+//
+//    }
 
 }

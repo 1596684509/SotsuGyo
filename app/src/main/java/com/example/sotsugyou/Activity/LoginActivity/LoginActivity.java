@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-import com.example.sotsugyou.Listener.Button.ReturnButtonOnClickImp;
+import com.example.sotsugyou.Listener.EventClick.IntentEventImp;
+import com.example.sotsugyou.Listener.EventClick.ReturnButtonOnClickImp;
 import com.example.sotsugyou.R;
 
 public class LoginActivity extends AppCompatActivity {
 
     private ImageButton returnButton;
+    private Button registerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +28,14 @@ public class LoginActivity extends AppCompatActivity {
     private void findView() {
 
         returnButton = findViewById(R.id.login_imageButton_return);
+        registerButton = findViewById(R.id.login_button_register);
 
     }
 
     private void initView() {
 
         returnButton.setOnClickListener(new ReturnButtonOnClickImp(this));
+        registerButton.setOnClickListener(new IntentEventImp(this, RegisterActivity.class));
 
     }
 

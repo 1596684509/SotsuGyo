@@ -3,9 +3,11 @@ package com.example.sotsugyou.Activity.SettingActivity.UserSettingActivity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 
+import com.example.sotsugyou.Listener.EventClick.ReturnButtonOnClickImp;
 import com.example.sotsugyou.Listener.OnCheckedChangeImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.MyLinearLayout.FlowRadioGroup;
@@ -27,6 +29,8 @@ public class AccountIconSettingActivity extends AppCompatActivity {
     private RadioButton seletorIconR4;
     private RadioButton seletorIconR5;
     private RadioButton seletorIconR6;
+
+    private ImageButton backImageButton;
 
     private static HashMap<Integer, Integer> imageResourceIDhsm;
 
@@ -59,6 +63,8 @@ public class AccountIconSettingActivity extends AppCompatActivity {
 
         icon = findViewById(R.id.account_setting_icon);
 
+        backImageButton = findViewById(R.id.setting_userIcon_backImageButton);
+
         seletorIconR1 = findViewById(R.id.account_setting_icon_iconR1);
         seletorIconR2 = findViewById(R.id.account_setting_icon_iconR2);
         seletorIconR3 = findViewById(R.id.account_setting_icon_iconR3);
@@ -75,6 +81,7 @@ public class AccountIconSettingActivity extends AppCompatActivity {
         icon.setImageDrawable(Util.getIconRadius(getResources(), user.getIconId()));
 
         flowRadioGroup.setOnCheckedChangeListener(new OnCheckedChangeImp(this));
+        backImageButton.setOnClickListener(new ReturnButtonOnClickImp(this));
 
         radioImageSet(seletorIconR1);
         radioImageSet(seletorIconR2);

@@ -1,4 +1,4 @@
-package com.example.sotsugyou.Listener.Button;
+package com.example.sotsugyou.Listener.EventClick;
 
 import android.app.Activity;
 import android.app.Application;

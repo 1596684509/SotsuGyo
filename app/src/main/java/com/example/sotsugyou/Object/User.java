@@ -17,7 +17,7 @@ public class User {
 
     }
 
-    public void initDoll(String name, int photoId) {
+    public void initDoll(String name) {
 
         if(name == null) {
 
@@ -25,8 +25,8 @@ public class User {
 
         }
 
-        Doll doll = new Doll();
-        doll.initDoll(photoId, name);
+        doll = new Doll();
+        doll.initDoll(null, name);
 
     }
 

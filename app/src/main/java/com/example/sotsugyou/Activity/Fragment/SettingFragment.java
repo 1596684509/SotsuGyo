@@ -1,5 +1,6 @@
 package com.example.sotsugyou.Activity.Fragment;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -61,12 +62,29 @@ public class SettingFragment extends Fragment {
     private void initListData() {
 
         listViewDatas = new ArrayList<>();
-        listViewDatas.add(new ListViewItem("ぬいぐるみ設定", MainActivity.getApp().getDoll().getPhotoID(), DollSettingActivity.class));
+
+        if(user.getDoll() != null) {
+
+            listViewDatas.add(new ListViewItem("ぬいぐるみ設定", MainActivity.getApp().getUser().getDoll().getBitmap(), DollSettingActivity.class));
+
+        }else {
+
+            listViewDatas.add(new ListViewItem("ぬいぐるみ設定", null, DollSettingActivity.class));
+
+        }
+
         listViewDatas.add(new ListViewItem("データ保存", R.drawable.updataicon));
         listViewDatas.add(new ListViewItem("言語設定", R.drawable.languageicon, SystemLanguageSettingActivity.class));
         listViewDatas.add(new ListViewItem("ぬいぐるみと接続", R.drawable.bluetoothicon));
 
         adapter = new ListViewAdapter(listViewDatas, view.getContext());
+
+    }
+
+    public void updataImage(Bitmap bitmap) {
+
+        listViewDatas.get(0).setBitmap(bitmap);
+        listView.setAdapter(new ListViewAdapter(listViewDatas, view.getContext()));
 
     }
 
@@ -97,4 +115,7 @@ public class SettingFragment extends Fragment {
 
     }
 
+    public ListViewAdapter getAdapter() {
+        return adapter;
+    }
 }

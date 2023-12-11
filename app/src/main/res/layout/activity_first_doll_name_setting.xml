@@ -6,15 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/grey"
-    tools:context=".Activity.SettingActivity.DollSettingActivity.DollNameSettingActivity">
+    tools:context=".Activity.First.FirstDollNameSettingActivity">
 
-    <ImageButton
-        android:id="@+id/dollSettingName_ImageButton_return"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/backicon"
-        android:background="@color/grey"/>
-    
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,6 +19,7 @@
         android:layout_marginHorizontal="90dp"/>
 
     <EditText
+        android:id="@+id/first_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
@@ -35,11 +29,12 @@
         android:background="@drawable/edittextbackground"/>
 
     <Button
+        android:id="@+id/first_nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/nextbutton_background"
         android:textSize="24sp"
-        android:text="@string/save_button_text"
+        android:text="@string/next"
         android:layout_gravity="center"
         android:paddingHorizontal="50dp"
         android:layout_marginTop="120dp"

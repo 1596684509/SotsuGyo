@@ -1,45 +1,41 @@
 package com.example.sotsugyou.Object;
 
+import com.example.sotsugyou.Data.Data;
 import com.example.sotsugyou.R;
+
 
 public class AppObject {
 
     private static User user;
-    private static Doll doll;
+
+    private static Data data;
 
     public AppObject() {
 
-        doll = new Doll();
-        doll.initDoll(R.drawable.dollicon1, "テストネーム");
+        data = new Data();
 
-    }
-
-    public void setDoll(Doll doll) {
-        AppObject.doll = doll;
-    }
-
-    public Doll getDoll() {
-        return doll;
     }
 
     public void setUser(User user) {
         this.user = user;
     }
 
+    public void initDefaultUser() {
+
+        user = new User();
+        user.setName("default");
+        user.setIconId(R.drawable.defaultusericon);
+        user.setDefaultUser();
+
+    }
+
     public User getUser() {
-
-        if (user == null) {
-
-            user = new User();
-            user.setDefaultUser();
-            user.initUser("Default User", R.drawable.defaultusericon);
-            user.initDoll(doll);
-            return user;
-
-        }
 
         return user;
 
     }
 
+    public static Data getData() {
+        return data;
+    }
 }

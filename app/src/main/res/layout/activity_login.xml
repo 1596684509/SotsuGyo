@@ -107,6 +107,7 @@
         android:layout_marginHorizontal="20dp"/>
 
     <Button
+        android:id="@+id/login_button_register"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:layout_width="wrap_content"

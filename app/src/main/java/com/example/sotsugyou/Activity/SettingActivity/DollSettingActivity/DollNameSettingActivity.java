@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageButton;
 
-import com.example.sotsugyou.Listener.Button.ReturnButtonOnClickImp;
+import com.example.sotsugyou.Listener.EventClick.ReturnButtonOnClickImp;
 import com.example.sotsugyou.R;
 
 public class DollNameSettingActivity extends AppCompatActivity {
@@ -16,6 +16,10 @@ public class DollNameSettingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doll_name_setting);
+
+        findView();
+        initView();
+
     }
 
     private void findView() {

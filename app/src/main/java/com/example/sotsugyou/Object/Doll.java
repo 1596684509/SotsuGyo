@@ -1,31 +1,34 @@
 package com.example.sotsugyou.Object;
 
+import android.graphics.Bitmap;
+
 public class Doll {
 
     //TODO 自分の写真をアップデート
-    private int photoID;
+    private Bitmap bitmap;
     private String name;
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setPhotoID(int photoID) {
-        this.photoID = photoID;
+    public Bitmap getBitmap() {
+        return bitmap;
     }
 
-    public int getPhotoID() {
-        return photoID;
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
 
     public String getName() {
         return name;
     }
 
-    public void initDoll(int photoID, String name) {
+    public void initDoll(Bitmap bitmap, String name) {
 
         this.name = name;
-        this.photoID = photoID;
+        this.bitmap = bitmap;
 
     }
+
 }

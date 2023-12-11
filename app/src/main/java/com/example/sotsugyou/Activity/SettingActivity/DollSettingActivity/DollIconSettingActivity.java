@@ -7,7 +7,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 
-import com.example.sotsugyou.Listener.Button.ReturnButtonOnClickImp;
+import com.example.sotsugyou.Listener.EventClick.ReturnButtonOnClickImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.Object.Doll;
 import com.example.sotsugyou.Utils.Util;
@@ -40,7 +40,7 @@ public class DollIconSettingActivity extends AppCompatActivity {
 
     private void initObject() {
 
-        doll = MainActivity.getApp().getDoll();
+        doll = MainActivity.getApp().getUser().getDoll();
 
     }
 
@@ -61,7 +61,7 @@ public class DollIconSettingActivity extends AppCompatActivity {
 
     private void initView() {
 
-        imageView.setImageDrawable(Util.getIconRadius(getResources() ,doll.getPhotoID()));
+        imageView.setImageDrawable(Util.getIconRadius(getResources() ,doll.getBitmap()));
 
         imageButton.setOnClickListener(new ReturnButtonOnClickImp(this));
 

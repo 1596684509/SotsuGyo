@@ -4,10 +4,15 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.util.Base64;
+import android.util.Log;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
+
+import java.io.ByteArrayOutputStream;
 
 public class Util{
 
@@ -23,10 +28,52 @@ public class Util{
         Bitmap src = BitmapFactory.decodeResource(rec, imageId);
 
         RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(rec, src);
-        roundedBitmapDrawable.setCornerRadius(1000);
+        roundedBitmapDrawable.setCircular(true);
         roundedBitmapDrawable.setAntiAlias(true);
 
         return roundedBitmapDrawable;
+
+    }
+
+    public static RoundedBitmapDrawable getIconRadius(Resources rec, Bitmap bitmap) {
+
+
+        RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(rec, bitmap);
+        roundedBitmapDrawable.setCircular(true);
+        roundedBitmapDrawable.setAntiAlias(true);
+
+        return roundedBitmapDrawable;
+
+    }
+    public static String getImageByte(Bitmap bitmap) {
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+        if(bitmap != null) {
+
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+
+        }else {
+
+            Log.i("getImageByte", "bitmap is null");
+
+        }
+
+        byte[] bytes = byteArrayOutputStream.toByteArray();
+        return Base64.encodeToString(bytes, Base64.DEFAULT);
+
+    }
+
+    public static Bitmap getBitMapForBtye(String byteStr) {
+
+        if(byteStr != null) {
+
+            byte[] imageByte = Base64.decode(byteStr, Base64.DEFAULT);
+            return BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
+
+        }
+
+        return null;
 
     }
 

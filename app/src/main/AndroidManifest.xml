@@ -13,46 +13,56 @@
         android:theme="@style/Theme.SotsuGyou"
         tools:targetApi="31">
         <activity
-            android:name=".Activity.SettingActivity.SystemSettingActivity.SystemLanguageSettingActivity"
+            android:name=".Activity.First.FirstDollImageSettingActivity"
             android:exported="false" />
+        <activity
+            android:name=".Activity.First.FirstDollNameSettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.SettingActivity.SystemSettingActivity.SystemLanguageSettingActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name=".Activity.SettingActivity.DollSettingActivity.DollSettingActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name=".Activity.LoginActivity.RegisterRuleActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name=".Activity.LoginActivity.RegisterActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name=".Activity.LoginActivity.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activity.SettingActivity.SettingActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" /> <!-- <activity -->
+        <!-- android:name=".Activity.SettingActivity.SettingActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".Activity.SettingActivity.UserSettingActivity.AccountIconSettingActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name=".Activity.SettingActivity.UserSettingActivity.AccountPasswordSettingActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name=".Activity.SettingActivity.UserSettingActivity.AccountNameSettingActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name=".Activity.SettingActivity.UserSettingActivity.AccountSettingActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name=".Activity.SettingActivity.DollSettingActivity.DollNameSettingActivity"
             android:exported="false" />
         <activity
-            android:name=".DollNameSettingActivity"
-            android:exported="false"
-            android:label="@string/title_activity_doll_name_setting"
-            android:theme="@style/Theme.SotsuGyou" />
-        <activity
             android:name=".Activity.SettingActivity.DollSettingActivity.DollIconSettingActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -12,7 +12,9 @@
     <string name="login_password_hint">パスワード</string>
     <string name="login_passwordcheck_hint">パスワード再入力</string>
 
-    <string name="login_registerRiyouCheck_title">利用情報を同意する</string>
+    <string name="login_registerRiyouCheck_title_1">利用情報</string>
+    <string name="login_registerRiyouCheck_title_2">を同意する</string>
+
     <string name="login_rule_title">利用規約</string>
     <string name="login_rule_text">ご楽しいに利用してください</string>
     <string name="login_loginButton_text">ログイン</string>

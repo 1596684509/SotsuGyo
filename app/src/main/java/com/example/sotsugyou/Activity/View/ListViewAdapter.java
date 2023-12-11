@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.sotsugyou.R;
+import com.example.sotsugyou.Utils.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +65,16 @@ public class ListViewAdapter extends BaseAdapter {
 
         }
 
-        viewHolder.image.setImageResource(items.get(position).getImageId());
+        if(items.get(position).getBitmap() != null) {
+
+            viewHolder.image.setImageDrawable(Util.getIconRadius(convertView.getResources(), items.get(position).getBitmap()));
+
+        }else {
+
+            viewHolder.image.setImageDrawable(Util.getIconRadius(convertView.getResources(), items.get(position).getImageId()));
+
+        }
+
         viewHolder.title.setText(items.get(position).getTitle());
 
         return convertView;

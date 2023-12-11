@@ -9,6 +9,7 @@
     tools:context=".Activity.SettingActivity.UserSettingActivity.AccountNameSettingActivity">
 
     <ImageButton
+        android:id="@+id/setting_userName_backImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/backicon"
