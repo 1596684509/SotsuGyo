@@ -47,9 +47,6 @@ public class Data implements DataHandler{
             name = sp.getString("name", null);
             image = sp.getString("image", null);
 
-            Log.i("Data", "load: " + name);
-            Log.i("Data", "load: " + image);
-
             if(name != null && image != null) {
 
                 app.getUser().initDoll(name);

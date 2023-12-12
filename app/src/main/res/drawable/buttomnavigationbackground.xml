@@ -6,7 +6,7 @@
             <corners
                 android:topLeftRadius="35dp"
                 android:topRightRadius="35dp"/>
-            <size android:height="40dp"/>
+            <size android:height="30dp"/>
             <padding
                 android:top="10dp"
                 android:bottom="10dp"

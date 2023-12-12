@@ -3,6 +3,7 @@ package com.example.sotsugyou.Activity.SettingActivity.UserSettingActivity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -40,6 +41,7 @@ public class AccountIconSettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_account_icon_setting);
         user = MainActivity.getApp().getUser();
 
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         initImageId();
 
         findView();

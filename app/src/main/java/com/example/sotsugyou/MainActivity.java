@@ -138,6 +138,13 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode == MainDollImageImp.REQUESTCODE_CAMERA) {
 
             Bundle bundle = data.getExtras();
+
+            if(bundle == null) {
+
+                return;
+
+            }
+
             Bitmap bitmap = (Bitmap) bundle.get("data");
 
             Matrix matrix = new Matrix();
@@ -152,6 +159,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        app.getData().save(this);
+
+    }
 
     public void selectedFragment(int position) {
 

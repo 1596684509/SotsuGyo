@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!--    <item-->
+<!--        android:id="@android:id/background"-->
+<!--        android:drawable="@drawable/progressbar_drawable">-->
+<!--    </item>-->
+
+<!--    <item-->
+<!--        android:id="@android:id/progress"-->
+<!--        android:drawable="@drawable/progressbar_shape_drawable">-->
+<!--    </item>-->
+
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <corners android:radius="35dp"/>
+                <solid android:color="@color/yellow_lightp"/>
+            </shape>
+        </clip>
+    </item>
+
+</layer-list>

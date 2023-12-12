@@ -54,8 +54,8 @@ public class SettingFragment extends Fragment {
 
     private void initObject() {
 
-        initListData();
         user = MainActivity.getApp().getUser();
+        initListData();
 
     }
 

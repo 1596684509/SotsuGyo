@@ -24,7 +24,7 @@ public class FirstNextButtonImp implements View.OnClickListener {
 
             FirstDollNameSettingActivity activity = (FirstDollNameSettingActivity) context;
 
-            if(!activity.getEditText().getText().equals("") || activity.getEditText().getText() != null) {
+            if(!activity.getEditText().getText().toString().equals("")) {
 
                 MainActivity.getApp().getUser().initDoll(activity.getEditText().getText().toString());
 

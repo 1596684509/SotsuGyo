@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,7 +30,6 @@ public class FirstDollImageSettingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_doll_image_setting);
-
 
         findView();
         initView();
@@ -59,6 +59,13 @@ public class FirstDollImageSettingActivity extends AppCompatActivity {
         if(requestCode == MainDollImageImp.REQUESTCODE_CAMERA) {
 
             Bundle bundle = data.getExtras();
+
+            if(bundle == null) {
+
+                return;
+
+            }
+
             Bitmap bitmap = (Bitmap) bundle.get("data");
 
             Matrix matrix = new Matrix();

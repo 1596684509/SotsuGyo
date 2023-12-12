@@ -3,6 +3,7 @@ package com.example.sotsugyou.Activity.SettingActivity.UserSettingActivity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -32,6 +33,8 @@ public class AccountSettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_setting);
 
+
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         user = MainActivity.getApp().getUser();
         initListData();
         findView();

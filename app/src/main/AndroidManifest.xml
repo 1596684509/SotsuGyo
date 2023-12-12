@@ -20,49 +20,39 @@
             android:exported="false" />
         <activity
             android:name=".Activity.SettingActivity.SystemSettingActivity.SystemLanguageSettingActivity"
-            android:exported="false"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+            android:exported="false"/>
         <activity
             android:name=".Activity.SettingActivity.DollSettingActivity.DollSettingActivity"
-            android:exported="false"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+            android:exported="false"/>
         <activity
             android:name=".Activity.LoginActivity.RegisterRuleActivity"
-            android:exported="false"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+            android:exported="false"/>
         <activity
             android:name=".Activity.LoginActivity.RegisterActivity"
-            android:exported="false"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+            android:exported="false" />
         <activity
             android:name=".Activity.LoginActivity.LoginActivity"
-            android:exported="false"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" /> <!-- <activity -->
+            android:exported="false"/> <!-- <activity -->
         <!-- android:name=".Activity.SettingActivity.SettingActivity" -->
         <!-- android:exported="false" /> -->
         <activity
             android:name=".Activity.SettingActivity.UserSettingActivity.AccountIconSettingActivity"
-            android:exported="false"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+            android:exported="false"/>
         <activity
             android:name=".Activity.SettingActivity.UserSettingActivity.AccountPasswordSettingActivity"
-            android:exported="false"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+            android:exported="false"/>
         <activity
             android:name=".Activity.SettingActivity.UserSettingActivity.AccountNameSettingActivity"
-            android:exported="false"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+            android:exported="false"/>
         <activity
             android:name=".Activity.SettingActivity.UserSettingActivity.AccountSettingActivity"
-            android:exported="false"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+            android:exported="false"/>
         <activity
             android:name=".Activity.SettingActivity.DollSettingActivity.DollNameSettingActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.SettingActivity.DollSettingActivity.DollIconSettingActivity"
-            android:exported="false"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

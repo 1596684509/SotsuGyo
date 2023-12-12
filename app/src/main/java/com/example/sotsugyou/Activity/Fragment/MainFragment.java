@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.sotsugyou.Listener.Button.MainDollImageImp;
 import com.example.sotsugyou.MainActivity;
@@ -25,6 +26,8 @@ public class MainFragment extends Fragment {
     private View view;
     private ImageView dollImageView;
     private Doll doll;
+
+    private TextView dollNameTextzView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,12 +52,17 @@ public class MainFragment extends Fragment {
     private void findView() {
 
         dollImageView = view.findViewById(R.id.main_dollImageView);
+        dollNameTextzView = view.findViewById(R.id.main_dollName_textView);
+
 
     }
 
     private void initView() {
 
+        dollNameTextzView.setText(doll.getName());
+
         dollImageView.setOnClickListener(new MainDollImageImp((Activity) view.getContext()));
+        dollImageView.setImageDrawable(Util.getIconRadius(getResources(), MainActivity.getApp().getUser().getDoll().getBitmap()));
 
     }
 
