@@ -25,6 +25,13 @@ public class Data implements DataHandler{
 
         app = MainActivity.getApp();
         doll = app.getUser().getDoll();
+
+        if(doll == null) {
+
+            return;
+
+        }
+
         SharedPreferences sp = context.getSharedPreferences("data", Context.MODE_PRIVATE);
         SharedPreferences.Editor esed = sp.edit();
         esed.putString("name", doll.getName());
