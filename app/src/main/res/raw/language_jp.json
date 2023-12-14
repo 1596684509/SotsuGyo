@@ -1,0 +1,50 @@
+{
+    "firstdollnamesetting_title": "ぬいぐるみ名前設定",
+    "firstdollnamesetting_inputhint": "名前を入力してください",
+    "firstdollnamesetting_button": "次へ",
+
+    "firstdollimagesetting_hint": "上にタッチして、写真を設定してください",
+
+    "main_menu1_title": "メイン",
+    "main_menu2_title": "設定",
+
+    "mainsetting_accountbar_title": "アカウント設定",
+    "mainsetting_listitem1_title": "ぬいぐるみ設定",
+    "mainsetting_listitem2_title": "データ保存",
+    "mainsetting_listitem3_title": "言語設定",
+    "mainsetting_listitem4_title": "ぬいぐるみと接続",
+
+    "login_title": "ログイン",
+    "login_idinputbar_title": "ユーザ名",
+    "login_passwordinputbar_title": "パスワード",
+    "login_loginbutton_text": "ログイン",
+    "login_title2": "アカウントはもっていない？",
+    "login_toregisterbutton_text": "新規登録",
+
+    "register_idinputbar_title": "ユーザ名",
+    "register_nameinputbar_title": "表示名",
+    "register_passwordinputbar_title": "パスワード",
+    "register_pwagaininputbar_title": "パスワード再入力",
+    "register_rule_title1": "利用規約",
+    "register_rule_title2": "を同意する",
+    "register_saveregister": "新規登録",
+
+    "rule_title": "ご楽しいに利用してください。",
+
+    "accountsetting_title": "アカウント設定",
+    "accountsetting_listitem1_title": "アイコン設定",
+    "accountsetting_listitem2_title": "名前設定",
+    "accountsetting_listitem3_title": "パスワード設定",
+    "accountsetting_logoutbutton_text": "ログアウト",
+
+    "dollsetting_title": "ぬいぐるみ設定",
+    "dollsetting_listitem1_title": "個性設定",
+    "dollsetting_listitem2_title": "名前設定",
+    "dollsetting_listitem3_title": "音設定",
+
+    "dollpersonalitysetting_title": "ぬいぐるみ個性設定",
+    "dollpersonalitysetting_title2": "太枠",
+    "dollpersonalitysetting_title3": "背景",
+
+    "save_button": "保存"
+}
