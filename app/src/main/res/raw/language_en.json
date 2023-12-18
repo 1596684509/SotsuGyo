@@ -1,0 +1,52 @@
+{
+    "firstdollnamesetting_title": "Plush Doll Name Setting",
+    "firstdollnamesetting_inputhint": "Enter the name",
+    "firstdollnamesetting_button": "Next",
+
+    "firstdollimagesetting_hint": "Touch above to set a photo",
+
+    "main_menu1_title": "Main",
+    "main_menu2_title": "Settings",
+
+    "mainsetting_accountbar_title": "Account Settings",
+    "mainsetting_listitem1_title": "Plush Doll Settings",
+    "mainsetting_listitem2_title": "Data Storage",
+    "mainsetting_listitem3_title": "Language Settings",
+    "mainsetting_listitem4_title": "Connect with Plush Dolls",
+
+    "login_title": "Log In",
+    "login_idinputbar_title": "Username",
+    "login_passwordinputbar_title": "Password",
+    "login_loginbutton_text": "Log In",
+    "login_title2": "Don't have an account?",
+    "login_toregisterbutton_text": "Register",
+
+    "register_idinputbar_title": "Username",
+    "register_nameinputbar_title": "Display Name",
+    "register_passwordinputbar_title": "Password",
+    "register_pwagaininputbar_title": "Re-enter Password",
+    "register_rule_title1": "Agree to the",
+    "register_rule_title2": "Terms of Service",
+    "register_saveregister": "Register",
+
+    "rule_title": "Please enjoy using the service responsibly.",
+
+    "accountsetting_title": "Account Settings",
+    "accountsetting_listitem1_title": "Icon Settings",
+    "accountsetting_listitem2_title": "Name Settings",
+    "accountsetting_listitem3_title": "Password Settings",
+    "accountsetting_logoutbutton_text": "Log Out",
+
+    "dollsetting_title": "Plush Doll Settings",
+    "dollsetting_listitem1_title": "Personality Settings",
+    "dollsetting_listitem2_title": "Name Settings",
+    "dollsetting_listitem3_title": "Sound Settings",
+
+    "dollpersonalitysetting_title": "Plush Doll Personality Settings",
+    "dollpersonalitysetting_title2": "Bold Frame",
+    "dollpersonalitysetting_title3": "Background",
+
+    "systemsetting_title": "Language Settings",
+
+    "save_button": "Save"
+}

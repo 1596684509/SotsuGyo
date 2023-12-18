@@ -37,46 +37,54 @@
             android:layout_height="250dp"
             android:layout_gravity="center"/>
 
-        <ProgressBar
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="160dp"
-            android:background="@drawable/progressbar_drawable"
-            android:layout_height="7dp"
-            android:layout_marginHorizontal="40dp"
-            android:max="100"
-            android:progress="90"
-            android:progressDrawable="@drawable/prgoressbar_bg"/>
+            android:layout_marginTop="130dp"
+            android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="40dp"
-            android:orientation="horizontal">
+            <ProgressBar
+                android:id="@+id/main_expbar"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:background="@drawable/progressbar_drawable"
+                android:layout_height="7dp"
+                android:layout_marginHorizontal="40dp"
+                android:max="100"
+                android:progress="90"
+                android:progressDrawable="@drawable/prgoressbar_bg"/>
 
-            <TextView
-                android:id="@+id/main_dollName_textView"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="NAME"
-                android:textColor="@color/yellow_lightp_text" />
+                android:layout_marginHorizontal="40dp"
+                android:layout_below="@id/main_expbar"
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="8sp"
-                android:text="Lv63"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/yellow_lightp_text"/>
-            
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="EXP 100000/2000000"
-                android:textColor="@color/yellow_lightp_text"
-                android:layout_marginLeft="5dp"/>
+                <TextView
+                    android:id="@+id/main_dollName_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NAME"
+                    android:textColor="@color/yellow_lightp_text" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="8sp"
+                    android:text="Lv63"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/yellow_lightp_text"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EXP 100000/2000000"
+                    android:textColor="@color/yellow_lightp_text"
+                    android:layout_marginLeft="5dp"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
 
     </LinearLayout>
 
