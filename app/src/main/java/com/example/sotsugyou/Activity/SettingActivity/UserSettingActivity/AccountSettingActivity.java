@@ -14,46 +14,66 @@ import com.example.sotsugyou.Listener.SettingListViewOnClickImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.Object.User;
 import com.example.sotsugyou.R;
+import com.example.sotsugyou.Setting.LanguageHandler;
+import com.example.sotsugyou.databinding.ActivityAccountSettingBinding;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AccountSettingActivity extends AppCompatActivity {
 
-    private ListView listView;
+    private ActivityAccountSettingBinding binding;
+
     private ListViewAdapter adapter;
     private List<ListViewItem> listViewItems;
     private User user;
 
-    private ImageButton backImageButton;
+    private LanguageHandler languageHandler;
+    private JSONObject jsonObject;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account_setting);
+
+        binding = ActivityAccountSettingBinding.inflate(getLayoutInflater());
+
+        setContentView(binding.getRoot());
 
 
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         user = MainActivity.getApp().getUser();
+        initObj();
         initListData();
-        findView();
         initView();
+        initLanguage();
+
+    }
+
+    private void initObj() {
+
+        languageHandler = MainActivity.getApp().getLanguageHandler();
+        jsonObject = languageHandler.getLanguageJson();
 
     }
 
     private void initListData() {
 
-        listViewItems = new ArrayList<>();
-        listViewItems.add(new ListViewItem("アイコン設定", user.getIconId(), AccountIconSettingActivity.class));
-        listViewItems.add(new ListViewItem("名前設定", R.drawable.system_user_icon, AccountNameSettingActivity.class));
-        listViewItems.add(new ListViewItem("ぱすわーど設定", R.drawable.system_password_icon, AccountPasswordSettingActivity.class));
 
-    }
-    private void findView() {
 
-        listView = findViewById(R.id.account_setting_listView);
-        backImageButton = findViewById(R.id.setting_userMain_backImageButton);
+        try {
+
+            listViewItems = new ArrayList<>();
+            listViewItems.add(new ListViewItem(jsonObject.getString("accountsetting_listitem1_title"), user.getIconId(), AccountIconSettingActivity.class));
+            listViewItems.add(new ListViewItem(jsonObject.getString("accountsetting_listitem2_title"), R.drawable.system_user_icon, AccountNameSettingActivity.class));
+            listViewItems.add(new ListViewItem(jsonObject.getString("accountsetting_listitem3_title"), R.drawable.system_password_icon, AccountPasswordSettingActivity.class));
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -61,10 +81,25 @@ public class AccountSettingActivity extends AppCompatActivity {
 
         adapter = new ListViewAdapter(listViewItems, this);
 
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new SettingListViewOnClickImp(this));
+        binding.accountSettingListView.setAdapter(adapter);
+        binding.accountSettingListView.setOnItemClickListener(new SettingListViewOnClickImp(this));
 
-        backImageButton.setOnClickListener(new ReturnButtonOnClickImp(this));
+        binding.settingUserMainBackImageButton.setOnClickListener(new ReturnButtonOnClickImp(this));
+
+
+
+    }
+
+    private void initLanguage() {
+
+        try {
+
+            binding.accountSettingTitle.setText(jsonObject.getString("accountsetting_title"));
+            binding.accountSettingLigoutButton.setText(jsonObject.getString("accountsetting_logoutbutton_text"));
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

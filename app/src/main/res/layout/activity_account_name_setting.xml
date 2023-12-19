@@ -16,6 +16,7 @@
         android:background="@color/grey"/>
 
     <TextView
+        android:id="@+id/account_setting_name_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/setting_accountName_title"
@@ -26,6 +27,7 @@
         android:layout_marginHorizontal="90dp"/>
 
     <EditText
+        android:id="@+id/account_setting_name_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
@@ -35,6 +37,7 @@
         android:background="@drawable/edittextbackground"/>
 
     <Button
+        android:id="@+id/account_setting_name_saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/nextbutton_background"

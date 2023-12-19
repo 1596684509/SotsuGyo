@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -31,8 +32,14 @@ import com.example.sotsugyou.Data.DataHandler;
 import com.example.sotsugyou.Listener.Button.MainDollImageImp;
 import com.example.sotsugyou.Listener.OnNavigationItemSenetedImp;
 import com.example.sotsugyou.Object.AppObject;
+import com.example.sotsugyou.Setting.LanguageHandler;
+import com.example.sotsugyou.Setting.LanguageType;
 import com.example.sotsugyou.Utils.Util;
+import com.example.sotsugyou.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.regex.MatchResult;
 
@@ -40,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static AppObject app;
     private BottomNavigationView navigationView;
+    private ActivityMainBinding bind;
     private FrameLayout frameLayout;
     private DataHandler dataHandler;
 
@@ -52,13 +60,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        app = new AppObject();
-        app.initDefaultUser();
-        dataHandler = AppObject.getData();
 
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        bind = ActivityMainBinding.inflate(getLayoutInflater());
+
+        setContentView(bind.getRoot());
+
+        app = new AppObject(this);
+        app.initDefaultUser();
+
+        dataHandler = AppObject.getData();
+
 
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
@@ -70,6 +84,39 @@ public class MainActivity extends AppCompatActivity {
 
         findView();
         initView();
+        initLanguage();
+
+    }
+
+    private void initLanguage() {
+
+        SharedPreferences sharedPreferences = getSharedPreferences("data", MODE_PRIVATE);
+        app.getLanguageHandler().setLanguageType(sharedPreferences.getString("language", "jp"));
+        app.getLanguageHandler().loadJsonFile();
+
+        try {
+
+            JSONObject jsonObject = app.getLanguageHandler().getLanguageJson();
+
+            if(jsonObject == null) {
+
+                return;
+
+            }
+
+            Menu menu = navigationView.getMenu();
+
+            MenuItem menuItem = menu.getItem(0);
+            menuItem.setTitle((CharSequence) jsonObject.get("main_menu1_title"));
+
+            menuItem = menu.getItem(1);
+            menuItem.setTitle((CharSequence) jsonObject.get("main_menu2_title"));
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
+
 
     }
 

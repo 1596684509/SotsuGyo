@@ -14,55 +14,85 @@ import com.example.sotsugyou.Listener.SettingListViewOnClickImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.Object.User;
 import com.example.sotsugyou.R;
+import com.example.sotsugyou.Setting.LanguageHandler;
+import com.example.sotsugyou.databinding.ActivityDollSettingBinding;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DollSettingActivity extends AppCompatActivity {
 
-    private ListView listView;
+
+    private ActivityDollSettingBinding binding;
+    private LanguageHandler languageHandler;
+    private JSONObject jsonObject;
+
     private ListViewAdapter adapter;
     private List<ListViewItem> listViewItems;
     private User user;
 
-    private ImageButton returnButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doll_setting);
+
+        binding = ActivityDollSettingBinding.inflate(getLayoutInflater());
+
+        setContentView(binding.getRoot());
 
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
-        user = MainActivity.getApp().getUser();
+        initObj();
         initListData();
-        findView();
         initView();
+        initLanguage();
+
+    }
+
+    private void initObj() {
+
+        user = MainActivity.getApp().getUser();
+        languageHandler = MainActivity.getApp().getLanguageHandler();
+        jsonObject = languageHandler.getLanguageJson();
+
+    }
+
+    private void initLanguage() {
+
+        try {
+
+            binding.dollMainsettingTitle.setText(jsonObject.getString("dollsetting_title"));
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
     private void initListData() {
 
-        listViewItems = new ArrayList<>();
-        listViewItems.add(new ListViewItem("オリジナル設定", user.getDoll().getBitmap(), DollIconSettingActivity.class));
-        listViewItems.add(new ListViewItem("名前設定", R.drawable.system_user_icon, DollNameSettingActivity.class));
-        listViewItems.add(new ListViewItem("声設定", R.drawable.soundicon));
+        try {
+
+            listViewItems = new ArrayList<>();
+            listViewItems.add(new ListViewItem(jsonObject.getString("dollsetting_listitem1_title"), user.getDoll().getBitmap(), DollIconSettingActivity.class));
+            listViewItems.add(new ListViewItem(jsonObject.getString("dollsetting_listitem2_title"), R.drawable.system_user_icon, DollNameSettingActivity.class));
+            listViewItems.add(new ListViewItem(jsonObject.getString("dollsetting_listitem3_title"), R.drawable.soundicon));
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
 
     }
-    private void findView() {
-
-        listView = findViewById(R.id.doll_setting_listView);
-        returnButton = findViewById(R.id.dollSettingMain_ImageButton_return);
-
-    }
-
     private void initView() {
 
         adapter = new ListViewAdapter(listViewItems, this);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new SettingListViewOnClickImp(this));
+        binding.dollSettingListView.setAdapter(adapter);
+        binding.dollSettingListView.setOnItemClickListener(new SettingListViewOnClickImp(this));
 
-        returnButton.setOnClickListener(new ReturnButtonOnClickImp(this));
+        binding.dollSettingMainImageButtonReturn.setOnClickListener(new ReturnButtonOnClickImp(this));
 
     }
 }

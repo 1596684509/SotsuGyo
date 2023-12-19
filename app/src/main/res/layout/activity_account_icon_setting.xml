@@ -16,6 +16,7 @@
         android:background="#000000"/>
 
     <TextView
+        android:id="@+id/account_setting_icon_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
@@ -136,6 +137,7 @@
 
 
     <Button
+        android:id="@+id/account_setting_icon_saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"

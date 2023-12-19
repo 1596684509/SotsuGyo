@@ -8,19 +8,55 @@ import android.widget.ImageButton;
 
 import com.example.sotsugyou.Listener.EventClick.ReturnButtonOnClickImp;
 import com.example.sotsugyou.R;
+import com.example.sotsugyou.Setting.LanguageHandler;
+import com.example.sotsugyou.databinding.ActivityRegisterBinding;
+import com.example.sotsugyou.databinding.ActivityRegisterRuleBinding;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class RegisterRuleActivity extends AppCompatActivity {
 
-    private ImageButton backImageButton;
-
+    private ActivityRegisterRuleBinding binding;
+    private LanguageHandler languageHandler;
+    private JSONObject jsonObject;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_rule);
+
+        binding = ActivityRegisterRuleBinding.inflate(getLayoutInflater());
+
+        setContentView(binding.getRoot());
 
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-        backImageButton = findViewById(R.id.regiterRule_imageButton_back);
-        backImageButton.setOnClickListener(new ReturnButtonOnClickImp(this));
+
+        initObj();
+        initView();
+        initLanguage();
 
     }
+
+    private void initView() {
+
+        binding.regiterRuleImageButtonBack.setOnClickListener(new ReturnButtonOnClickImp(this));
+
+    }
+
+    private void initLanguage() {
+
+        try {
+
+            binding.registerruleTitle.setText(jsonObject.getString("register_rule_title1"));
+            binding.registerruleText.setText(jsonObject.getString("rule_title"));
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    private void initObj() {
+    }
+
+
 }

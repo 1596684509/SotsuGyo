@@ -15,6 +15,7 @@
         android:background="@color/white"/>
 
     <TextView
+        android:id="@+id/login_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/login_title"
@@ -26,6 +27,7 @@
         android:layout_marginHorizontal="90dp"/>
 
     <TextView
+        android:id="@+id/login_userId_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/login_user_hint"
@@ -54,6 +56,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/login_password_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/login_password_hint"
@@ -82,6 +85,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/login_loginButton"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:layout_width="wrap_content"
@@ -97,6 +101,7 @@
         android:layout_marginTop="20dp"/>
 
     <TextView
+        android:id="@+id/login_title2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"

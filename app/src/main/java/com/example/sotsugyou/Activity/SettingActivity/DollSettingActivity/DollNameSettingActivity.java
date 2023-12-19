@@ -7,33 +7,63 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.example.sotsugyou.Listener.EventClick.ReturnButtonOnClickImp;
+import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.R;
+import com.example.sotsugyou.Setting.LanguageHandler;
+import com.example.sotsugyou.databinding.ActivityDollNameSettingBinding;
+import com.example.sotsugyou.databinding.ActivityDollSettingBinding;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class DollNameSettingActivity extends AppCompatActivity {
 
-    private ImageButton returnButton;
+    private ActivityDollNameSettingBinding binding;
+    private LanguageHandler languageHandler;
+    private JSONObject jsonObject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doll_name_setting);
+
+        binding = ActivityDollNameSettingBinding.inflate(getLayoutInflater());
+
+        setContentView(binding.getRoot());
 
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
-        findView();
+        initObj();
         initView();
+        initLanguage();
 
     }
 
-    private void findView() {
+    private void initLanguage() {
 
-        returnButton = findViewById(R.id.dollSettingName_ImageButton_return);
+        try {
+
+            binding.title.setText(jsonObject.getString("dollnamesetting_title"));
+            binding.nameInputBar.setHint(jsonObject.getString("dollnamesetting_inputhint"));
+            binding.saveButton.setText(jsonObject.getString("save_button"));
+
+        } catch (JSONException e) {
+
+            e.printStackTrace();
+
+        }
+
+    }
+
+    private void initObj() {
+
+        languageHandler = MainActivity.getApp().getLanguageHandler();
+        jsonObject = languageHandler.getLanguageJson();
 
     }
 
     private void initView() {
 
-        returnButton.setOnClickListener(new ReturnButtonOnClickImp(this));
+        binding.dollSettingNameImageButtonReturn.setOnClickListener(new ReturnButtonOnClickImp(this));
 
     }
 

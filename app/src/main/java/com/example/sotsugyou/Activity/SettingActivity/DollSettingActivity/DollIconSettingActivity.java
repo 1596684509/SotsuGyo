@@ -11,11 +11,17 @@ import android.widget.RadioButton;
 import com.example.sotsugyou.Listener.EventClick.ReturnButtonOnClickImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.Object.Doll;
+import com.example.sotsugyou.Setting.LanguageHandler;
 import com.example.sotsugyou.Utils.Util;
 import com.example.sotsugyou.R;
+import com.example.sotsugyou.databinding.ActivityDollIconSettingBinding;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class DollIconSettingActivity extends AppCompatActivity {
 
+    private ActivityDollIconSettingBinding binding;
     private ImageView imageView;
     private Doll doll;
 
@@ -28,24 +34,48 @@ public class DollIconSettingActivity extends AppCompatActivity {
     private RadioButton frameR5;
     private RadioButton frameR6;
 
+    private LanguageHandler languageHandler;
+    private JSONObject jsonObject;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doll_icon_setting);
+
+        binding = ActivityDollIconSettingBinding.inflate(getLayoutInflater());
+
+        setContentView(binding.getRoot());
 
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
-        initObject();
+        initObj();
         findView();
         initView();
+        initLanguage();
 
     }
-
-    private void initObject() {
+    private void initObj() {
 
         doll = MainActivity.getApp().getUser().getDoll();
+        languageHandler = MainActivity.getApp().getLanguageHandler();
+        jsonObject = languageHandler.getLanguageJson();
 
     }
+
+    private void initLanguage() {
+
+        try {
+
+            binding.title.setText(jsonObject.getString("dollpersonalitysetting_title"));
+            binding.frameTitle.setText(jsonObject.getString("dollpersonalitysetting_title2"));
+            binding.backgroundTitle.setText(jsonObject.getString("dollpersonalitysetting_title3"));
+            binding.saveButton.setText(jsonObject.getString("save_button"));
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 
     private void findView() {
 

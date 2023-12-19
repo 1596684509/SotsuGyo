@@ -16,6 +16,7 @@
         android:background="@color/grey"/>
 
     <TextView
+        android:id="@+id/account_setting_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/setting_account_title"
@@ -35,6 +36,7 @@
         android:scrollbarSize="0dp" />
 
     <Button
+        android:id="@+id/account_setting_ligoutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"

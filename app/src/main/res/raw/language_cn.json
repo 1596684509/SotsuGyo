@@ -1,49 +1,52 @@
 {
-    "firstdollnamesetting_title": "玩偶名称设置",
+    "firstdollnamesetting_title": "毛绒玩具名称设置",
     "firstdollnamesetting_inputhint": "请输入名称",
     "firstdollnamesetting_button": "下一步",
 
-    "firstdollimagesetting_hint": "点击上方设置照片",
+    "firstdollimagesetting_hint": "触摸上方以设置照片",
 
     "main_menu1_title": "主页",
     "main_menu2_title": "设置",
 
-    "mainsetting_accountbar_title": "账户设置",
-    "mainsetting_listitem1_title": "玩偶设置",
-    "mainsetting_listitem2_title": "数据存储",
+    "mainsetting_accountbar_title": "帐户设置",
+    "mainsetting_listitem1_title": "毛绒玩具设置",
+    "mainsetting_listitem2_title": "数据保存",
     "mainsetting_listitem3_title": "语言设置",
-    "mainsetting_listitem4_title": "与玩偶连接",
+    "mainsetting_listitem4_title": "连接毛绒玩具",
 
     "login_title": "登录",
     "login_idinputbar_title": "用户名",
     "login_passwordinputbar_title": "密码",
     "login_loginbutton_text": "登录",
-    "login_title2": "还没有账户？",
+    "login_title2": "没有帐户？",
     "login_toregisterbutton_text": "注册",
 
     "register_idinputbar_title": "用户名",
     "register_nameinputbar_title": "显示名",
     "register_passwordinputbar_title": "密码",
-    "register_pwagaininputbar_title": "重新输入密码",
+    "register_pwagaininputbar_title": "再次输入密码",
     "register_rule_title1": "同意",
-    "register_rule_title2": "服务条款",
+    "register_rule_title2": "使用条款",
     "register_saveregister": "注册",
 
-    "rule_title": "请负责任地享受使用服务。",
+    "rule_title": "请愉快地使用。",
 
-    "accountsetting_title": "账户设置",
+    "accountsetting_title": "帐户设置",
     "accountsetting_listitem1_title": "图标设置",
     "accountsetting_listitem2_title": "名称设置",
     "accountsetting_listitem3_title": "密码设置",
     "accountsetting_logoutbutton_text": "登出",
 
-    "dollsetting_title": "玩偶设置",
+    "dollsetting_title": "毛绒玩具设置",
     "dollsetting_listitem1_title": "个性设置",
     "dollsetting_listitem2_title": "名称设置",
-    "dollsetting_listitem3_title": "声音设置",
+    "dollsetting_listitem3_title": "音效设置",
 
-    "dollpersonalitysetting_title": "玩偶个性设置",
-    "dollpersonalitysetting_title2": "粗体框架",
+    "dollnamesetting_title": "毛绒玩具名称设置",
+    "dollnamesetting_inputhint": "请输入名称",
+
+    "dollpersonalitysetting_title": "毛绒玩具个性设置",
+    "dollpersonalitysetting_title2": "太极",
     "dollpersonalitysetting_title3": "背景",
 
     "systemsetting_title": "语言设置",

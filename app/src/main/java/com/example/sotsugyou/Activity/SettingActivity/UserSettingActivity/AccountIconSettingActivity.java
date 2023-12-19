@@ -14,7 +14,13 @@ import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.MyLinearLayout.FlowRadioGroup;
 import com.example.sotsugyou.Object.User;
 import com.example.sotsugyou.R;
+import com.example.sotsugyou.Setting.LanguageHandler;
 import com.example.sotsugyou.Utils.Util;
+import com.example.sotsugyou.databinding.ActivityAccountIconSettingBinding;
+import com.example.sotsugyou.databinding.ActivityAccountSettingBinding;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 
@@ -22,6 +28,11 @@ public class AccountIconSettingActivity extends AppCompatActivity {
 
     private User user;
     private ImageView icon;
+
+    private ActivityAccountIconSettingBinding binding;
+
+    private LanguageHandler languageHandler;
+    private JSONObject jsonObject;
 
     private FlowRadioGroup flowRadioGroup;
     private RadioButton seletorIconR1;
@@ -38,14 +49,26 @@ public class AccountIconSettingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account_icon_setting);
+
+        binding = ActivityAccountIconSettingBinding.inflate(getLayoutInflater());
+
+        setContentView(binding.getRoot());
         user = MainActivity.getApp().getUser();
 
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         initImageId();
 
+        initObj();
         findView();
         initView();
+        initLanguage();
+
+    }
+
+    private void initObj() {
+
+        languageHandler = MainActivity.getApp().getLanguageHandler();
+        jsonObject = languageHandler.getLanguageJson();
 
     }
 
@@ -78,6 +101,19 @@ public class AccountIconSettingActivity extends AppCompatActivity {
 
     }
 
+    private void initLanguage() {
+
+        try {
+
+            binding.accountSettingIconTitle.setText(jsonObject.getString("accountsetting_listitem1_title"));
+            binding.accountSettingIconSaveButton.setText(jsonObject.getString("save_button"));
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
     private void initView() {
 
         icon.setImageDrawable(Util.getIconRadius(getResources(), user.getIconId()));
@@ -92,12 +128,6 @@ public class AccountIconSettingActivity extends AppCompatActivity {
         radioImageSet(seletorIconR5);
         radioImageSet(seletorIconR6);
 
-//        seletorIconR1.setBackground(Util.getIconRadius(getResources(), imageResourceIDhsm.get(R.id.account_setting_icon_iconR1)));
-//        seletorIconR2.setBackground(Util.getIconRadius(getResources(), imageResourceIDhsm.get(R.id.account_setting_icon_iconR2)));
-//        seletorIconR3.setBackground(Util.getIconRadius(getResources(), R.drawable.usericon1));
-//        seletorIconR4.setBackground(Util.getIconRadius(getResources(), R.drawable.usericon1));
-//        seletorIconR5.setBackground(Util.getIconRadius(getResources(), R.drawable.usericon1));
-//        seletorIconR6.setBackground(Util.getIconRadius(getResources(), R.drawable.usericon1));
     }
 
     private void radioImageSet(RadioButton radioButton) {
