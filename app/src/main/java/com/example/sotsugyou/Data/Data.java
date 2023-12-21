@@ -13,6 +13,7 @@ import com.example.sotsugyou.Utils.Util;
 
 public class Data implements DataHandler{
 
+    public static final String DATAFILE_NAME = "data";
     private AppObject app;
     private Doll doll;
 
@@ -32,7 +33,7 @@ public class Data implements DataHandler{
 
         }
 
-        SharedPreferences sp = context.getSharedPreferences("data", Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(DATAFILE_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor esed = sp.edit();
         esed.putString("name", doll.getName());
         esed.putString("image",Util.getImageByte(doll.getBitmap()));

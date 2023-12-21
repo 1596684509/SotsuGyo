@@ -17,6 +17,8 @@ import java.util.HashMap;
 
 public class LanguageHandler {
 
+    public static final String LANGTYPE_KEY = "language";
+    public static final String LANGTYPE_SHOW_KEY = "showlanguagetype";
     private String jsonData;
     private Context context;
 
@@ -40,12 +42,14 @@ public class LanguageHandler {
         }
 
         languageType = LanguageType.getType(str);
+        loadJsonFile();
 
     }
 
     public void setLanguageType(LanguageType languageType) {
 
         this.languageType = languageType;
+        loadJsonFile();
 
     }
 

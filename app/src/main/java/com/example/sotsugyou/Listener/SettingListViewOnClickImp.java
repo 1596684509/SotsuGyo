@@ -24,15 +24,19 @@ public class SettingListViewOnClickImp implements AdapterView.OnItemClickListene
 
             ListViewItem item = (ListViewItem) adapterView.getItemAtPosition(i);
 
-            if(item.getTargetActivity() != null) {
+            if (item.getTargetActivity() != null) {
 
                 Intent intent = new Intent(context, item.getTargetActivity());
                 context.startActivity(intent);
 
+            }else if(item.getIntent() != null) {
+
+                Intent intent = item.getIntent();
+                context.startActivity(intent);
+
             }
-
-
         }
+
 
 //        if(i == 2) {
 //

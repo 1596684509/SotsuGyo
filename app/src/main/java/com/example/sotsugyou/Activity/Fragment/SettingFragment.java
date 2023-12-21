@@ -1,5 +1,6 @@
 package com.example.sotsugyou.Activity.Fragment;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
@@ -67,6 +68,16 @@ public class SettingFragment extends Fragment {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        initObject();
+        initView();
+        initLanguage();
+
+    }
+
     private void initObject() {
 
         languageHandler = MainActivity.getApp().getLanguageHandler();
@@ -108,7 +119,7 @@ public class SettingFragment extends Fragment {
 
             listViewDatas.add(new ListViewItem(jsonObject.getString("mainsetting_listitem2_title"), R.drawable.updataicon));
             listViewDatas.add(new ListViewItem(jsonObject.getString("mainsetting_listitem3_title"), R.drawable.languageicon, SystemLanguageSettingActivity.class));
-            listViewDatas.add(new ListViewItem(jsonObject.getString("mainsetting_listitem4_title"), R.drawable.bluetoothicon));
+            listViewDatas.add(new ListViewItem(jsonObject.getString("mainsetting_listitem4_title"), R.drawable.bluetoothicon, new Intent(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS)));
 
             adapter = new ListViewAdapter(listViewDatas, binding.getRoot().getContext());
 

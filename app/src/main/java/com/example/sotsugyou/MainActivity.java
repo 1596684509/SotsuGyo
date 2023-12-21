@@ -28,6 +28,7 @@ import com.example.sotsugyou.Activity.Fragment.MainFragment;
 import com.example.sotsugyou.Activity.Fragment.SettingFragment;
 import com.example.sotsugyou.Activity.SettingActivity.DollSettingActivity.DollNameSettingActivity;
 import com.example.sotsugyou.Activity.View.ListViewItem;
+import com.example.sotsugyou.Data.Data;
 import com.example.sotsugyou.Data.DataHandler;
 import com.example.sotsugyou.Listener.Button.MainDollImageImp;
 import com.example.sotsugyou.Listener.OnNavigationItemSenetedImp;
@@ -88,12 +89,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initLanguage();
+    }
+
     private void initLanguage() {
 
-        SharedPreferences sharedPreferences = getSharedPreferences("data", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(Data.DATAFILE_NAME, MODE_PRIVATE);
         app.getLanguageHandler().setLanguageType(sharedPreferences.getString("language", "jp"));
-        app.getLanguageHandler().loadJsonFile();
-
         try {
 
             JSONObject jsonObject = app.getLanguageHandler().getLanguageJson();

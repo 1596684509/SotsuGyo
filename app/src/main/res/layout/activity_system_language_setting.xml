@@ -16,6 +16,7 @@
         android:background="@color/grey"/>
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/setting_system_language_title"

@@ -1,5 +1,6 @@
 package com.example.sotsugyou.Activity.View;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,10 +12,17 @@ public class ListViewItem {
     private Bitmap bitmap;
 
     private Class targetActivity;
+    private Intent intent;
 
     public ListViewItem(String title, int imageId) {
         this.title = title;
         ImageId = imageId;
+    }
+
+    public ListViewItem(String title, int imageId, Intent intent) {
+        this.title = title;
+        ImageId = imageId;
+        this.intent = intent;
     }
 
     public ListViewItem(String title, int imageId, Class targetActivity) {
@@ -60,5 +68,9 @@ public class ListViewItem {
 
     public void setImageId(int imageId) {
         ImageId = imageId;
+    }
+
+    public Intent getIntent() {
+        return intent;
     }
 }
