@@ -8,7 +8,11 @@ import androidx.appcompat.view.menu.MenuView;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
+import android.bluetooth.BluetoothAdapter;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -35,8 +39,10 @@ import com.example.sotsugyou.Listener.OnNavigationItemSenetedImp;
 import com.example.sotsugyou.Object.AppObject;
 import com.example.sotsugyou.Setting.LanguageHandler;
 import com.example.sotsugyou.Setting.LanguageType;
+import com.example.sotsugyou.Utils.BluetoothHandler;
 import com.example.sotsugyou.Utils.Util;
 import com.example.sotsugyou.databinding.ActivityMainBinding;
+import com.example.sotsugyou.databinding.FragmentMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONException;
@@ -58,22 +64,41 @@ public class MainActivity extends AppCompatActivity {
     public static final int CODE_FRAGMENT_MAIN = 0;
     public static final int CODE_FRAGMENT_SETTING = 1;
 
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, -1);
+            MainFragment mainFragment = getMainFragment();
+            FragmentMainBinding binding = mainFragment.getBinding();
+
+            switch (state) {
+
+                case BluetoothAdapter.STATE_OFF:
+                    binding.explanation.setText("ブルートゥースは起動していません");
+                    app.getBluetoothHandler().enableBluetooth(MainActivity.this);
+                    break;
+
+                case BluetoothAdapter.STATE_ON:
+                    binding.explanation.setText("ブルートゥースは起動しました");
+                    break;
+
+            }
+
+        }
+
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
 
         super.onCreate(savedInstanceState);
 
         bind = ActivityMainBinding.inflate(getLayoutInflater());
-
         setContentView(bind.getRoot());
 
-        app = new AppObject(this);
-        app.initDefaultUser();
-
-        dataHandler = AppObject.getData();
-
+        initObj();
 
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
@@ -83,9 +108,27 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        if(!app.getBluetoothHandler().enableBluetooth(this)) {
+
+            Log.e("MainActivity", "bluetooth 対応できない");
+
+        }
+
         findView();
         initView();
         initLanguage();
+
+    }
+
+    private void initObj() {
+
+        app = new AppObject(this);
+        app.initDefaultUser();
+
+        dataHandler = AppObject.getData();
+
+        IntentFilter filter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
+        registerReceiver(receiver, filter);
 
     }
 
@@ -109,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-            Menu menu = navigationView.getMenu();
+            Menu menu = bind.mainBottomNavigation.getMenu();
 
             MenuItem menuItem = menu.getItem(0);
             menuItem.setTitle((CharSequence) jsonObject.get("main_menu1_title"));
@@ -166,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
     private void updateImageView() {
 
 
-        mainFragment.getDollImageView().setImageDrawable(Util.getIconRadius(getResources(), app.getUser().getDoll().getBitmap()));
+        mainFragment.getBinding().mainDollImageView.setImageDrawable(Util.getIconRadius(getResources(), app.getUser().getDoll().getBitmap()));
 
         Menu menu = navigationView.getMenu();
         MenuItem menuItem = menu.getItem(0);
@@ -186,6 +229,15 @@ public class MainActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        if(requestCode == BluetoothHandler.REQUESTCODE_ENABLE_BLUETOOTH) {
+
+            if(resultCode != RESULT_OK) {
+
+                getApp().getBluetoothHandler().enableBluetooth(this);
+
+            }
+
+        }
 
         if(requestCode == MainDollImageImp.REQUESTCODE_CAMERA) {
 
@@ -270,6 +322,10 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    public MainFragment getMainFragment() {
+        return mainFragment;
     }
 
     public static AppObject getApp() {

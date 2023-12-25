@@ -6,6 +6,7 @@ import com.example.sotsugyou.Data.Data;
 import com.example.sotsugyou.R;
 import com.example.sotsugyou.Setting.LanguageHandler;
 import com.example.sotsugyou.Setting.LanguageType;
+import com.example.sotsugyou.Utils.BluetoothHandler;
 
 
 public class AppObject {
@@ -16,12 +17,14 @@ public class AppObject {
     private static Data data;
 
     private static LanguageHandler languageHandler;
+    private BluetoothHandler bluetoothHandler;
 
     public AppObject(Context context) {
 
         this.context = context;
         data = new Data();
         languageHandler = new LanguageHandler(this.context);
+        bluetoothHandler = new BluetoothHandler(context);
     }
 
     public LanguageHandler getLanguageHandler() {
@@ -49,5 +52,9 @@ public class AppObject {
 
     public static Data getData() {
         return data;
+    }
+
+    public BluetoothHandler getBluetoothHandler() {
+        return bluetoothHandler;
     }
 }

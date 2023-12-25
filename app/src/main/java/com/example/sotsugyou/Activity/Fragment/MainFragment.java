@@ -21,21 +21,26 @@ import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.Object.Doll;
 import com.example.sotsugyou.R;
 import com.example.sotsugyou.Utils.Util;
+import com.example.sotsugyou.databinding.FragmentMainBinding;
 
 public class MainFragment extends Fragment {
 
     private View view;
-    private ImageView dollImageView;
     private Doll doll;
 
-    private TextView dollNameTextzView;
+
+    private FragmentMainBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.fragment_main, container, false);
-        // Inflate the layout for this fragment
+//        view = inflater.inflate(R.layout.fragment_main, container, false);
+//        // Inflate the layout for this fragment
+//        return view;
+
+        binding = FragmentMainBinding.inflate(getLayoutInflater());
+        view = binding.getRoot();
         return view;
         
     }
@@ -45,7 +50,6 @@ public class MainFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         initObj();
-        findView();
         initView();
 
     }
@@ -56,24 +60,16 @@ public class MainFragment extends Fragment {
 
     }
 
-    private void findView() {
-
-        dollImageView = view.findViewById(R.id.main_dollImageView);
-        dollNameTextzView = view.findViewById(R.id.main_dollName_textView);
-
-
-    }
-
     private void initView() {
 
-        dollNameTextzView.setText(doll.getName());
+        binding.mainDollNameTextView.setText(doll.getName());
 
-        dollImageView.setOnClickListener(new MainDollImageImp((Activity) view.getContext()));
-        dollImageView.setImageDrawable(Util.getIconRadius(getResources(), MainActivity.getApp().getUser().getDoll().getBitmap()));
+        binding.mainDollImageView.setOnClickListener(new MainDollImageImp((Activity) view.getContext()));
+        binding.mainDollImageView.setImageDrawable(Util.getIconRadius(getResources(), MainActivity.getApp().getUser().getDoll().getBitmap()));
 
     }
 
-    public ImageView getDollImageView() {
-        return dollImageView;
+    public FragmentMainBinding getBinding() {
+        return binding;
     }
 }

@@ -19,6 +19,7 @@
             android:background="@drawable/textframe">
 
             <TextView
+                android:id="@+id/explanation"
                 android:layout_gravity="center"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
