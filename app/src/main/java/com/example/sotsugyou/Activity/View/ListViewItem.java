@@ -2,6 +2,7 @@ package com.example.sotsugyou.Activity.View;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,10 +14,18 @@ public class ListViewItem {
 
     private Class targetActivity;
     private Intent intent;
+    private View.OnClickListener onClickListener;
 
     public ListViewItem(String title, int imageId) {
         this.title = title;
         ImageId = imageId;
+    }
+
+    public ListViewItem(String title, int imageId, View.OnClickListener listener) {
+        this.title = title;
+        ImageId = imageId;
+        onClickListener = listener;
+
     }
 
     public ListViewItem(String title, int imageId, Intent intent) {
@@ -72,5 +81,9 @@ public class ListViewItem {
 
     public Intent getIntent() {
         return intent;
+    }
+
+    public View.OnClickListener getOnClickListener() {
+        return onClickListener;
     }
 }

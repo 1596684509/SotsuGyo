@@ -21,6 +21,7 @@ import com.example.sotsugyou.Activity.SettingActivity.SystemSettingActivity.Syst
 import com.example.sotsugyou.Activity.View.ListViewAdapter;
 import com.example.sotsugyou.Activity.View.ListViewItem;
 import com.example.sotsugyou.Listener.Button.UserSettingClickImp;
+import com.example.sotsugyou.Listener.EventClick.UpdataListButtonClickImp;
 import com.example.sotsugyou.Listener.SettingListViewOnClickImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.Object.User;
@@ -117,7 +118,7 @@ public class SettingFragment extends Fragment {
 
             }
 
-            listViewDatas.add(new ListViewItem(jsonObject.getString("mainsetting_listitem2_title"), R.drawable.updataicon));
+            listViewDatas.add(new ListViewItem(jsonObject.getString("mainsetting_listitem2_title"), R.drawable.updataicon, new UpdataListButtonClickImp(this)));
             listViewDatas.add(new ListViewItem(jsonObject.getString("mainsetting_listitem3_title"), R.drawable.languageicon, SystemLanguageSettingActivity.class));
             listViewDatas.add(new ListViewItem(jsonObject.getString("mainsetting_listitem4_title"), R.drawable.bluetoothicon, new Intent(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS)));
 

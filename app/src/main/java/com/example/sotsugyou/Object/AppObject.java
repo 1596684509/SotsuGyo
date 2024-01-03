@@ -39,7 +39,6 @@ public class AppObject {
 
         user = new User();
         user.setName("default");
-        user.setDefaultUser();
         user.setIconId(R.drawable.defaultusericon);
 
     }
