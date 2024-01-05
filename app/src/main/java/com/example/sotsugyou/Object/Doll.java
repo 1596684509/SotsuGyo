@@ -4,9 +4,9 @@ import android.graphics.Bitmap;
 
 public class Doll {
 
-    //TODO 自分の写真をアップデート
     private Bitmap bitmap;
     private String name;
+    private Exp exp;
 
     public void setName(String name) {
         this.name = name;
@@ -31,4 +31,11 @@ public class Doll {
 
     }
 
+    public Exp getExp() {
+        return exp;
+    }
+
+    public void setExp(Exp exp) {
+        this.exp = exp;
+    }
 }

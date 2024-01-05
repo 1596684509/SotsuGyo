@@ -55,10 +55,10 @@ public class MainActivity extends AppCompatActivity {
     private static AppObject app;
     private BottomNavigationView navigationView;
     private ActivityMainBinding bind;
-    private FrameLayout frameLayout;
+
     private DataHandler dataHandler;
 
-    private MainFragment mainFragment;
+    private static MainFragment mainFragment;
     private SettingFragment settingFragment;
 
     public static final int CODE_FRAGMENT_MAIN = 0;
@@ -100,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
 
         initObj();
 
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
         if(firstLunch()) {
 
@@ -170,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean firstLunch() {
 
-        if(dataHandler.load(this)) {
+        if(dataHandler.load()) {
 
 
             Intent intent = new Intent(this, FirstDollNameSettingActivity.class);
@@ -187,7 +186,6 @@ public class MainActivity extends AppCompatActivity {
     private void findView() {
 
         navigationView = findViewById(R.id.main_bottomNavigation);
-        frameLayout = findViewById(R.id.main_frame);
 
     }
 
@@ -267,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
 
-        app.getData().save(this);
+        app.getData().save();
 
     }
 
@@ -324,11 +322,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public MainFragment getMainFragment() {
+    public static MainFragment getMainFragment() {
         return mainFragment;
     }
 
     public static AppObject getApp() {
         return app;
     }
+
+
+
 }

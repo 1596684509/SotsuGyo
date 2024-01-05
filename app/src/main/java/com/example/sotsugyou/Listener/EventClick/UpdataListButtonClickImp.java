@@ -31,7 +31,7 @@ public class UpdataListButtonClickImp implements View.OnClickListener{
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    ServerConncetHandler serverConncetHandler = new ServerConncetHandler();
+                    ServerConncetHandler serverConncetHandler = MainActivity.getApp().getServerConncetHandler();
 
                     if(serverConncetHandler.connect()) {
 

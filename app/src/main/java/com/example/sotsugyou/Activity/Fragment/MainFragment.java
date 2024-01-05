@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sotsugyou.Listener.Button.MainDollImageImp;
+import com.example.sotsugyou.Listener.EventClick.TestClickImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.Object.Doll;
 import com.example.sotsugyou.R;
@@ -57,12 +58,14 @@ public class MainFragment extends Fragment {
     private void initObj() {
 
         doll = MainActivity.getApp().getUser().getDoll();
+        doll.getExp().updataExpbar();
 
     }
 
     private void initView() {
 
         binding.mainDollNameTextView.setText(doll.getName());
+        binding.mainExpbar.setOnClickListener(new TestClickImp(this.getContext()));
 
         binding.mainDollImageView.setOnClickListener(new MainDollImageImp((Activity) view.getContext()));
         binding.mainDollImageView.setImageDrawable(Util.getIconRadius(getResources(), MainActivity.getApp().getUser().getDoll().getBitmap()));

@@ -4,7 +4,7 @@ import android.content.Context;
 
 public interface DataHandler {
 
-    void save(Context context);
-    boolean load(Context context);
+    void save();
+    boolean load();
 
 }

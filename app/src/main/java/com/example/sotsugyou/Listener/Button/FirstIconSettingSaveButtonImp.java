@@ -8,6 +8,7 @@ import com.example.sotsugyou.Activity.First.FirstDollImageSettingActivity;
 import com.example.sotsugyou.Data.DataHandler;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.Object.AppObject;
+import com.example.sotsugyou.Object.Exp;
 
 public class FirstIconSettingSaveButtonImp implements View.OnClickListener {
 
@@ -31,9 +32,12 @@ public class FirstIconSettingSaveButtonImp implements View.OnClickListener {
             }
 
             MainActivity.getApp().getUser().getDoll().setBitmap(activity.getRotatedBitmap());
+            Exp exp = new Exp();
+            exp.initExp(1, 0);
+            MainActivity.getApp().getUser().getDoll().setExp(exp);
 
             DataHandler dataHandler = AppObject.getData();
-            dataHandler.save(context);
+            dataHandler.save();
 
             Intent intent = new Intent(context, MainActivity.class);
             context.startActivity(intent);
