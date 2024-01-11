@@ -33,6 +33,9 @@ public class BluetoothHandler {
     private Context context;
     private Handler handler;
 
+    //TODO　ハードウェアの名前を設定
+    public static final String BLUETOOTH_NAME = "test";
+
     public BluetoothHandler(Context context) {
         this.context = context;
         initAdapter();
@@ -117,8 +120,7 @@ public class BluetoothHandler {
 
     public void searchBondedHardWare() {
 
-        //TODO　ハードウェアの名前を設定
-        String name = "test";
+
 
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
 
@@ -126,7 +128,7 @@ public class BluetoothHandler {
         Set<BluetoothDevice> devicesSet = adapter.getBondedDevices();
         for (BluetoothDevice bluetoothDevice : devicesSet) {
 
-            if (name.equals(bluetoothDevice.getName())) {
+            if (BLUETOOTH_NAME.equals(bluetoothDevice.getName())) {
 
                 ConnectThead connectThead = new ConnectThead(bluetoothDevice);
                 connectThead.start();

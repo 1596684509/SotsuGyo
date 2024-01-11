@@ -11,17 +11,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.sotsugyou.Activity.SettingActivity.DollSettingActivity.DollSettingActivity;
 import com.example.sotsugyou.Activity.SettingActivity.SystemSettingActivity.SystemLanguageSettingActivity;
 import com.example.sotsugyou.Activity.View.ListViewAdapter;
 import com.example.sotsugyou.Activity.View.ListViewItem;
+import com.example.sotsugyou.Enum.SendDataTypeEnum;
 import com.example.sotsugyou.Listener.Button.UserSettingClickImp;
-import com.example.sotsugyou.Listener.EventClick.UpdataListButtonClickImp;
+import com.example.sotsugyou.Listener.EventClick.UpdataButtonClickImp;
 import com.example.sotsugyou.Listener.SettingListViewOnClickImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.Object.User;
@@ -118,7 +115,7 @@ public class SettingFragment extends Fragment {
 
             }
 
-            listViewDatas.add(new ListViewItem(jsonObject.getString("mainsetting_listitem2_title"), R.drawable.updataicon, new UpdataListButtonClickImp(this)));
+            listViewDatas.add(new ListViewItem(jsonObject.getString("mainsetting_listitem2_title"), R.drawable.updataicon, new UpdataButtonClickImp(this, SendDataTypeEnum.DOLL)));
             listViewDatas.add(new ListViewItem(jsonObject.getString("mainsetting_listitem3_title"), R.drawable.languageicon, SystemLanguageSettingActivity.class));
             listViewDatas.add(new ListViewItem(jsonObject.getString("mainsetting_listitem4_title"), R.drawable.bluetoothicon, new Intent(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS)));
 

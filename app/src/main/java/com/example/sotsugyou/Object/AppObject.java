@@ -19,15 +19,13 @@ public class AppObject {
 
     private static LanguageHandler languageHandler;
     private BluetoothHandler bluetoothHandler;
-    private ServerConncetHandler serverConncetHandler;
 
     public AppObject(Context context) {
 
         this.context = context;
         data = new Data();
         languageHandler = new LanguageHandler(this.context);
-        bluetoothHandler = new BluetoothHandler(context);
-        serverConncetHandler = new ServerConncetHandler();
+        bluetoothHandler = new BluetoothHandler(context);;
     }
 
     public LanguageHandler getLanguageHandler() {
@@ -41,8 +39,7 @@ public class AppObject {
     public void initDefaultUser() {
 
         user = new User();
-        user.setName("default");
-        user.setIconId(R.drawable.defaultusericon);
+        user.initUser("default", "default", R.drawable.defaultusericon);
 
     }
 
@@ -64,7 +61,4 @@ public class AppObject {
         return bluetoothHandler;
     }
 
-    public ServerConncetHandler getServerConncetHandler() {
-        return serverConncetHandler;
-    }
 }

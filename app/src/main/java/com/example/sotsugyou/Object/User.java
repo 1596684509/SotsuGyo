@@ -10,8 +10,9 @@ public class User {
     private String passworld;
     private int iconId;
 
-    public void initUser(String name, int iconId) {
+    public void initUser(String id, String name, int iconId) {
 
+        this.id = id;
         this.name = name;
         this.iconId = iconId;
 
@@ -68,5 +69,9 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public String getId() {
+        return id;
     }
 }

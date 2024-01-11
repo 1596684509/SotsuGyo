@@ -2,12 +2,15 @@ package com.example.sotsugyou.Utils;
 
 import android.util.Log;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
+import java.nio.charset.StandardCharsets;
 
 /**
  * サーバと繋がるクラス
@@ -16,7 +19,8 @@ import java.net.SocketAddress;
 public class ServerConncetHandler {
 
     //TODO 设置IP
-    public static final String SERVER_IP = "192.168.0.186";
+    public static final String SERVER_WINDOWS_IP = "192.168.0.186";
+    public static final String SERVER_MAC_IP = "10.32.2.15";
     //TODO 设置端口
     public static final int SERVER_PORT = 1000;
     private Socket client;
@@ -37,8 +41,8 @@ public class ServerConncetHandler {
 
             }
 
-            SocketAddress socketAddress = new InetSocketAddress(SERVER_IP, SERVER_PORT);
-            client.connect(socketAddress, 2000);
+            SocketAddress socketAddress = new InetSocketAddress(SERVER_MAC_IP, SERVER_PORT);
+            client.connect(socketAddress, 20000);
 
             if(client.isConnected()) {
 
@@ -54,6 +58,38 @@ public class ServerConncetHandler {
         }
 
         return isConnect;
+
+    }
+
+    public String rcvMsg() {
+
+        StringBuffer stringBuffer;
+
+        try {
+
+            if(in == null) {
+
+                in = client.getInputStream();
+
+            }
+
+            stringBuffer = new StringBuffer();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
+
+            String line;
+            while((line = bufferedReader.readLine()) != null) {
+
+                stringBuffer.append(line);
+
+            }
+
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        return stringBuffer.toString();
 
     }
 
