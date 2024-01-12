@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 
 import com.example.sotsugyou.Listener.EventClick.ReturnButtonOnClickImp;
-import com.example.sotsugyou.Listener.OnCheckedChangeImp;
+import com.example.sotsugyou.Listener.OnUserIconCheckedChangeImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.MyLinearLayout.FlowRadioGroup;
 import com.example.sotsugyou.Object.User;
@@ -17,7 +17,6 @@ import com.example.sotsugyou.R;
 import com.example.sotsugyou.Setting.LanguageHandler;
 import com.example.sotsugyou.Utils.Util;
 import com.example.sotsugyou.databinding.ActivityAccountIconSettingBinding;
-import com.example.sotsugyou.databinding.ActivityAccountSettingBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -118,7 +117,7 @@ public class AccountIconSettingActivity extends AppCompatActivity {
 
         icon.setImageDrawable(Util.getIconRadius(getResources(), user.getIconId()));
 
-        flowRadioGroup.setOnCheckedChangeListener(new OnCheckedChangeImp(this));
+        flowRadioGroup.setOnCheckedChangeListener(new OnUserIconCheckedChangeImp(this));
         backImageButton.setOnClickListener(new ReturnButtonOnClickImp(this));
 
         radioImageSet(seletorIconR1);

@@ -44,6 +44,7 @@
             android:textSize="22sp"/>
 
         <EditText
+            android:id="@+id/userInputBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
@@ -58,6 +59,7 @@
             android:textSize="22sp"/>
 
         <EditText
+            android:id="@+id/nameInputBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
@@ -72,6 +74,7 @@
             android:textSize="22sp"/>
 
         <EditText
+            android:id="@+id/passwordInputbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
@@ -86,6 +89,7 @@
             android:textSize="22sp"/>
 
         <EditText
+            android:id="@+id/passwordInputbarAgain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
@@ -102,6 +106,7 @@
         android:orientation="horizontal">
 
         <CheckBox
+            android:id="@+id/checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/white"/>

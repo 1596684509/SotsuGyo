@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.sotsugyou.Listener.EventClick.ReturnButtonOnClickImp;
 import com.example.sotsugyou.Listener.EventClick.IntentEventImp;
+import com.example.sotsugyou.Listener.EventClick.UpdataButtonClickImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.R;
 import com.example.sotsugyou.Setting.LanguageHandler;
@@ -58,6 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
             spannableString.setSpan(new UnderlineSpan(), 0, 4, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             binding.registerTextViewRule.setText(spannableString);
             binding.registerTextViewRule.setOnClickListener(new IntentEventImp(this, RegisterRuleActivity.class));
+            binding.registerRegButton.setOnClickListener(new UpdataButtonClickImp(this));
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -84,4 +86,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+    public ActivityRegisterBinding getBinding() {
+        return binding;
+    }
 }

@@ -8,7 +8,7 @@ public class User {
     private Doll doll;
     //TODO データベースに移動
     private String passworld;
-    private int iconId;
+    private int iconId = -1;
 
     public void initUser(String id, String name, int iconId) {
 

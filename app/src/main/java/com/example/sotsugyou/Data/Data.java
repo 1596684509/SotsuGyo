@@ -40,6 +40,8 @@ public class Data implements DataHandler{
         esed.putString("image",Util.getImageByte(doll.getBitmap()));
         esed.putInt("leave", doll.getExp().getLeave());
         esed.putInt("exp", doll.getExp().getExp());
+        esed.putInt("frameid", doll.getFrameId());
+        esed.putInt("backgroundid", doll.getBackgroundId());
         esed.apply();
 
     }
@@ -53,6 +55,8 @@ public class Data implements DataHandler{
         String image = null;
         int exp;
         int leave;
+        int frameId;
+        int backgroundId;
 
         try {
 
@@ -61,10 +65,14 @@ public class Data implements DataHandler{
             image = sp.getString("image", null);
             exp = sp.getInt("exp", -1);
             leave = sp.getInt("leave", -1);
+            frameId = sp.getInt("frameid", -1);
+            backgroundId = sp.getInt("backgroundid", -1);
 
             if(name != null && image != null) {
 
                 app.getUser().initDoll(name);
+                app.getUser().getDoll().setFrameId(frameId);
+                app.getUser().getDoll().setBackgroundId(backgroundId);
 
                 if(exp != -1 && exp != -1) {
 

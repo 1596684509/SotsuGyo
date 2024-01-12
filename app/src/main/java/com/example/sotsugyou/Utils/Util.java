@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
+import com.example.sotsugyou.Item.Item;
+
 import java.io.ByteArrayOutputStream;
 
 public class Util{
@@ -76,5 +78,4 @@ public class Util{
         return null;
 
     }
-
 }

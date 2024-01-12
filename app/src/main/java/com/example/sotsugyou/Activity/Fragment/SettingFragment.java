@@ -115,7 +115,7 @@ public class SettingFragment extends Fragment {
 
             }
 
-            listViewDatas.add(new ListViewItem(jsonObject.getString("mainsetting_listitem2_title"), R.drawable.updataicon, new UpdataButtonClickImp(this, SendDataTypeEnum.DOLL)));
+            listViewDatas.add(new ListViewItem(jsonObject.getString("mainsetting_listitem2_title"), R.drawable.updataicon, new UpdataButtonClickImp(this.getContext())));
             listViewDatas.add(new ListViewItem(jsonObject.getString("mainsetting_listitem3_title"), R.drawable.languageicon, SystemLanguageSettingActivity.class));
             listViewDatas.add(new ListViewItem(jsonObject.getString("mainsetting_listitem4_title"), R.drawable.bluetoothicon, new Intent(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS)));
 

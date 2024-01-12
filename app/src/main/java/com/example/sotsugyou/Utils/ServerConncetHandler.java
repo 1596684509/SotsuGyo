@@ -19,8 +19,9 @@ import java.nio.charset.StandardCharsets;
 public class ServerConncetHandler {
 
     //TODO 设置IP
-    public static final String SERVER_WINDOWS_IP = "192.168.0.186";
-    public static final String SERVER_MAC_IP = "10.32.2.15";
+    public static final String SERVER_HOME_WINDOWS_IP = "192.168.0.186";
+    public static final String SERVER_SCHOOL_MAC_IP = "10.32.2.15";
+    public static final String SERVER_HOME_MAC_IP = "192.168.0.151";
     //TODO 设置端口
     public static final int SERVER_PORT = 1000;
     private Socket client;
@@ -41,7 +42,7 @@ public class ServerConncetHandler {
 
             }
 
-            SocketAddress socketAddress = new InetSocketAddress(SERVER_MAC_IP, SERVER_PORT);
+            SocketAddress socketAddress = new InetSocketAddress(SERVER_HOME_MAC_IP, SERVER_PORT);
             client.connect(socketAddress, 20000);
 
             if(client.isConnected()) {
