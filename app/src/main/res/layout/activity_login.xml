@@ -48,6 +48,7 @@
             android:src="@drawable/system_userinput_icon"/>
 
         <EditText
+            android:id="@+id/idInputbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -77,6 +78,7 @@
             android:src="@drawable/system_password_icon"/>
 
         <EditText
+            android:id="@+id/passwordInputbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"

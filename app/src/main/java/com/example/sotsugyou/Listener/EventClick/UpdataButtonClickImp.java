@@ -6,22 +6,25 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.sotsugyou.Activity.LoginActivity.LoginActivity;
 import com.example.sotsugyou.Activity.LoginActivity.RegisterActivity;
 import com.example.sotsugyou.Enum.SendDataTypeEnum;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.Object.Doll;
 import com.example.sotsugyou.Object.User;
 import com.example.sotsugyou.R;
+import com.example.sotsugyou.Utils.JsonHandler;
 import com.example.sotsugyou.Utils.ServerConncetHandler;
 import com.example.sotsugyou.Utils.Util;
+import com.example.sotsugyou.databinding.ActivityLoginBinding;
 import com.example.sotsugyou.databinding.ActivityRegisterBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 public class UpdataButtonClickImp implements View.OnClickListener{
 
-    private SendDataTypeEnum dataType;
     private Context context;
 
 
@@ -36,9 +39,9 @@ public class UpdataButtonClickImp implements View.OnClickListener{
 
         if(v.getId() == R.id.register_regButton) {
 
-            if(sendData(SendDataTypeEnum.USERREGISTER)) {
+            if (sendData(SendDataTypeEnum.USERREGISTER)) {
 
-                if(context instanceof RegisterActivity) {
+                if (context instanceof RegisterActivity) {
 
                     RegisterActivity activity = (RegisterActivity) context;
                     activity.finish();
@@ -46,6 +49,10 @@ public class UpdataButtonClickImp implements View.OnClickListener{
                 }
 
             }
+
+        }else if(v.getId() == R.id.login_loginButton) {
+
+            sendData(SendDataTypeEnum.USERLOGIN);
 
         }else {
 
@@ -63,7 +70,66 @@ public class UpdataButtonClickImp implements View.OnClickListener{
 
     }
 
-    private String userRegisterToJsonString(SendDataTypeEnum type) {
+    private void login(String msgFromServer) {
+
+        if(msgFromServer == null) {
+
+            Toast.makeText(context, "IDまたはパスワードは間違った", Toast.LENGTH_LONG).show();
+
+        }else {
+
+            JSONObject jsonObject = JsonHandler.getJsonObj(msgFromServer);
+
+            if(jsonObject != null) {
+
+                if(!JsonHandler.loginUserFromJson(jsonObject)) {
+
+                    Log.i("updataButtonClickImp", "login: login error");
+
+                }
+
+                ((LoginActivity) context).finish();
+
+            }
+
+        }
+
+    }
+
+    private String loginDataToJsonString() {
+
+        String str = null;
+        JSONObject jsonObject;
+        LoginActivity activity = (LoginActivity) context;
+        ActivityLoginBinding binding = activity.getBinding();
+        String id = binding.idInputbar.getText().toString().trim();
+        String password = binding.passwordInputbar.getText().toString().trim();
+
+        if("".equals(id) || "".equals(password)) {
+
+            Toast.makeText(context, "IDとパスワードを入力してください", Toast.LENGTH_LONG).show();
+
+        }else {
+
+            try {
+
+                jsonObject = new JSONObject();
+                jsonObject.put("datatype", SendDataTypeEnum.DATATYPE_USERLOGIN_CODE);
+                jsonObject.put("userid", id);
+                jsonObject.put("password", password);
+                str = jsonObject.toString();
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        return str;
+
+    }
+
+    private String userRegisterToJsonString() {
 
         JSONObject jsonObject = new JSONObject();
 
@@ -93,12 +159,11 @@ public class UpdataButtonClickImp implements View.OnClickListener{
 
                     try {
 
-                        jsonObject.put("dataytpe", type.getTypeCode());
+                        jsonObject.put("datatype", SendDataTypeEnum.USERREGISTER);
                         jsonObject.put("userid", id);
                         jsonObject.put("password", password);
                         jsonObject.put("iconid", iconId);
                         jsonObject.put("name", name);
-
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -119,7 +184,7 @@ public class UpdataButtonClickImp implements View.OnClickListener{
 
     }
 
-    private String dollDataToJsonString(SendDataTypeEnum type) {
+    private String dollDataToJsonString() {
 
         User user = MainActivity.getApp().getUser();
         Doll doll = user.getDoll();
@@ -130,7 +195,7 @@ public class UpdataButtonClickImp implements View.OnClickListener{
 
             try {
 
-                jsonObject.put("datatype", type.getTypeCode());
+                jsonObject.put("datatype", SendDataTypeEnum.DATATYPE_DOLLUP_CODE);
                 jsonObject.put("userid", user.getId());
                 jsonObject.put("dollname", doll.getName());
                 jsonObject.put("dollexp", doll.getExp().getExp());
@@ -159,21 +224,21 @@ public class UpdataButtonClickImp implements View.OnClickListener{
     private boolean sendData(SendDataTypeEnum type) {
 
         boolean isSended = false;
-        String sendData = null;
+        String sendData;
 
         switch (type) {
 
             case DOLLUP:
-                sendData = dollDataToJsonString(SendDataTypeEnum.DOLLUP);
+                sendData = dollDataToJsonString();
                 break;
 
             case USERLOGIN:
-                //sendData = dollDataToJsonString(SendDataTypeEnum.USERLOGIN);
+                sendData = loginDataToJsonString();
                 Log.i("UpdataButtonClickImp", "send: user login data sended");
                 break;
 
             case USERREGISTER:
-                sendData = userRegisterToJsonString(SendDataTypeEnum.USERREGISTER);
+                sendData = userRegisterToJsonString();
                 Log.i("UpdataButtonClickImp", "send: user register data sended");
                 break;
 
@@ -197,8 +262,8 @@ public class UpdataButtonClickImp implements View.OnClickListener{
                     ServerConncetHandler serverConncetHandler = new ServerConncetHandler();
                     serverConncetHandler.connect();
                     serverConncetHandler.sendMsg(finalSendData);
+                    login(serverConncetHandler.rcvMsg());
                     serverConncetHandler.disConnect();
-                    Log.i("UpdataButtonClickImp", "send: doll data sended");
                 }
             }).start();
 

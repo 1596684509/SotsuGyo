@@ -9,6 +9,7 @@ import android.widget.ListView;
 
 import com.example.sotsugyou.Activity.View.ListViewAdapter;
 import com.example.sotsugyou.Activity.View.ListViewItem;
+import com.example.sotsugyou.Listener.Button.LogOutButtonImp;
 import com.example.sotsugyou.Listener.EventClick.ReturnButtonOnClickImp;
 import com.example.sotsugyou.Listener.SettingListViewOnClickImp;
 import com.example.sotsugyou.MainActivity;
@@ -85,6 +86,7 @@ public class AccountSettingActivity extends AppCompatActivity {
         binding.accountSettingListView.setOnItemClickListener(new SettingListViewOnClickImp(this));
 
         binding.settingUserMainBackImageButton.setOnClickListener(new ReturnButtonOnClickImp(this));
+        binding.accountSettingLigoutButton.setOnClickListener(new LogOutButtonImp(this));
 
 
 

@@ -7,7 +7,6 @@ public class User {
     private String id;
     private Doll doll;
     //TODO データベースに移動
-    private String passworld;
     private int iconId = -1;
 
     public void initUser(String id, String name, int iconId) {
@@ -31,6 +30,10 @@ public class User {
 
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public void initDoll(Doll doll) {
 
         if(doll != null) {
@@ -48,6 +51,12 @@ public class User {
     public void setDefaultUser() {
 
         defaultUser = true;
+
+    }
+
+    public void setLoginUser() {
+
+        defaultUser = false;
 
     }
 

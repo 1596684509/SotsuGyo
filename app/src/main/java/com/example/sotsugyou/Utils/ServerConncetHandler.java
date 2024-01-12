@@ -84,10 +84,12 @@ public class ServerConncetHandler {
 
             }
 
-
+            closeAll();
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            closeAll();
+            return null;
         }
 
         return stringBuffer.toString();
@@ -108,16 +110,17 @@ public class ServerConncetHandler {
 
             }
             out.write(msg.getBytes());
+            out.flush();
+            client.shutdownOutput();
 
         } catch (IOException e) {
             e.printStackTrace();
+            closeAll();
         }
 
     }
 
-
-
-    private void closeAll() {
+    private void closeStream() {
 
         try {
 
@@ -132,6 +135,18 @@ public class ServerConncetHandler {
                 in.close();
 
             }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    private void closeAll() {
+
+        try {
+
+            closeStream();
 
             if(client != null) {
 

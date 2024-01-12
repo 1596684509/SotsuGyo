@@ -35,6 +35,9 @@ public class AppObject {
         bluetoothHandler = new BluetoothHandler(context);;
         soundPlay = new SoundPlay(context);
         soundPlay.setSound(SoundIdEnum.CAT);
+
+        initDefaultUser();
+
     }
 
     public LanguageHandler getLanguageHandler() {
@@ -49,6 +52,20 @@ public class AppObject {
 
         user = new User();
         user.initUser("default", "default", R.drawable.defaultusericon);
+        user.setDefaultUser();
+
+    }
+
+    public void resetDefaultUser() {
+
+        user.initUser("default", "default", R.drawable.defaultusericon);
+        user.setDefaultUser();
+
+    }
+
+    public void initUser(String json) {
+
+
 
     }
 
