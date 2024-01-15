@@ -41,7 +41,7 @@ public class ServerConncetHandler {
 
             }
 
-            SocketAddress socketAddress = new InetSocketAddress(SERVER_MAC_IP, SERVER_PORT);
+            SocketAddress socketAddress = new InetSocketAddress(SERVER_WINDOWS_IP, SERVER_PORT);
             client.connect(socketAddress, 20000);
 
             if(client.isConnected()) {
