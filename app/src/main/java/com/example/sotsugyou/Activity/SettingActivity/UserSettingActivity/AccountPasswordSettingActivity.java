@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.example.sotsugyou.Listener.EventClick.ReturnButtonOnClickImp;
+import com.example.sotsugyou.Listener.EventClick.UpdataButtonClickImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.R;
 import com.example.sotsugyou.Setting.LanguageHandler;
@@ -47,7 +48,7 @@ public class AccountPasswordSettingActivity extends AppCompatActivity {
     private void initView() {
 
         binding.settingUserPassBackImageButton.setOnClickListener(new ReturnButtonOnClickImp(this));
-
+        binding.accountSettingPasswordSaveButton.setOnClickListener(new UpdataButtonClickImp(this));
 
 
     }
@@ -68,4 +69,7 @@ public class AccountPasswordSettingActivity extends AppCompatActivity {
 
     }
 
+    public ActivityAccountPasswordSettingBinding getBinding() {
+        return binding;
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.sotsugyou.Utils;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,8 +20,9 @@ import java.nio.charset.StandardCharsets;
 public class ServerConncetHandler {
 
     //TODO 设置IP
-    public static final String SERVER_WINDOWS_IP = "192.168.0.186";
-    public static final String SERVER_MAC_IP = "10.32.2.15";
+    public static final String SERVER_HOME_WINDOWS_IP = "192.168.0.186";
+    public static final String SERVER_SCHOOL_MAC_IP = "10.32.3.88";
+    public static final String SERVER_HOME_MAC_IP = "192.168.0.151";
     //TODO 设置端口
     public static final int SERVER_PORT = 1000;
     private Socket client;
@@ -41,8 +43,8 @@ public class ServerConncetHandler {
 
             }
 
-            SocketAddress socketAddress = new InetSocketAddress(SERVER_WINDOWS_IP, SERVER_PORT);
-            client.connect(socketAddress, 20000);
+            SocketAddress socketAddress = new InetSocketAddress(SERVER_HOME_MAC_IP, SERVER_PORT);
+            client.connect(socketAddress, 2000);
 
             if(client.isConnected()) {
 
@@ -53,7 +55,6 @@ public class ServerConncetHandler {
         } catch (IOException e) {
 
             Log.i("ServerConnectHandler", "Connect: connect error");
-            e.printStackTrace();
 
         }
 
@@ -83,10 +84,12 @@ public class ServerConncetHandler {
 
             }
 
-
+            closeAll();
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            closeAll();
+            return null;
         }
 
         return stringBuffer.toString();
@@ -107,16 +110,17 @@ public class ServerConncetHandler {
 
             }
             out.write(msg.getBytes());
+            out.flush();
+            client.shutdownOutput();
 
         } catch (IOException e) {
             e.printStackTrace();
+            closeAll();
         }
 
     }
 
-
-
-    private void closeAll() {
+    private void closeStream() {
 
         try {
 
@@ -131,6 +135,18 @@ public class ServerConncetHandler {
                 in.close();
 
             }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    private void closeAll() {
+
+        try {
+
+            closeStream();
 
             if(client != null) {
 

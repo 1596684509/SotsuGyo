@@ -37,6 +37,9 @@
     "accountsetting_listitem3_title": "Password Settings",
     "accountsetting_logoutbutton_text": "Logout",
 
+    "accountpasswordsetting_newpasswordedittext_hint": "Enter a new password",
+    "accountpasswordsetting_oldpasswordedittext_hint": "Enter the old password",
+
     "dollsetting_title": "Plush Toy Settings",
     "dollsetting_listitem1_title": "Personality Settings",
     "dollsetting_listitem2_title": "Name Settings",

@@ -122,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
     private void initObj() {
 
         app = new AppObject(this);
-        app.initDefaultUser();
 
         dataHandler = AppObject.getData();
 

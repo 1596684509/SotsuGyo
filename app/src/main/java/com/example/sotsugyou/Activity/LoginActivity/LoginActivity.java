@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 
 import com.example.sotsugyou.Listener.EventClick.IntentEventImp;
 import com.example.sotsugyou.Listener.EventClick.ReturnButtonOnClickImp;
+import com.example.sotsugyou.Listener.EventClick.UpdataButtonClickImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.R;
 import com.example.sotsugyou.Setting.LanguageHandler;
@@ -41,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
 
         binding.loginImageButtonReturn.setOnClickListener(new ReturnButtonOnClickImp(this));
         binding.loginButtonRegister.setOnClickListener(new IntentEventImp(this, RegisterActivity.class));
+        binding.loginLoginButton.setOnClickListener(new UpdataButtonClickImp(this));
 
     }
 
@@ -69,5 +71,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
+    public ActivityLoginBinding getBinding() {
+        return binding;
+    }
 }

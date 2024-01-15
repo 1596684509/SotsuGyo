@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.sotsugyou.Listener.Button.DollNameSetButtonImp;
 import com.example.sotsugyou.Listener.EventClick.ReturnButtonOnClickImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.R;
@@ -64,7 +65,11 @@ public class DollNameSettingActivity extends AppCompatActivity {
     private void initView() {
 
         binding.dollSettingNameImageButtonReturn.setOnClickListener(new ReturnButtonOnClickImp(this));
+        binding.saveButton.setOnClickListener(new DollNameSetButtonImp(this));
 
     }
 
+    public ActivityDollNameSettingBinding getBinding() {
+        return binding;
+    }
 }

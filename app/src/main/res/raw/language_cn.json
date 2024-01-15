@@ -37,6 +37,9 @@
     "accountsetting_listitem3_title": "密码设置",
     "accountsetting_logoutbutton_text": "登出",
 
+    "accountpasswordsetting_newpasswordedittext_hint": "请输入新密码",
+    "accountpasswordsetting_oldpasswordedittext_hint": "请输入旧密码",
+
     "dollsetting_title": "毛绒玩具设置",
     "dollsetting_listitem1_title": "个性设置",
     "dollsetting_listitem2_title": "名称设置",

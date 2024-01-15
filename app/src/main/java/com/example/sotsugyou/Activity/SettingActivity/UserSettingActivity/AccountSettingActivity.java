@@ -9,12 +9,14 @@ import android.widget.ListView;
 
 import com.example.sotsugyou.Activity.View.ListViewAdapter;
 import com.example.sotsugyou.Activity.View.ListViewItem;
+import com.example.sotsugyou.Listener.Button.LogOutButtonImp;
 import com.example.sotsugyou.Listener.EventClick.ReturnButtonOnClickImp;
 import com.example.sotsugyou.Listener.SettingListViewOnClickImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.Object.User;
 import com.example.sotsugyou.R;
 import com.example.sotsugyou.Setting.LanguageHandler;
+import com.example.sotsugyou.Utils.Util;
 import com.example.sotsugyou.databinding.ActivityAccountSettingBinding;
 
 import org.json.JSONException;
@@ -53,6 +55,23 @@ public class AccountSettingActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initUserIcon();
+    }
+
+    private void initUserIcon() {
+
+        if(user.getIconId() != -1) {
+
+            listViewItems.get(0).setImageId(user.getIconId());
+            binding.accountSettingListView.setAdapter(adapter);
+
+        }
+
+    }
+
     private void initObj() {
 
         languageHandler = MainActivity.getApp().getLanguageHandler();
@@ -85,6 +104,7 @@ public class AccountSettingActivity extends AppCompatActivity {
         binding.accountSettingListView.setOnItemClickListener(new SettingListViewOnClickImp(this));
 
         binding.settingUserMainBackImageButton.setOnClickListener(new ReturnButtonOnClickImp(this));
+        binding.accountSettingLigoutButton.setOnClickListener(new LogOutButtonImp(this));
 
 
 

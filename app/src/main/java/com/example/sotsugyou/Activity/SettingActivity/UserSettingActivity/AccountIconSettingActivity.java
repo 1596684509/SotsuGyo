@@ -9,7 +9,8 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 
 import com.example.sotsugyou.Listener.EventClick.ReturnButtonOnClickImp;
-import com.example.sotsugyou.Listener.OnCheckedChangeImp;
+import com.example.sotsugyou.Listener.EventClick.UpdataButtonClickImp;
+import com.example.sotsugyou.Listener.GroupCheckedChanged.OnUserIconCheckedChangeImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.MyLinearLayout.FlowRadioGroup;
 import com.example.sotsugyou.Object.User;
@@ -17,7 +18,6 @@ import com.example.sotsugyou.R;
 import com.example.sotsugyou.Setting.LanguageHandler;
 import com.example.sotsugyou.Utils.Util;
 import com.example.sotsugyou.databinding.ActivityAccountIconSettingBinding;
-import com.example.sotsugyou.databinding.ActivityAccountSettingBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,6 +45,8 @@ public class AccountIconSettingActivity extends AppCompatActivity {
     private ImageButton backImageButton;
 
     private static HashMap<Integer, Integer> imageResourceIDhsm;
+
+    private int userIcon = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,9 +118,10 @@ public class AccountIconSettingActivity extends AppCompatActivity {
 
     private void initView() {
 
+        binding.accountSettingIconSaveButton.setOnClickListener(new UpdataButtonClickImp(this));
         icon.setImageDrawable(Util.getIconRadius(getResources(), user.getIconId()));
 
-        flowRadioGroup.setOnCheckedChangeListener(new OnCheckedChangeImp(this));
+        flowRadioGroup.setOnCheckedChangeListener(new OnUserIconCheckedChangeImp(this));
         backImageButton.setOnClickListener(new ReturnButtonOnClickImp(this));
 
         radioImageSet(seletorIconR1);
@@ -142,5 +145,13 @@ public class AccountIconSettingActivity extends AppCompatActivity {
 
     public static HashMap<Integer, Integer> getImageResourceIDhsm() {
         return imageResourceIDhsm;
+    }
+
+    public void setUserIcon(int userIcon) {
+        this.userIcon = userIcon;
+    }
+
+    public int getUserIcon() {
+        return userIcon;
     }
 }

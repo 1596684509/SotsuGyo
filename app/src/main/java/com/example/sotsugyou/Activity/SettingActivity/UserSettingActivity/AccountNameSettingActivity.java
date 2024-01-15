@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.example.sotsugyou.Listener.EventClick.ReturnButtonOnClickImp;
+import com.example.sotsugyou.Listener.EventClick.UpdataButtonClickImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.R;
 import com.example.sotsugyou.Setting.LanguageHandler;
@@ -62,7 +63,11 @@ public class AccountNameSettingActivity extends AppCompatActivity {
     private void initView() {
 
        binding.settingUserNameBackImageButton.setOnClickListener(new ReturnButtonOnClickImp(this));
+       binding.accountSettingNameSaveButton.setOnClickListener(new UpdataButtonClickImp(this));
 
     }
 
+    public ActivityAccountNameSettingBinding getBinding() {
+        return binding;
+    }
 }

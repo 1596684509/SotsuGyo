@@ -3,11 +3,17 @@ package com.example.sotsugyou.Object;
 import android.content.Context;
 
 import com.example.sotsugyou.Data.Data;
+import com.example.sotsugyou.Enum.SoundIdEnum;
+import com.example.sotsugyou.Item.Item;
 import com.example.sotsugyou.R;
 import com.example.sotsugyou.Setting.LanguageHandler;
 import com.example.sotsugyou.Setting.LanguageType;
 import com.example.sotsugyou.Utils.BluetoothHandler;
 import com.example.sotsugyou.Utils.ServerConncetHandler;
+import com.example.sotsugyou.Utils.SoundPlay;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class AppObject {
@@ -19,6 +25,7 @@ public class AppObject {
 
     private static LanguageHandler languageHandler;
     private BluetoothHandler bluetoothHandler;
+    private SoundPlay soundPlay;
 
     public AppObject(Context context) {
 
@@ -26,6 +33,11 @@ public class AppObject {
         data = new Data();
         languageHandler = new LanguageHandler(this.context);
         bluetoothHandler = new BluetoothHandler(context);;
+        soundPlay = new SoundPlay(context);
+        soundPlay.setSound(SoundIdEnum.CAT);
+
+        initDefaultUser();
+
     }
 
     public LanguageHandler getLanguageHandler() {
@@ -40,6 +52,20 @@ public class AppObject {
 
         user = new User();
         user.initUser("default", "default", R.drawable.defaultusericon);
+        user.setDefaultUser();
+
+    }
+
+    public void resetDefaultUser() {
+
+        user.initUser("default", "default", R.drawable.defaultusericon);
+        user.setDefaultUser();
+
+    }
+
+    public void initUser(String json) {
+
+
 
     }
 
@@ -61,4 +87,7 @@ public class AppObject {
         return bluetoothHandler;
     }
 
+    public SoundPlay getSoundPlay() {
+        return soundPlay;
+    }
 }

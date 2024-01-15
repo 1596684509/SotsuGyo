@@ -60,6 +60,18 @@ public class Exp {
 
     }
 
+    public void setLeave(int leave) {
+        this.leave = leave;
+        updataNextExp();
+        updataExpbar();
+    }
+
+    public void setExp(int exp) {
+        this.exp = exp;
+        updataNextExp();
+        updataExpbar();
+    }
+
     private void updataNextExp() {
 
         nextLeaveExp = 5*(leave * leave + 5 * leave);

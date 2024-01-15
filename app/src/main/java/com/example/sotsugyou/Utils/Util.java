@@ -12,7 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
+import com.example.sotsugyou.Item.Item;
+
 import java.io.ByteArrayOutputStream;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Util{
 
@@ -64,6 +67,16 @@ public class Util{
 
     }
 
+    public static void delay(int i) {
+
+        try {
+            Thread.sleep(i);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
     public static Bitmap getBitMapForBtye(String byteStr) {
 
         if(byteStr != null) {
@@ -76,5 +89,4 @@ public class Util{
         return null;
 
     }
-
 }

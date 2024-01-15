@@ -6,9 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 
+import com.example.sotsugyou.Item.Item;
+import com.example.sotsugyou.Listener.Button.DollIconSettingSaveButtonImp;
 import com.example.sotsugyou.Listener.EventClick.ReturnButtonOnClickImp;
+import com.example.sotsugyou.Listener.GroupCheckedChanged.OnDollBackgroundCheckedChangeImp;
+import com.example.sotsugyou.Listener.GroupCheckedChanged.OnDollFrameCheckedChangeImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.Object.Doll;
 import com.example.sotsugyou.Setting.LanguageHandler;
@@ -19,23 +22,22 @@ import com.example.sotsugyou.databinding.ActivityDollIconSettingBinding;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+
 public class DollIconSettingActivity extends AppCompatActivity {
 
     private ActivityDollIconSettingBinding binding;
+    private HashMap<Integer, Item> itemHashMap = new HashMap<>();
     private ImageView imageView;
     private Doll doll;
 
     private ImageButton imageButton;
 
-    private RadioButton frameR1;
-    private RadioButton frameR2;
-    private RadioButton frameR3;
-    private RadioButton frameR4;
-    private RadioButton frameR5;
-    private RadioButton frameR6;
-
     private LanguageHandler languageHandler;
     private JSONObject jsonObject;
+
+    private int selectedframeItemId = -1;
+    private int selectedbackgroundItemId = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,7 @@ public class DollIconSettingActivity extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
         initObj();
+        initItemData();
         findView();
         initView();
         initLanguage();
@@ -58,6 +61,33 @@ public class DollIconSettingActivity extends AppCompatActivity {
         doll = MainActivity.getApp().getUser().getDoll();
         languageHandler = MainActivity.getApp().getLanguageHandler();
         jsonObject = languageHandler.getLanguageJson();
+
+    }
+
+    private void initItemData() {
+
+        itemHashMap.put(R.id.doll_setting_icon_frameR1, new Item(R.drawable.frame1, 10));
+        itemHashMap.put(R.id.doll_setting_icon_frameR2, new Item(R.drawable.frame2, 25));
+        itemHashMap.put(R.id.doll_setting_icon_frameR3, new Item(R.drawable.frame3, 40));
+        itemHashMap.put(R.id.doll_setting_icon_frameR4, new Item(R.drawable.frame4, 55));
+        itemHashMap.put(R.id.doll_setting_icon_frameR5, new Item(R.drawable.frame5, 70));
+        itemHashMap.put(R.id.doll_setting_icon_frameR6, new Item(R.drawable.frame6, 85));
+        itemHashMap.put(R.id.backgroundRb1, new Item(R.drawable.background1, 15));
+        itemHashMap.put(R.id.backgroundRb2, new Item(R.drawable.background2, 30));
+        itemHashMap.put(R.id.backgroundRb3, new Item(R.drawable.background3, 45));
+        itemHashMap.put(R.id.backgroundRb4, new Item(R.drawable.background4, 60));
+        itemHashMap.put(R.id.backgroundRb5, new Item(R.drawable.background5, 75));
+        itemHashMap.put(R.id.backgroundRb6, new Item(R.drawable.background6, 90));
+
+        for (Integer integer : itemHashMap.keySet()) {
+
+            if(doll.getExp().getLeave() >= itemHashMap.get(integer).getLockLevel()) {
+
+                itemHashMap.get(integer).unlock();
+
+            }
+
+        }
 
     }
 
@@ -83,28 +113,65 @@ public class DollIconSettingActivity extends AppCompatActivity {
 
         imageButton = findViewById(R.id.dollSettingIcon_ImageButton_return);
 
-        frameR1 = findViewById(R.id.doll_setting_icon_frameR1);
-        frameR2 = findViewById(R.id.doll_setting_icon_frameR2);
-        frameR3 = findViewById(R.id.doll_setting_icon_frameR3);
-        frameR4 = findViewById(R.id.doll_setting_icon_frameR4);
-        frameR5 = findViewById(R.id.doll_setting_icon_frameR5);
-        frameR6 = findViewById(R.id.doll_setting_icon_frameR6);
-
     }
 
     private void initView() {
 
         imageView.setImageDrawable(Util.getIconRadius(getResources() ,doll.getBitmap()));
+        binding.saveButton.setOnClickListener(new DollIconSettingSaveButtonImp(this));
+
+        if(doll.getFrameId() != -1) {
+
+            binding.frame.setImageResource(doll.getFrameId());
+
+        }
 
         imageButton.setOnClickListener(new ReturnButtonOnClickImp(this));
-
-        frameR1.setBackground(Util.getIconRadius(getResources(), R.drawable.usericon1));
-        frameR2.setBackground(Util.getIconRadius(getResources(), R.drawable.usericon1));
-        frameR3.setBackground(Util.getIconRadius(getResources(), R.drawable.usericon1));
-        frameR4.setBackground(Util.getIconRadius(getResources(), R.drawable.usericon1));
-        frameR5.setBackground(Util.getIconRadius(getResources(), R.drawable.usericon1));
-        frameR6.setBackground(Util.getIconRadius(getResources(), R.drawable.usericon1));
+        binding.flowradioGroup.setOnCheckedChangeListener(new OnDollFrameCheckedChangeImp(this));
+        binding.backgroundGroup.setOnCheckedChangeListener(new OnDollBackgroundCheckedChangeImp(this));
+        lockImage();
 
     }
 
+    private void lockImage() {
+
+        for (Integer integer : itemHashMap.keySet()) {
+
+            if(!itemHashMap.get(integer).isLocked()) {
+
+                findViewById(integer).setBackgroundResource(R.drawable.lockimage);
+
+            }else {
+
+                findViewById(integer).setBackground(Util.getIconRadius(getResources(), itemHashMap.get(integer).getId()));
+
+            }
+
+        }
+
+    }
+
+    public HashMap<Integer, Item> getItemHashMap() {
+        return itemHashMap;
+    }
+
+    public ActivityDollIconSettingBinding getBinding() {
+        return binding;
+    }
+
+    public void setSelectedframeItemId(int selectedframeItemId) {
+        this.selectedframeItemId = selectedframeItemId;
+    }
+
+    public void setSelectedbackgroundItemId(int selectedbackgroundItemId) {
+        this.selectedbackgroundItemId = selectedbackgroundItemId;
+    }
+
+    public int getSelectedbackgroundItemId() {
+        return selectedbackgroundItemId;
+    }
+
+    public int getSelectedframeItemId() {
+        return selectedframeItemId;
+    }
 }

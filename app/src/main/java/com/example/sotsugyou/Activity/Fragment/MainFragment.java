@@ -16,13 +16,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.sotsugyou.Enum.SoundIdEnum;
 import com.example.sotsugyou.Listener.Button.MainDollImageImp;
 import com.example.sotsugyou.Listener.EventClick.TestClickImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.Object.Doll;
 import com.example.sotsugyou.R;
+import com.example.sotsugyou.Utils.SoundPlay;
 import com.example.sotsugyou.Utils.Util;
 import com.example.sotsugyou.databinding.FragmentMainBinding;
+
+import java.util.Random;
 
 public class MainFragment extends Fragment {
 
@@ -31,6 +35,7 @@ public class MainFragment extends Fragment {
 
 
     private FragmentMainBinding binding;
+    private SoundPlay soundPlay;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,22 +58,65 @@ public class MainFragment extends Fragment {
         initObj();
         initView();
 
+        testMethod();
+
     }
 
     private void initObj() {
 
         doll = MainActivity.getApp().getUser().getDoll();
         doll.getExp().updataExpbar();
+        soundPlay = MainActivity.getApp().getSoundPlay();
+
+
+    }
+
+    public void testMethod() {
+
+        binding.explanation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                soundPlay.play1();
+
+            }
+        });
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        setShowDoll();
+
+    }
+
+    private void setShowDoll() {
+
+        binding.mainDollNameTextView.setText(doll.getName());
+        binding.mainDollImageView.setImageDrawable(Util.getIconRadius(getResources(), MainActivity.getApp().getUser().getDoll().getBitmap()));
+
+        if(doll.getFrameId() != -1) {
+
+            //binding.frame.setImageResource(doll.getFrameId());
+            binding.frame.setImageDrawable(Util.getIconRadius(getResources(), doll.getFrameId()));
+
+        }
+
+        if(doll.getBackgroundId() != -1) {
+
+            binding.background.setBackgroundResource(doll.getBackgroundId());
+
+        }
 
     }
 
     private void initView() {
 
-        binding.mainDollNameTextView.setText(doll.getName());
         binding.mainExpbar.setOnClickListener(new TestClickImp(this.getContext()));
-
         binding.mainDollImageView.setOnClickListener(new MainDollImageImp((Activity) view.getContext()));
-        binding.mainDollImageView.setImageDrawable(Util.getIconRadius(getResources(), MainActivity.getApp().getUser().getDoll().getBitmap()));
+        setShowDoll();
 
     }
 

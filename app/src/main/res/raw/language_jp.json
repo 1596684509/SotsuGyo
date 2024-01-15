@@ -42,6 +42,9 @@
     "dollsetting_listitem2_title": "名前設定",
     "dollsetting_listitem3_title": "音設定",
 
+    "accountpasswordsetting_newpasswordedittext_hint": "新しいパスワードを入力してください",
+    "accountpasswordsetting_oldpasswordedittext_hint": "古いパスワードを入力してください",
+
     "dollnamesetting_title": "ぬいぐるみ名前設定",
     "dollnamesetting_inputhint": "名前を入力してください",
 
