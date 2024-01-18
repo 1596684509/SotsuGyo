@@ -2,6 +2,7 @@ package com.example.sotsugyou;
 
 import static java.security.AccessController.getContext;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuView;
@@ -19,6 +20,8 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -107,19 +110,40 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+
+        initBluetooth();
+        findView();
+        initView();
+        initLanguage();
+
+
+    }
+
+    private void initBluetooth() {
+
+        if(app == null) {
+
+            Log.i("Main", " app is null");
+
+        }
+
         if(!app.getBluetoothHandler().enableBluetooth(this)) {
 
             Log.e("MainActivity", "bluetooth 対応できない");
 
         }
 
-        findView();
-        initView();
-        initLanguage();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                app.getBluetoothHandler().searchBondedHardWare();
+            }
+        }).start();
 
     }
 
     private void initObj() {
+
 
         app = new AppObject(this);
 
@@ -127,6 +151,10 @@ public class MainActivity extends AppCompatActivity {
 
         IntentFilter filter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
         registerReceiver(receiver, filter);
+
+    }
+
+    private void soundPlay (){
 
     }
 

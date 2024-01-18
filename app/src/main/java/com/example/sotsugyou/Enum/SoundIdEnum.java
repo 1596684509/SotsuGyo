@@ -7,13 +7,6 @@ public enum SoundIdEnum {
     CAT(R.raw.cat_1, R.raw.cat_2, R.raw.cat_3)
 
     ;
-
-    //揉む
-    public static final int ACCTIONTYPE_CODE1 = 0;
-    //上に抛る
-    public static final int ACCTIONTYPE_CODE2 = 1;
-    //抱きしめる
-    public static final int ACCTIONTYPE_CODE3 = 2;
     private int[] ids;
 
     SoundIdEnum(int id1, int id2, int id3) {

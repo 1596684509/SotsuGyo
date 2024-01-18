@@ -69,7 +69,6 @@
                 android:layout_marginHorizontal="15dp"
                 android:button="@null"
                 android:drawableStart="@drawable/radio_selector"
-                android:checked="true"
                 android:background="@drawable/usericon1"/>
 
             <RadioButton

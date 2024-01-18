@@ -32,12 +32,16 @@ public class AppObject {
         this.context = context;
         data = new Data();
         languageHandler = new LanguageHandler(this.context);
-        bluetoothHandler = new BluetoothHandler(context);;
         soundPlay = new SoundPlay(context);
         soundPlay.setSound(SoundIdEnum.CAT);
+        bluetoothHandler = new BluetoothHandler(context);
 
         initDefaultUser();
 
+    }
+
+    public void setBluetoothHandler(BluetoothHandler bluetoothHandler) {
+        this.bluetoothHandler = bluetoothHandler;
     }
 
     public LanguageHandler getLanguageHandler() {
@@ -84,7 +88,15 @@ public class AppObject {
     }
 
     public BluetoothHandler getBluetoothHandler() {
+
+        if(bluetoothHandler == null) {
+
+            bluetoothHandler = new BluetoothHandler(context);
+
+        }
+
         return bluetoothHandler;
+
     }
 
     public SoundPlay getSoundPlay() {

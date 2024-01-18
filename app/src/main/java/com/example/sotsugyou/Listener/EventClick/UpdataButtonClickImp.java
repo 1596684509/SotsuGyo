@@ -338,7 +338,7 @@ public class UpdataButtonClickImp implements View.OnClickListener{
 
                     try {
 
-                        jsonObject.put("datatype", SendDataTypeEnum.USERREGISTER);
+                        jsonObject.put("datatype", SendDataTypeEnum.USERREGISTER.getTypeCode());
                         jsonObject.put("userid", id);
                         jsonObject.put("password", password);
                         jsonObject.put("iconid", iconId);

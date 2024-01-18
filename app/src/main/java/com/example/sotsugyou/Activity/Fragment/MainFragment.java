@@ -1,5 +1,7 @@
 package com.example.sotsugyou.Activity.Fragment;
 
+
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -7,6 +9,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -22,6 +25,7 @@ import com.example.sotsugyou.Listener.EventClick.TestClickImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.Object.Doll;
 import com.example.sotsugyou.R;
+import com.example.sotsugyou.Utils.BluetoothHandler;
 import com.example.sotsugyou.Utils.SoundPlay;
 import com.example.sotsugyou.Utils.Util;
 import com.example.sotsugyou.databinding.FragmentMainBinding;
@@ -57,9 +61,6 @@ public class MainFragment extends Fragment {
 
         initObj();
         initView();
-
-        testMethod();
-
     }
 
     private void initObj() {
@@ -69,18 +70,6 @@ public class MainFragment extends Fragment {
         soundPlay = MainActivity.getApp().getSoundPlay();
 
 
-    }
-
-    public void testMethod() {
-
-        binding.explanation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                soundPlay.play1();
-
-            }
-        });
 
     }
 

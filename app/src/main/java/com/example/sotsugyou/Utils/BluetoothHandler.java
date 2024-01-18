@@ -17,6 +17,9 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.example.sotsugyou.Activity.Fragment.MainFragment;
+import com.example.sotsugyou.MainActivity;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -34,7 +37,7 @@ public class BluetoothHandler {
     private Handler handler;
 
     //TODO　ハードウェアの名前を設定
-    public static final String BLUETOOTH_NAME = "test";
+    public static final String BLUETOOTH_NAME = "M5_0125";
 
     public BluetoothHandler(Context context) {
         this.context = context;
@@ -56,6 +59,7 @@ public class BluetoothHandler {
 
             manager = context.getSystemService(BluetoothManager.class);
             adapter = manager.getAdapter();
+            handler = new Handler();
 
         }
 
@@ -242,28 +246,40 @@ public class BluetoothHandler {
 
         public void run() {
 
-            bytes = new byte[1024];
+            byte[] buffer = new byte[1024];
+            MainActivity.getMainFragment().getBinding().explanation.setText("ぬいぐるみと接続しました");
 
-            int numBytes;
-
-            while(true) {
+            while (true) {
 
                 try {
+                    int numBytes = inputStream.read(buffer);
+                    if (numBytes > 0) {
+                        String str = new String(buffer, 0, numBytes);
+                        Log.i("bluetooth", str);
+                        SoundPlay soundPlay = MainActivity.getApp().getSoundPlay();
 
-                    numBytes = inputStream.read(bytes);
-                    Message readMsg = handler.obtainMessage(
-                            0, numBytes, -1,
-                            bytes);
-                    readMsg.sendToTarget();
+                        if(soundPlay != null) {
 
-                    //TODO 获取的数据处理
+                            //TODO 信息处理
+                            soundPlay.play(str);
 
-                } catch (IOException e) {
-                    Log.w("BluetoothHandler-connected", "run: inputStream error");
+                        }
+
+                    }
+
+                    Thread.sleep(1000);
+                } catch (IOException | InterruptedException e) {
+
+                    e.printStackTrace();
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        throw new RuntimeException(ex);
+                    }
+
                 }
 
             }
-
         }
 
         public byte[] getBytes() {
