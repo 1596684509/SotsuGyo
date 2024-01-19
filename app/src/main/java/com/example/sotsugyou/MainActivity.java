@@ -266,6 +266,12 @@ public class MainActivity extends AppCompatActivity {
 
         if(requestCode == MainDollImageImp.REQUESTCODE_CAMERA) {
 
+            if(data == null) {
+
+                return;
+
+            }
+
             Bundle bundle = data.getExtras();
 
             if(bundle == null) {

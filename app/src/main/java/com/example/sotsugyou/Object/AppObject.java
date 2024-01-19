@@ -30,13 +30,13 @@ public class AppObject {
     public AppObject(Context context) {
 
         this.context = context;
+        initDefaultUser();
         data = new Data();
         languageHandler = new LanguageHandler(this.context);
         soundPlay = new SoundPlay(context);
-        soundPlay.setSound(SoundIdEnum.CAT);
         bluetoothHandler = new BluetoothHandler(context);
 
-        initDefaultUser();
+
 
     }
 
@@ -64,12 +64,6 @@ public class AppObject {
 
         user.initUser("default", "default", R.drawable.defaultusericon);
         user.setDefaultUser();
-
-    }
-
-    public void initUser(String json) {
-
-
 
     }
 

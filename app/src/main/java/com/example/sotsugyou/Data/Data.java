@@ -10,6 +10,7 @@ import com.example.sotsugyou.Object.AppObject;
 import com.example.sotsugyou.Object.Doll;
 import com.example.sotsugyou.Object.Exp;
 import com.example.sotsugyou.Object.User;
+import com.example.sotsugyou.Utils.SoundPlay;
 import com.example.sotsugyou.Utils.Util;
 
 public class Data implements DataHandler{
@@ -42,6 +43,7 @@ public class Data implements DataHandler{
         esed.putInt("exp", doll.getExp().getExp());
         esed.putInt("frameid", doll.getFrameId());
         esed.putInt("backgroundid", doll.getBackgroundId());
+        esed.putString("soundtype", doll.getSoundType());
         esed.apply();
 
     }
@@ -51,8 +53,10 @@ public class Data implements DataHandler{
 
         app = MainActivity.getApp();
 
-        String name = null;
-        String image = null;
+        String name;
+        String image;
+        String soundType;
+
         int exp;
         int leave;
         int frameId;
@@ -67,12 +71,14 @@ public class Data implements DataHandler{
             leave = sp.getInt("leave", -1);
             frameId = sp.getInt("frameid", -1);
             backgroundId = sp.getInt("backgroundid", -1);
+            soundType = sp.getString("soundtype", null);
 
             if(name != null && image != null) {
 
                 app.getUser().initDoll(name);
                 app.getUser().getDoll().setFrameId(frameId);
                 app.getUser().getDoll().setBackgroundId(backgroundId);
+                app.getUser().getDoll().setSoundType(soundType);
 
                 if(exp != -1 && exp != -1) {
 

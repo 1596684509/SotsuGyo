@@ -11,6 +11,15 @@ public class Doll {
     private int backgroundId = -1;
     private String name;
     private Exp exp;
+    private String soundType;
+
+    public void setSoundType(String soundType) {
+        this.soundType = soundType;
+    }
+
+    public String getSoundType() {
+        return soundType;
+    }
 
     public void setName(String name) {
         this.name = name;

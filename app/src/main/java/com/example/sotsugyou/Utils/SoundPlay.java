@@ -5,6 +5,8 @@ import android.media.MediaPlayer;
 
 import com.example.sotsugyou.Define;
 import com.example.sotsugyou.Enum.SoundIdEnum;
+import com.example.sotsugyou.MainActivity;
+import com.example.sotsugyou.Object.Doll;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,6 +20,7 @@ public class SoundPlay {
     private MediaPlayer mediaPlayer1;
     private MediaPlayer mediaPlayer2;
     private MediaPlayer mediaPlayer3;
+    private MediaPlayer mediaPlayer;
 
     private int a1Sensitivity = 10;
     private double a2Sensitivity = 40.0;
@@ -27,14 +30,45 @@ public class SoundPlay {
         this.context = context;
     }
 
-    public void setSound(SoundIdEnum soundIdEnum) {
+    public void setSound() {
 
-        this.soundtype = soundIdEnum;
-        mediaPlayer1 = MediaPlayer.create(context, soundtype.getID(Define.ACCTIONTYPE_CODE1));
-        mediaPlayer2 = MediaPlayer.create(context, soundtype.getID(Define.ACCTIONTYPE_CODE2));
-        mediaPlayer3 = MediaPlayer.create(context, soundtype.getID(Define.ACCTIONTYPE_CODE3));
+        Doll doll = MainActivity.getApp().getUser().getDoll();
 
+        if(doll != null) {
 
+            this.soundtype = SoundIdEnum.getSound(doll.getSoundType());
+
+        }else {
+
+            this.soundtype = SoundIdEnum.CAT;
+
+        }
+
+    }
+
+    public void playSound(int actionId) {
+        if (soundtype.getID(actionId) != -1) {
+            stopSound(mediaPlayer);
+
+            mediaPlayer = MediaPlayer.create(context, soundtype.getID(actionId));
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    mp.reset();
+                }
+            });
+
+            mediaPlayer.start();
+        }
+    }
+
+    private void stopSound(MediaPlayer mediaPlayer) {
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            mediaPlayer.stop();
+            mediaPlayer.reset();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
     }
 
     public void play(String strJson) {
@@ -49,67 +83,20 @@ public class SoundPlay {
 
             if(distance < a3Sensitivity) {
 
-                play3();
+                playSound(Define.ACCTIONTYPE_CODE3);
 
             }else if(acceleration > a2Sensitivity) {
 
-                play2();
+                playSound(Define.ACCTIONTYPE_CODE2);
 
             }
 
         } catch (JSONException e) {
-        }
 
-
-    }
-
-    public void play1() {
-
-        stopSound(mediaPlayer2, mediaPlayer3);
-
-        if(!mediaPlayer1.isPlaying()) {
-
-            mediaPlayer1.start();
+            e.printStackTrace();
 
         }
 
-    }
-
-    public void play2() {
-
-       stopSound(mediaPlayer1, mediaPlayer3);
-
-        if(!mediaPlayer2.isPlaying()) {
-
-            mediaPlayer2.start();
-
-        }
-
-    }
-
-    public void play3() {
-
-        stopSound(mediaPlayer2, mediaPlayer1);
-
-        if(!mediaPlayer3.isPlaying()) {
-
-            mediaPlayer3.start();
-
-        }
-
-    }
-
-    public void stopSound(MediaPlayer... mediaPlayers) {
-
-        for (MediaPlayer mediaPlayer : mediaPlayers) {
-
-            if(mediaPlayer.isPlaying()) {
-
-                mediaPlayer.stop();
-
-            }
-
-        }
 
     }
 }

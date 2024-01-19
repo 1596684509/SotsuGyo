@@ -43,7 +43,6 @@ public class DollSettingActivity extends AppCompatActivity {
 
         setContentView(binding.getRoot());
 
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
         initObj();
         initListData();
@@ -79,7 +78,7 @@ public class DollSettingActivity extends AppCompatActivity {
             listViewItems = new ArrayList<>();
             listViewItems.add(new ListViewItem(jsonObject.getString("dollsetting_listitem1_title"), user.getDoll().getBitmap(), DollIconSettingActivity.class));
             listViewItems.add(new ListViewItem(jsonObject.getString("dollsetting_listitem2_title"), R.drawable.system_user_icon, DollNameSettingActivity.class));
-            listViewItems.add(new ListViewItem(jsonObject.getString("dollsetting_listitem3_title"), R.drawable.soundicon));
+            listViewItems.add(new ListViewItem(jsonObject.getString("dollsetting_listitem3_title"), R.drawable.soundicon, DollSoundSetting.class));
 
         } catch (JSONException e) {
             throw new RuntimeException(e);
