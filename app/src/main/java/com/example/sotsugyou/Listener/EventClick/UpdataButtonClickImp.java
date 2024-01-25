@@ -18,7 +18,6 @@ import com.example.sotsugyou.Object.Doll;
 import com.example.sotsugyou.Object.User;
 import com.example.sotsugyou.R;
 import com.example.sotsugyou.Utils.JsonHandler;
-import com.example.sotsugyou.Utils.ServerConncetHandler;
 import com.example.sotsugyou.Utils.Util;
 import com.example.sotsugyou.databinding.ActivityAccountNameSettingBinding;
 import com.example.sotsugyou.databinding.ActivityAccountPasswordSettingBinding;
@@ -378,7 +377,7 @@ public class UpdataButtonClickImp implements View.OnClickListener{
                 jsonObject.put("userid", user.getId());
                 jsonObject.put("dollname", doll.getName());
                 jsonObject.put("dollexp", doll.getExp().getExp());
-                jsonObject.put("dolllevel", doll.getExp().getLeave());
+                jsonObject.put("dolllevel", doll.getExp().getLevel());
                 jsonObject.put("dollframeid", doll.getFrameId());
                 jsonObject.put("dollbackgroundid", doll.getBackgroundId());
                 jsonObject.put("dollimage", Util.getImageByte(doll.getBitmap()));

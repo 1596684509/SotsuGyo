@@ -37,7 +37,7 @@ public class TestClickImp implements View.OnClickListener{
         Exp exp = app.getUser().getDoll().getExp();
         int exp1 = new Random().nextInt(10000);
         Log.i("TestClick", "增加了" + exp1 + "点经验");
-        exp.addExp(exp1);
+        exp.addExp();
 
 
     }

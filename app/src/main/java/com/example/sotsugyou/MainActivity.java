@@ -42,6 +42,7 @@ import com.example.sotsugyou.Listener.OnNavigationItemSenetedImp;
 import com.example.sotsugyou.Object.AppObject;
 import com.example.sotsugyou.Setting.LanguageHandler;
 import com.example.sotsugyou.Setting.LanguageType;
+import com.example.sotsugyou.Utils.BluetoothConnectEventListener;
 import com.example.sotsugyou.Utils.BluetoothHandler;
 import com.example.sotsugyou.Utils.Util;
 import com.example.sotsugyou.databinding.ActivityMainBinding;
@@ -51,6 +52,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.concurrent.Executors;
 import java.util.regex.MatchResult;
 
 public class MainActivity extends AppCompatActivity {
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
 
             int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, -1);
-            MainFragment mainFragment = getMainFragment();
+            mainFragment = getMainFragment();
             FragmentMainBinding binding = mainFragment.getBinding();
 
             switch (state) {
@@ -133,12 +135,33 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        new Thread(new Runnable() {
+        app.getBluetoothHandler().setOnConnectedEventListener(new BluetoothConnectEventListener() {
             @Override
-            public void run() {
-                app.getBluetoothHandler().searchBondedHardWare();
+            public void onConnected() {
+
+                mainFragment.getBinding().explanation.setText("ぬいぐるみは接続すみ");
+
             }
-        }).start();
+
+            @Override
+            public void onDisConnected() {
+
+                mainFragment.getBinding().explanation.setText("ぬいぐるみは切れています");
+
+            }
+
+            @Override
+            public void onConnectionRetry() {
+
+                if(!BluetoothHandler.isDollConnected) {
+
+                    app.getBluetoothHandler().searchBondedHardWare();
+
+                }
+
+            }
+        });
+        app.getBluetoothHandler().searchBondedHardWare();
 
     }
 
@@ -154,9 +177,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void soundPlay (){
-
-    }
 
     @Override
     protected void onResume() {

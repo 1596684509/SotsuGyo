@@ -56,5 +56,8 @@
 
     "systemsetting_title": "Language Settings",
 
-    "save_button": "Save"
+    "save_button": "Save",
+
+    "exption_expbar": "When playing with the stuffed animal, the experience points increase. Upon leveling up, you receive new frames and backgrounds",
+
 }

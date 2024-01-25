@@ -13,6 +13,7 @@ import com.example.sotsugyou.Listener.EventClick.ReturnButtonOnClickImp;
 import com.example.sotsugyou.Listener.GroupCheckedChanged.OnDollBackgroundCheckedChangeImp;
 import com.example.sotsugyou.Listener.GroupCheckedChanged.OnDollFrameCheckedChangeImp;
 import com.example.sotsugyou.MainActivity;
+import com.example.sotsugyou.Object.AppObject;
 import com.example.sotsugyou.Object.Doll;
 import com.example.sotsugyou.Setting.LanguageHandler;
 import com.example.sotsugyou.Utils.Util;
@@ -27,7 +28,7 @@ import java.util.HashMap;
 public class DollIconSettingActivity extends AppCompatActivity {
 
     private ActivityDollIconSettingBinding binding;
-    private HashMap<Integer, Item> itemHashMap = new HashMap<>();
+    private static HashMap<Integer, Item> itemHashMap;
     private ImageView imageView;
     private Doll doll;
 
@@ -47,7 +48,6 @@ public class DollIconSettingActivity extends AppCompatActivity {
 
         setContentView(binding.getRoot());
 
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
         initObj();
         initItemData();
@@ -61,27 +61,15 @@ public class DollIconSettingActivity extends AppCompatActivity {
         doll = MainActivity.getApp().getUser().getDoll();
         languageHandler = MainActivity.getApp().getLanguageHandler();
         jsonObject = languageHandler.getLanguageJson();
+        itemHashMap = AppObject.getItemHashMap();
 
     }
 
     private void initItemData() {
 
-        itemHashMap.put(R.id.doll_setting_icon_frameR1, new Item(R.drawable.frame1, 10));
-        itemHashMap.put(R.id.doll_setting_icon_frameR2, new Item(R.drawable.frame2, 25));
-        itemHashMap.put(R.id.doll_setting_icon_frameR3, new Item(R.drawable.frame3, 40));
-        itemHashMap.put(R.id.doll_setting_icon_frameR4, new Item(R.drawable.frame4, 55));
-        itemHashMap.put(R.id.doll_setting_icon_frameR5, new Item(R.drawable.frame5, 70));
-        itemHashMap.put(R.id.doll_setting_icon_frameR6, new Item(R.drawable.frame6, 85));
-        itemHashMap.put(R.id.backgroundRb1, new Item(R.drawable.background1, 15));
-        itemHashMap.put(R.id.backgroundRb2, new Item(R.drawable.background2, 30));
-        itemHashMap.put(R.id.backgroundRb3, new Item(R.drawable.background3, 45));
-        itemHashMap.put(R.id.backgroundRb4, new Item(R.drawable.background4, 60));
-        itemHashMap.put(R.id.backgroundRb5, new Item(R.drawable.background5, 75));
-        itemHashMap.put(R.id.backgroundRb6, new Item(R.drawable.background6, 90));
-
         for (Integer integer : itemHashMap.keySet()) {
 
-            if(doll.getExp().getLeave() >= itemHashMap.get(integer).getLockLevel()) {
+            if(doll.getExp().getLevel() >= itemHashMap.get(integer).getLockLevel()) {
 
                 itemHashMap.get(integer).unlock();
 

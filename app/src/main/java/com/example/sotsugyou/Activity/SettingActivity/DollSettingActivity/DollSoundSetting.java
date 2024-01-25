@@ -13,6 +13,7 @@ import com.example.sotsugyou.R;
 import com.example.sotsugyou.Setting.LanguageHandler;
 import com.example.sotsugyou.Utils.JsonHandler;
 import com.example.sotsugyou.Utils.SoundPlay;
+import com.example.sotsugyou.Utils.Util;
 import com.example.sotsugyou.databinding.ActivityDollSoundSettingBinding;
 
 import org.json.JSONException;
@@ -46,6 +47,8 @@ public class DollSoundSetting extends AppCompatActivity {
         binding.backbutton.setOnClickListener(new ReturnButtonOnClickImp(this));
         binding.savebutton.setOnClickListener(new DollSoundSettingSaveButtonImp(this));
 
+        setIcon();
+
     }
 
     private void initData() {
@@ -72,6 +75,13 @@ public class DollSoundSetting extends AppCompatActivity {
 
         }
 
+
+    }
+
+    private void setIcon() {
+
+        binding.rb1.setBackground(Util.getIconRadius(getResources(), R.drawable.cat_icon));
+        binding.rb2.setBackground(Util.getIconRadius(getResources(), R.drawable.dog_icon));
 
     }
 

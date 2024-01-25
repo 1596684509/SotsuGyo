@@ -17,14 +17,12 @@ public class SoundPlay {
 
     private Context context;
     private SoundIdEnum soundtype;
-    private MediaPlayer mediaPlayer1;
-    private MediaPlayer mediaPlayer2;
-    private MediaPlayer mediaPlayer3;
     private MediaPlayer mediaPlayer;
 
     private int a1Sensitivity = 10;
-    private double a2Sensitivity = 40.0;
-    private int a3Sensitivity = 40;
+    private double a2SensitivityMax = 90.0;
+    private double a2SensitivityMin = 60.0;
+    private int a3Sensitivity = 30;
 
     public SoundPlay(Context context) {
         this.context = context;
@@ -47,6 +45,12 @@ public class SoundPlay {
     }
 
     public void playSound(int actionId) {
+
+        if(soundtype == null) {
+
+            soundtype = SoundIdEnum.CAT;
+
+        }
         if (soundtype.getID(actionId) != -1) {
             stopSound(mediaPlayer);
 
@@ -59,6 +63,10 @@ public class SoundPlay {
             });
 
             mediaPlayer.start();
+
+            Doll doll = MainActivity.getApp().getUser().getDoll();
+            doll.getExp().addExp();
+
         }
     }
 
@@ -85,7 +93,7 @@ public class SoundPlay {
 
                 playSound(Define.ACCTIONTYPE_CODE3);
 
-            }else if(acceleration > a2Sensitivity) {
+            }else if(acceleration > a2SensitivityMin && acceleration < a2SensitivityMax) {
 
                 playSound(Define.ACCTIONTYPE_CODE2);
 

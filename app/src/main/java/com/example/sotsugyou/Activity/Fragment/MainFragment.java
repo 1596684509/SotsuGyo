@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.example.sotsugyou.Define;
 import com.example.sotsugyou.Enum.SoundIdEnum;
 import com.example.sotsugyou.Listener.Button.MainDollImageImp;
+import com.example.sotsugyou.Listener.EventClick.ShowHintClickEventImp;
 import com.example.sotsugyou.Listener.EventClick.TestClickImp;
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.Object.AppObject;
@@ -32,7 +33,12 @@ import com.example.sotsugyou.Utils.SoundPlay;
 import com.example.sotsugyou.Utils.Util;
 import com.example.sotsugyou.databinding.FragmentMainBinding;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MainFragment extends Fragment {
 
@@ -43,7 +49,6 @@ public class MainFragment extends Fragment {
     private FragmentMainBinding binding;
     private SoundPlay soundPlay;
     private boolean isTest = true;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -71,9 +76,6 @@ public class MainFragment extends Fragment {
         doll = MainActivity.getApp().getUser().getDoll();
         doll.getExp().updataExpbar();
         soundPlay = MainActivity.getApp().getSoundPlay();
-        test();
-
-
 
     }
 
@@ -107,34 +109,14 @@ public class MainFragment extends Fragment {
 
     }
 
-    private void test() {
-
-        binding.explanation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(isTest) {
-
-                    MainActivity.getApp().getSoundPlay().playSound(Define.ACCTIONTYPE_CODE1);
-                    isTest = false;
-
-                }else {
-
-                    MainActivity.getApp().getSoundPlay().playSound(Define.ACCTIONTYPE_CODE2);
-                    isTest = true;
-
-                }
-
-            }
-        });
-
-    }
 
     private void initView() {
 
-        binding.mainExpbar.setOnClickListener(new TestClickImp(this.getContext()));
         binding.mainDollImageView.setOnClickListener(new MainDollImageImp((Activity) view.getContext()));
+        binding.mainExpbar.setOnClickListener(new ShowHintClickEventImp(this, "exption_expbar"));
+        binding.exptext.setOnClickListener(new ShowHintClickEventImp(this, "exption_expbar"));
         setShowDoll();
+
 
     }
 

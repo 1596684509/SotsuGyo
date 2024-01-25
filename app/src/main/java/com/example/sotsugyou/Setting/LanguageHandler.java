@@ -100,7 +100,4 @@ public class LanguageHandler {
 
     }
 
-    public String getJsonData() {
-        return jsonData;
-    }
 }

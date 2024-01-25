@@ -2,15 +2,12 @@ package com.example.sotsugyou.Data;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.Object.AppObject;
 import com.example.sotsugyou.Object.Doll;
 import com.example.sotsugyou.Object.Exp;
-import com.example.sotsugyou.Object.User;
-import com.example.sotsugyou.Utils.SoundPlay;
 import com.example.sotsugyou.Utils.Util;
 
 public class Data implements DataHandler{
@@ -39,7 +36,7 @@ public class Data implements DataHandler{
         SharedPreferences.Editor esed = sp.edit();
         esed.putString("name", doll.getName());
         esed.putString("image",Util.getImageByte(doll.getBitmap()));
-        esed.putInt("leave", doll.getExp().getLeave());
+        esed.putInt("leave", doll.getExp().getLevel());
         esed.putInt("exp", doll.getExp().getExp());
         esed.putInt("frameid", doll.getFrameId());
         esed.putInt("backgroundid", doll.getBackgroundId());

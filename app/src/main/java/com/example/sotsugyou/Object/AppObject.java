@@ -13,6 +13,7 @@ import com.example.sotsugyou.Utils.ServerConncetHandler;
 import com.example.sotsugyou.Utils.SoundPlay;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -22,9 +23,10 @@ public class AppObject {
     private static User user;
 
     private static Data data;
+    private static HashMap<Integer, Item> itemHashMap = new HashMap<>();
 
     private static LanguageHandler languageHandler;
-    private BluetoothHandler bluetoothHandler;
+    private static BluetoothHandler bluetoothHandler;
     private SoundPlay soundPlay;
 
     public AppObject(Context context) {
@@ -35,8 +37,29 @@ public class AppObject {
         languageHandler = new LanguageHandler(this.context);
         soundPlay = new SoundPlay(context);
         bluetoothHandler = new BluetoothHandler(context);
+        initItemHashMapData();
 
 
+
+    }
+
+    public static HashMap<Integer, Item> getItemHashMap() {
+        return itemHashMap;
+    }
+    public void initItemHashMapData() {
+
+        itemHashMap.put(R.id.doll_setting_icon_frameR1, new Item(R.drawable.frame1, 10));
+        itemHashMap.put(R.id.doll_setting_icon_frameR2, new Item(R.drawable.frame2, 25));
+        itemHashMap.put(R.id.doll_setting_icon_frameR3, new Item(R.drawable.frame3, 40));
+        itemHashMap.put(R.id.doll_setting_icon_frameR4, new Item(R.drawable.frame4, 55));
+        itemHashMap.put(R.id.doll_setting_icon_frameR5, new Item(R.drawable.frame5, 70));
+        itemHashMap.put(R.id.doll_setting_icon_frameR6, new Item(R.drawable.frame6, 85));
+        itemHashMap.put(R.id.backgroundRb1, new Item(R.drawable.background1, 15));
+        itemHashMap.put(R.id.backgroundRb2, new Item(R.drawable.background2, 30));
+        itemHashMap.put(R.id.backgroundRb3, new Item(R.drawable.background3, 45));
+        itemHashMap.put(R.id.backgroundRb4, new Item(R.drawable.background4, 60));
+        itemHashMap.put(R.id.backgroundRb5, new Item(R.drawable.background5, 75));
+        itemHashMap.put(R.id.backgroundRb6, new Item(R.drawable.background6, 90));
 
     }
 

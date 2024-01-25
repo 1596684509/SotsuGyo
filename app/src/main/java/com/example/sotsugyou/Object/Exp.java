@@ -1,7 +1,6 @@
 package com.example.sotsugyou.Object;
 
 import android.util.Log;
-import android.widget.TextView;
 
 import com.example.sotsugyou.Activity.Fragment.MainFragment;
 import com.example.sotsugyou.Data.DataHandler;
@@ -10,30 +9,32 @@ import com.example.sotsugyou.databinding.FragmentMainBinding;
 
 public class Exp {
 
-    private int leave;
+    private int level;
     public static final int MAXLEAVE = 100;
 
     private int exp;
     private int nextLeaveExp;
 
-    public void initExp(int leave, int exp) {
+    public void initExp(int level, int exp) {
 
         this.exp = exp;
-        this.leave = leave;
+        this.level = level;
         updataNextExp();
         updataExpbar();
 
     }
 
-    public void addExp(int exp) {
+    public void addExp() {
 
-        if(leave >= MAXLEAVE) {
+        if(level >= MAXLEAVE) {
 
             return;
 
         }
 
-        this.exp += exp;
+        int addExp = 5 * level;
+
+        this.exp += addExp;
         upLeave();
         updataExpbar();
         DataHandler dataHandler = AppObject.getData();
@@ -43,13 +44,13 @@ public class Exp {
 
     private void upLeave() {
 
-        while (exp >= nextLeaveExp && leave != MAXLEAVE) {
+        while (exp >= nextLeaveExp && level != MAXLEAVE) {
 
             exp -= nextLeaveExp;
-            leave++;
+            level++;
             updataNextExp();
 
-            if(leave == MAXLEAVE) {
+            if(level == MAXLEAVE) {
 
                 exp = 0;
                 nextLeaveExp = 0;
@@ -60,8 +61,8 @@ public class Exp {
 
     }
 
-    public void setLeave(int leave) {
-        this.leave = leave;
+    public void setLevel(int level) {
+        this.level = level;
         updataNextExp();
         updataExpbar();
     }
@@ -74,7 +75,7 @@ public class Exp {
 
     private void updataNextExp() {
 
-        nextLeaveExp = 5*(leave * leave + 5 * leave);
+        nextLeaveExp = 5*(level * level + 5 * level);
 
     }
 
@@ -88,11 +89,16 @@ public class Exp {
 
             if(bind != null) {
 
-                bind.exptext.setText("EXP " + exp + "/" + nextLeaveExp);
-                bind.leavetext.setText("Lv " + leave);
-                int progressBarNum = (int) ((int) ((double)exp) / ((double)nextLeaveExp) * 100);
-                Log.i("Exp", "updataExpBar, progressBarNum=" + progressBarNum);
-                bind.mainExpbar.setProgress(progressBarNum);
+                mainFragment.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        bind.exptext.setText("EXP " + exp + "/" + nextLeaveExp);
+                        bind.leavetext.setText("Lv " + level);
+                        int progressBarNum = (int) ((int) ((double)exp) / ((double)nextLeaveExp) * 100);
+                        Log.i("Exp", "updataExpBar, progressBarNum=" + progressBarNum);
+                        bind.mainExpbar.setProgress(progressBarNum);
+                    }
+                });
 
             }
 
@@ -104,7 +110,7 @@ public class Exp {
         return exp;
     }
 
-    public int getLeave() {
-        return leave;
+    public int getLevel() {
+        return level;
     }
 }
