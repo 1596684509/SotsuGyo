@@ -2,6 +2,7 @@ package com.example.sotsugyou.Enum;
 
 public enum SendDataTypeEnum {
 
+    DOLLDOWN(SendDataTypeEnum.DATATYPE_DOLLDOWN_CODE),
     DOLLUP(SendDataTypeEnum.DATATYPE_DOLLUP_CODE),
     USERLOGIN(SendDataTypeEnum.DATATYPE_USERLOGIN_CODE),
     USERREGISTER(SendDataTypeEnum.DATATYPE_USERREGISTER_CODE),

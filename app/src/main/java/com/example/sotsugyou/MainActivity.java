@@ -112,10 +112,9 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-
-        initBluetooth();
         findView();
         initView();
+        initBluetooth();
         initLanguage();
 
 
@@ -158,6 +157,12 @@ public class MainActivity extends AppCompatActivity {
                     app.getBluetoothHandler().searchBondedHardWare();
 
                 }
+
+            }
+
+            @Override
+            public void onDonthasDoll() {
+
 
             }
         });

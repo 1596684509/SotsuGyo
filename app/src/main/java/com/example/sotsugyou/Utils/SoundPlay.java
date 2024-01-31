@@ -20,9 +20,10 @@ public class SoundPlay {
     private MediaPlayer mediaPlayer;
 
     private int a1Sensitivity = 10;
-    private double a2SensitivityMax = 90.0;
-    private double a2SensitivityMin = 60.0;
-    private int a3Sensitivity = 30;
+    private double ayMax = 50.0;
+    private double ayMin =20.0;
+    private int a3Sensitivity = 50;
+    private double minAz = 1.0;
 
     public SoundPlay(Context context) {
         this.context = context;
@@ -87,13 +88,14 @@ public class SoundPlay {
 
             int distance = jsonObject.getInt("distance");
 //            int vibration = jsonObject.getInt("vibration");
-            double acceleration = jsonObject.getDouble("accelerationfromup");
+            double ay = jsonObject.getDouble("ay");
+            double az = jsonObject.getDouble("az");
 
             if(distance < a3Sensitivity) {
 
                 playSound(Define.ACCTIONTYPE_CODE3);
 
-            }else if(acceleration > a2SensitivityMin && acceleration < a2SensitivityMax) {
+            }else if(az >= minAz && (ay >= ayMin && ay <= ayMax)) {
 
                 playSound(Define.ACCTIONTYPE_CODE2);
 

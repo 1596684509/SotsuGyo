@@ -17,6 +17,10 @@ public class User {
 
     }
 
+    public void setDoll(Doll doll) {
+        this.doll = doll;
+    }
+
     public void initDoll(String name) {
 
         if(name == null) {

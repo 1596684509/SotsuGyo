@@ -76,6 +76,11 @@ public class UpdataButtonClickImp implements View.OnClickListener{
 
             updataPassword();
 
+        }else if(v.getId() == R.id.account_setting_icon_flowRadioGroup) {
+
+
+            dollDataDown();
+
         }else {
 
             User user = MainActivity.getApp().getUser();
@@ -89,6 +94,12 @@ public class UpdataButtonClickImp implements View.OnClickListener{
         }
 
 
+
+    }
+
+    private void dollDataDown() {
+
+        sendData(SendDataTypeEnum.DOLLDOWN);
 
     }
 
@@ -206,6 +217,24 @@ public class UpdataButtonClickImp implements View.OnClickListener{
 
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+
+        return str;
+
+    }
+
+    private String userDownloadToJson() {
+
+        String str = null;
+
+        try {
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("datatype", SendDataTypeEnum.DATATYPE_DOLLDOWN_CODE);
+            str = jsonObject.toString();
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
         }
 
         return str;
@@ -430,6 +459,11 @@ public class UpdataButtonClickImp implements View.OnClickListener{
                 sendData = userPasswordTuJson();
                 break;
 
+            case DOLLDOWN:
+                sendData = userDownloadToJson();
+                break;
+
+
             default:
                 sendData = null;
 
@@ -468,6 +502,14 @@ public class UpdataButtonClickImp implements View.OnClickListener{
                     if(context instanceof AccountPasswordSettingActivity);
                     ((AccountPasswordSettingActivity)context).finish();
                     break;
+
+                case DOLLDOWN:
+                    if(serverSendSupport.getMsgFromServer().equals("error")) {
+
+                        Doll doll = JsonHandler.jsonToDoll(serverSendSupport.getMsgFromServer());
+                        MainActivity.getApp().getUser().setDoll(doll);
+
+                    }
             }
 
         }

@@ -49,6 +49,8 @@ public class MainFragment extends Fragment {
     private FragmentMainBinding binding;
     private SoundPlay soundPlay;
     private boolean isTest = true;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

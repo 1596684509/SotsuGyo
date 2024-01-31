@@ -122,7 +122,6 @@ public class BluetoothHandler {
             if (ActivityCompat.checkSelfPermission(context, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
                 Log.e("Bluetooth handler", "permission error");
                 ActivityCompat.requestPermissions(activity, permissions, 1);
-                return false;
             }
             activity.startActivityForResult(intent, REQUESTCODE_ENABLE_BLUETOOTH);
 
@@ -134,28 +133,34 @@ public class BluetoothHandler {
 
     public void searchBondedHardWare() {
 
-
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.BLUETOOTH}, 100);
 
-        }else {
 
-            Set<BluetoothDevice> devicesSet = adapter.getBondedDevices();
-            for (BluetoothDevice bluetoothDevice : devicesSet) {
+        }
 
-                if (BLUETOOTH_NAME.equals(bluetoothDevice.getName())) {
+        boolean isSearched = false;
 
+        Set<BluetoothDevice> devicesSet = adapter.getBondedDevices();
+        for (BluetoothDevice bluetoothDevice : devicesSet) {
 
-                    ConnectThead connectThead = new ConnectThead(bluetoothDevice);
-                    connectThead.start();
+            if (BLUETOOTH_NAME.equals(bluetoothDevice.getName())) {
 
-                }
+                ConnectThead connectThead = new ConnectThead(bluetoothDevice);
+                connectThead.start();
+                isSearched = true;
 
             }
 
+        }
+
+        if(!isSearched) {
+
+            listener.onDonthasDoll();
 
         }
+
     }
 
     class ConnectThead extends Thread {
