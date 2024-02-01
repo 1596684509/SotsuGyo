@@ -15,6 +15,12 @@ public class JsonHandler {
 
         try {
 
+            if(json == null) {
+
+                return null;
+
+            }
+
             JSONObject jsonObject = new JSONObject(json);
             return jsonObject;
 
@@ -62,6 +68,13 @@ public class JsonHandler {
 
         JSONObject jsonObject = getJsonObj(json);
         Doll doll = null;
+
+        if(jsonObject == null) {
+
+            return null;
+
+        }
+
         try {
 
             doll = new Doll();

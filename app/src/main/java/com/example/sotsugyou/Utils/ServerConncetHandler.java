@@ -11,6 +11,7 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
+import java.net.SocketException;
 import java.nio.charset.StandardCharsets;
 
 /**
@@ -62,7 +63,7 @@ public class ServerConncetHandler {
 
     }
 
-    public String rcvMsg() {
+    public String rcvMsg() throws SocketException{
 
         StringBuffer stringBuffer;
 
@@ -100,7 +101,7 @@ public class ServerConncetHandler {
      * めっせーじを送る
      * @param msg　送りたいメッセージ
      */
-    public void sendMsg(String msg) {
+    public void sendMsg(String msg) throws SocketException {
 
         try {
 

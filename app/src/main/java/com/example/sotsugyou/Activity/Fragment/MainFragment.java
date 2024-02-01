@@ -62,7 +62,7 @@ public class MainFragment extends Fragment {
         binding = FragmentMainBinding.inflate(getLayoutInflater());
         view = binding.getRoot();
         return view;
-        
+
     }
 
     @Override
@@ -81,6 +81,7 @@ public class MainFragment extends Fragment {
 
     }
 
+
     @Override
     public void onResume() {
         super.onResume();
@@ -91,7 +92,7 @@ public class MainFragment extends Fragment {
 
     private void setShowDoll() {
 
-        binding.mainDollNameTextView.setText(doll.getName());
+        binding.mainDollNameTextView.setText(MainActivity.getApp().getUser().getDoll().getName());
         binding.mainDollImageView.setImageDrawable(Util.getIconRadius(getResources(), MainActivity.getApp().getUser().getDoll().getBitmap()));
 
         if(doll.getFrameId() != -1) {

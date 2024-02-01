@@ -2,6 +2,8 @@ package com.example.sotsugyou.Listener;
 
 import com.example.sotsugyou.Utils.ServerConncetHandler;
 
+import java.net.SocketException;
+
 public class ServerSendSupport extends Thread{
 
     private String sendMsg;
@@ -16,8 +18,12 @@ public class ServerSendSupport extends Thread{
 
         ServerConncetHandler serverConncetHandler = new ServerConncetHandler();
         serverConncetHandler.connect();
-        serverConncetHandler.sendMsg(sendMsg);
-        msgFromServer = serverConncetHandler.rcvMsg();
+        try {
+            serverConncetHandler.sendMsg(sendMsg);
+            msgFromServer = serverConncetHandler.rcvMsg();
+        } catch (SocketException e) {
+        }
+
         serverConncetHandler.disConnect();
 
     }

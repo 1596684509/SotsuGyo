@@ -6,8 +6,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuView;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
@@ -15,6 +17,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -98,8 +101,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        super.onCreate(savedInstanceState);
 
+        super.onCreate(savedInstanceState);
         bind = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(bind.getRoot());
 
@@ -114,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
 
         findView();
         initView();
-        initBluetooth();
         initLanguage();
 
 
@@ -138,14 +140,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onConnected() {
 
-                mainFragment.getBinding().explanation.setText("ぬいぐるみは接続すみ");
+                if(mainFragment != null) {
+
+                    mainFragment.getBinding().explanation.setText("ぬいぐるみは接続すみ");
+
+                }
 
             }
 
             @Override
             public void onDisConnected() {
 
-                mainFragment.getBinding().explanation.setText("ぬいぐるみは切れています");
+                if(mainFragment.getBinding() != null) {
+
+                    mainFragment.getBinding().explanation.setText("ぬいぐるみは切れています");
+
+                }
 
             }
 
@@ -315,6 +325,24 @@ public class MainActivity extends AppCompatActivity {
 
             updateImageView();
 
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+
+        if (requestCode == 1) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // 权限被授予，可以执行后续操作
+                // 启用蓝牙
+                initBluetooth();
+            } else {
+                // 权限被拒绝，提示用户或者采取其他措施
+                Log.e("Bluetooth handler", "Permission denied");
+            }
         }
 
     }

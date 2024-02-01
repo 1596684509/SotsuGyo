@@ -11,9 +11,11 @@ import com.example.sotsugyou.Activity.LoginActivity.RegisterActivity;
 import com.example.sotsugyou.Activity.SettingActivity.UserSettingActivity.AccountIconSettingActivity;
 import com.example.sotsugyou.Activity.SettingActivity.UserSettingActivity.AccountNameSettingActivity;
 import com.example.sotsugyou.Activity.SettingActivity.UserSettingActivity.AccountPasswordSettingActivity;
+import com.example.sotsugyou.Activity.SettingActivity.UserSettingActivity.AccountSettingActivity;
 import com.example.sotsugyou.Enum.SendDataTypeEnum;
 import com.example.sotsugyou.Listener.ServerSendSupport;
 import com.example.sotsugyou.MainActivity;
+import com.example.sotsugyou.Object.AppObject;
 import com.example.sotsugyou.Object.Doll;
 import com.example.sotsugyou.Object.User;
 import com.example.sotsugyou.R;
@@ -76,7 +78,7 @@ public class UpdataButtonClickImp implements View.OnClickListener{
 
             updataPassword();
 
-        }else if(v.getId() == R.id.account_setting_icon_flowRadioGroup) {
+        }else if(v.getContext() instanceof AccountSettingActivity) {
 
 
             dollDataDown();
@@ -88,6 +90,10 @@ public class UpdataButtonClickImp implements View.OnClickListener{
             if(!user.isDefaultUser()) {
 
                 sendData(SendDataTypeEnum.DOLLUP);
+
+            }else {
+
+                AppObject.getData().save();
 
             }
 
@@ -231,6 +237,7 @@ public class UpdataButtonClickImp implements View.OnClickListener{
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("datatype", SendDataTypeEnum.DATATYPE_DOLLDOWN_CODE);
+            jsonObject.put("userid", MainActivity.getApp().getUser().getId());
             str = jsonObject.toString();
 
         } catch (JSONException e) {
@@ -499,15 +506,39 @@ public class UpdataButtonClickImp implements View.OnClickListener{
 
                 case USERPASSWORDUPDATA:
                     Toast.makeText(context, serverSendSupport.getMsgFromServer(), Toast.LENGTH_SHORT).show();
-                    if(context instanceof AccountPasswordSettingActivity);
-                    ((AccountPasswordSettingActivity)context).finish();
+                    if(context instanceof AccountPasswordSettingActivity) {
+
+                        ((AccountPasswordSettingActivity)context).finish();
+
+                    }
                     break;
 
                 case DOLLDOWN:
-                    if(serverSendSupport.getMsgFromServer().equals("error")) {
 
-                        Doll doll = JsonHandler.jsonToDoll(serverSendSupport.getMsgFromServer());
-                        MainActivity.getApp().getUser().setDoll(doll);
+                    if(!isSended) {
+
+                        break;
+
+                    }
+
+                    if(!"error".equals(serverSendSupport.getMsgFromServer())) {
+
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Doll doll = JsonHandler.jsonToDoll(serverSendSupport.getMsgFromServer());
+
+                                if(doll != null) {
+
+                                    MainActivity.getApp().getUser().setDoll(doll);
+
+                                }else {
+
+                                    Toast.makeText(context, "通信エラー", Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                        }).start();
 
                     }
             }

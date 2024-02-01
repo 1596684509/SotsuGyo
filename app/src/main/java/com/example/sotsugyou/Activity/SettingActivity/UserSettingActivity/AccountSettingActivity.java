@@ -87,8 +87,8 @@ public class AccountSettingActivity extends AppCompatActivity {
         try {
 
             listViewItems = new ArrayList<>();
-            listViewItems.add(new ListViewItem(jsonObject.getString("mainsetting_listitem2_title"), R.drawable.updataicon, new UpdataButtonClickImp(this)));
             listViewItems.add(new ListViewItem(jsonObject.getString("accountsetting_listitem1_title"), user.getIconId(), AccountIconSettingActivity.class));
+            listViewItems.add(new ListViewItem(jsonObject.getString("accountsetting_listitem4_title"), R.drawable.updataicon, new UpdataButtonClickImp(this)));
             listViewItems.add(new ListViewItem(jsonObject.getString("accountsetting_listitem2_title"), R.drawable.system_user_icon, AccountNameSettingActivity.class));
             listViewItems.add(new ListViewItem(jsonObject.getString("accountsetting_listitem3_title"), R.drawable.system_password_icon, AccountPasswordSettingActivity.class));
 
