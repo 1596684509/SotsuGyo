@@ -1,5 +1,6 @@
 package com.example.sotsugyou;
 
+import static com.example.sotsugyou.Utils.BluetoothHandler.REQUESTCODE_ENABLE_BLUETOOTH;
 import static java.security.AccessController.getContext;
 
 import androidx.annotation.NonNull;
@@ -31,6 +32,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.example.sotsugyou.Activity.First.FirstDollImageSettingActivity;
 import com.example.sotsugyou.Activity.First.FirstDollNameSettingActivity;
@@ -106,6 +108,17 @@ public class MainActivity extends AppCompatActivity {
         bind = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(bind.getRoot());
 
+        Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+
+        String[] permissions = {android.Manifest.permission.BLUETOOTH_CONNECT, android.Manifest.permission.BLUETOOTH, android.Manifest.permission.BLUETOOTH_SCAN, android.Manifest.permission.BLUETOOTH_ADVERTISE};
+
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+            Log.e("Bluetooth handler", "permission error");
+            ActivityCompat.requestPermissions((MainActivity)this, permissions, 1);
+        }
+
+        this.startActivityForResult(intent, REQUESTCODE_ENABLE_BLUETOOTH);
+
         initObj();
 
 
@@ -118,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
         findView();
         initView();
         initLanguage();
+        initBluetooth();
 
 
     }
@@ -153,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if(mainFragment.getBinding() != null) {
 
-                    mainFragment.getBinding().explanation.setText("ぬいぐるみは切れています");
+                    mainFragment.getBinding().explanation.setText("ぬいぐるみは切れています, ブルートゥースの接続を確認してください");
 
                 }
 
@@ -173,6 +187,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDonthasDoll() {
 
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(mainFragment.getBinding() != null) {
+
+                            mainFragment.getBinding().explanation.setText("ぬいぐるみは見つかりません、ブルートゥースの設定を確認してください");
+
+                        }
+                        MainActivity.getApp().getBluetoothHandler().searchBondedHardWare();
+                    }
+                }).start();
 
             }
         });
@@ -289,7 +314,7 @@ public class MainActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == BluetoothHandler.REQUESTCODE_ENABLE_BLUETOOTH) {
+        if(requestCode == REQUESTCODE_ENABLE_BLUETOOTH) {
 
             if(resultCode != RESULT_OK) {
 
@@ -325,24 +350,6 @@ public class MainActivity extends AppCompatActivity {
 
             updateImageView();
 
-        }
-
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-
-        if (requestCode == 1) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // 权限被授予，可以执行后续操作
-                // 启用蓝牙
-                initBluetooth();
-            } else {
-                // 权限被拒绝，提示用户或者采取其他措施
-                Log.e("Bluetooth handler", "Permission denied");
-            }
         }
 
     }
@@ -413,6 +420,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static AppObject getApp() {
+
         return app;
     }
 

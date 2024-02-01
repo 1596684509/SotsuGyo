@@ -48,12 +48,22 @@ public class LoginActivity extends AppCompatActivity {
 
     private void initObj() {
 
-        languageHandler = MainActivity.getApp().getLanguageHandler();
-        jsonObject = languageHandler.getLanguageJson();
+        if(MainActivity.getApp() != null) {
+
+            languageHandler = MainActivity.getApp().getLanguageHandler();
+            jsonObject = languageHandler.getLanguageJson();
+
+        }
 
     }
 
     private void initLanguage() {
+
+        if(jsonObject == null) {
+
+            return;
+
+        }
 
         try {
 

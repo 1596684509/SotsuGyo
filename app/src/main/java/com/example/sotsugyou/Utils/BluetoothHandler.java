@@ -157,7 +157,11 @@ public class BluetoothHandler {
 
         if(!isSearched) {
 
-            listener.onDonthasDoll();
+            if(listener != null) {
+
+                listener.onDonthasDoll();
+
+            }
 
         }
 
