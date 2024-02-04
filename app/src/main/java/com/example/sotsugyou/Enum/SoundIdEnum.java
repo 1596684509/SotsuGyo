@@ -3,12 +3,13 @@ package com.example.sotsugyou.Enum;
 import android.util.Log;
 
 import com.example.sotsugyou.R;
-import com.example.sotsugyou.Utils.SoundPlay;
 
 public enum SoundIdEnum {
 
     CAT("cat", R.raw.cat_1, R.raw.cat_2, R.raw.cat_3),
-    DOG("dog", R.raw.dog_1, R.raw.dog_2, R.raw.dog_3)
+    DOG("dog", R.raw.dog_1, R.raw.dog_2, R.raw.dog_3),
+    MMG("mmg", R.raw.mmg_2, R.raw.mmg_2, R.raw.mmg_3),
+    DOLPHIN("dolphin", R.raw.dolphin_2, R.raw.dolphin_2, R.raw.dolphin_3)
 
     ;
     private int[] ids;
