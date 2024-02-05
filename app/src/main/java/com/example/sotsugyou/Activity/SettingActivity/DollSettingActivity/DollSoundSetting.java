@@ -55,6 +55,8 @@ public class DollSoundSetting extends AppCompatActivity {
 
         soundTypehsm.put(binding.rb1.getId(), SoundIdEnum.CAT.getType());
         soundTypehsm.put(binding.rb2.getId(), SoundIdEnum.DOG.getType());
+        soundTypehsm.put(binding.rb3.getId(), SoundIdEnum.MMG.getType());
+        soundTypehsm.put(binding.rb4.getId(), SoundIdEnum.DOLPHIN.getType());
 
     }
 
@@ -82,6 +84,8 @@ public class DollSoundSetting extends AppCompatActivity {
 
         binding.rb1.setBackground(Util.getIconRadius(getResources(), R.drawable.cat_icon));
         binding.rb2.setBackground(Util.getIconRadius(getResources(), R.drawable.dog_icon));
+        binding.rb3.setBackground(Util.getIconRadius(getResources(), R.drawable.mmg));
+        binding.rb4.setBackground(Util.getIconRadius(getResources(), R.drawable.dolphin_icon));
 
     }
 

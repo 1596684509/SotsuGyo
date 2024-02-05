@@ -1,6 +1,7 @@
 package com.example.sotsugyou.Listener.Button;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 
 import com.example.sotsugyou.Activity.SettingActivity.DollSettingActivity.DollSoundSetting;
@@ -31,6 +32,10 @@ public class DollSoundSettingSaveButtonImp implements View.OnClickListener{
                 DataHandler dataHandler = AppObject.getData();
                 dataHandler.save();
                 activity.finish();
+
+            }else {
+
+                Log.i("DollSoundSettingSaveButton OnClick", "SoundType is null");
 
             }
 
