@@ -77,12 +77,19 @@
             android:layout_height="wrap_content"
             android:src="@drawable/system_password_icon"/>
 
-        <EditText
-            android:id="@+id/passwordInputbar"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/logineditviewbackground"/>
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/passwordInputbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/logineditviewbackground"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 

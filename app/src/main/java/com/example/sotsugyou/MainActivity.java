@@ -108,16 +108,25 @@ public class MainActivity extends AppCompatActivity {
         bind = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(bind.getRoot());
 
-        Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
 
-        String[] permissions = {android.Manifest.permission.BLUETOOTH_CONNECT, android.Manifest.permission.BLUETOOTH, android.Manifest.permission.BLUETOOTH_SCAN, android.Manifest.permission.BLUETOOTH_ADVERTISE};
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+            Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+
+            String[] permissions = {android.Manifest.permission.BLUETOOTH_CONNECT};
             Log.e("Bluetooth handler", "permission error");
             ActivityCompat.requestPermissions((MainActivity)this, permissions, 1);
+            this.startActivityForResult(intent, REQUESTCODE_ENABLE_BLUETOOTH);
         }
 
-        this.startActivityForResult(intent, REQUESTCODE_ENABLE_BLUETOOTH);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+            Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+
+            String[] permissions = {android.Manifest.permission.BLUETOOTH_SCAN};
+            Log.e("Bluetooth handler", "permission error");
+            ActivityCompat.requestPermissions((MainActivity)this, permissions, 1);
+            this.startActivityForResult(intent, REQUESTCODE_ENABLE_BLUETOOTH);
+        }
 
         initObj();
 

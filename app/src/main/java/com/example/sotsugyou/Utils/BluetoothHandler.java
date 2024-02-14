@@ -135,8 +135,6 @@ public class BluetoothHandler {
 
         if (ActivityCompat.checkSelfPermission(context, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.BLUETOOTH}, 100);
-
 
         }
 
@@ -196,7 +194,7 @@ public class BluetoothHandler {
         public void run() {
 
             if (ActivityCompat.checkSelfPermission(context, android.Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
-
+                return;
             }
             adapter.cancelDiscovery();
 

@@ -94,6 +94,7 @@ public class UpdataButtonClickImp implements View.OnClickListener{
             }else {
 
                 AppObject.getData().save();
+                Toast.makeText(context, "データは携帯に保存しました", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -504,6 +505,30 @@ public class UpdataButtonClickImp implements View.OnClickListener{
                     login(serverSendSupport.getMsgFromServer());
                     break;
 
+                case USERREGISTER:
+                    if(serverSendSupport.isOver()) {
+
+                        Toast.makeText(context, "ユーザーは登録しました", Toast.LENGTH_SHORT).show();
+
+                    }else {
+
+                        Toast.makeText(context, "Error: Register", Toast.LENGTH_SHORT).show();
+
+                    }
+                    break;
+
+                case DOLLUP:
+                    if(serverSendSupport.isOver()) {
+
+                        Toast.makeText(context, "ぬいぐるみはサーバ保存しました", Toast.LENGTH_SHORT).show();
+
+                    }else {
+
+                        Toast.makeText(context, "ぬいぐるみはサーバ保存に失敗", Toast.LENGTH_SHORT).show();
+
+                    }
+                    break;
+
                 case USERPASSWORDUPDATA:
                     Toast.makeText(context, serverSendSupport.getMsgFromServer(), Toast.LENGTH_SHORT).show();
                     if(context instanceof AccountPasswordSettingActivity) {
@@ -531,10 +556,22 @@ public class UpdataButtonClickImp implements View.OnClickListener{
                                 if(doll != null) {
 
                                     MainActivity.getApp().getUser().setDoll(doll);
+                                    AppObject.getData().save();
+                                    ((AccountSettingActivity) context).runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Toast.makeText(context, "ぬいぐるみは更新すみ", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
 
                                 }else {
 
-                                    Toast.makeText(context, "通信エラー", Toast.LENGTH_SHORT).show();
+                                    ((AccountSettingActivity) context).runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Toast.makeText(context, "通信エラー", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                 }
 
                             }

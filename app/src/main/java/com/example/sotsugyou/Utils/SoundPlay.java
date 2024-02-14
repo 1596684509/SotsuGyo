@@ -20,10 +20,13 @@ public class SoundPlay {
     private MediaPlayer mediaPlayer;
 
     private int a1Sensitivity = 10;
-    private double ayMax = 50.0;
-    private double ayMin =20.0;
-    private int a3Sensitivity = 50;
-    private double minAz = 1.0;
+    private double ayMax = 80.0;
+    private double ayMin = 30.0;
+    private double axMax = 1;
+    private double axMin = 0.5;
+    private int a3Sensitivity = 55;
+    private double azMax = 2.0;
+    private double azMin = -2.0;
 
     public SoundPlay(Context context) {
         this.context = context;
@@ -53,9 +56,16 @@ public class SoundPlay {
 
         }
         if (soundtype.getID(actionId) != -1) {
-            stopSound(mediaPlayer);
+//            stopSound(mediaPlayer);
 
+        if(mediaPlayer == null || !mediaPlayer.isPlaying()) {
+
+            stopSound(mediaPlayer);
             mediaPlayer = MediaPlayer.create(context, soundtype.getID(actionId));
+
+        }
+
+
             mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
@@ -90,21 +100,26 @@ public class SoundPlay {
 //            int vibration = jsonObject.getInt("vibration");
             double ay = jsonObject.getDouble("ay");
             double az = jsonObject.getDouble("az");
+            double ax = jsonObject.getDouble("ax");
 
-            if(distance < a3Sensitivity) {
-
-                playSound(Define.ACCTIONTYPE_CODE3);
-
-            }else if(az >= minAz && (ay >= ayMin && ay <= ayMax)) {
+            if((az >= azMax || az <= azMin) && (ay >= ayMin && ay <= ayMax)) {
 
                 playSound(Define.ACCTIONTYPE_CODE2);
 
+            }else if(distance < a3Sensitivity) {
+
+                playSound(Define.ACCTIONTYPE_CODE3);
+
             }
+
+            Thread.sleep(1000l);
 
         } catch (JSONException e) {
 
             e.printStackTrace();
 
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
 
 

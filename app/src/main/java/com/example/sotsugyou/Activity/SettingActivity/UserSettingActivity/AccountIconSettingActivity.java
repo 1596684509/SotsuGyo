@@ -80,9 +80,9 @@ public class AccountIconSettingActivity extends AppCompatActivity {
         imageResourceIDhsm.put(R.id.account_setting_icon_iconR1, R.drawable.usericon1);
         imageResourceIDhsm.put(R.id.account_setting_icon_iconR2, R.drawable.usericon2);
         imageResourceIDhsm.put(R.id.account_setting_icon_iconR3, R.drawable.usericon3);
-        imageResourceIDhsm.put(R.id.account_setting_icon_iconR4, R.drawable.usericon1);
-        imageResourceIDhsm.put(R.id.account_setting_icon_iconR5, R.drawable.usericon1);
-        imageResourceIDhsm.put(R.id.account_setting_icon_iconR6, R.drawable.usericon1);
+        imageResourceIDhsm.put(R.id.account_setting_icon_iconR4, R.drawable.usericon4);
+        imageResourceIDhsm.put(R.id.account_setting_icon_iconR5, R.drawable.usericon5);
+        imageResourceIDhsm.put(R.id.account_setting_icon_iconR6, R.drawable.usericon6);
 
     }
 
