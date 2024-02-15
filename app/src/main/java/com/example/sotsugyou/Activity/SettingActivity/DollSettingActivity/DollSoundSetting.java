@@ -11,8 +11,6 @@ import com.example.sotsugyou.Listener.GroupCheckedChanged.OnDollSoundCheckedChan
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.R;
 import com.example.sotsugyou.Setting.LanguageHandler;
-import com.example.sotsugyou.Utils.JsonHandler;
-import com.example.sotsugyou.Utils.SoundPlay;
 import com.example.sotsugyou.Utils.Util;
 import com.example.sotsugyou.databinding.ActivityDollSoundSettingBinding;
 

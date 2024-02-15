@@ -4,14 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 
 import com.example.sotsugyou.Listener.EventClick.ReturnButtonOnClickImp;
 import com.example.sotsugyou.MainActivity;
-import com.example.sotsugyou.R;
 import com.example.sotsugyou.Setting.LanguageHandler;
-import com.example.sotsugyou.Utils.JsonHandler;
-import com.example.sotsugyou.databinding.ActivityRegisterBinding;
 import com.example.sotsugyou.databinding.ActivityRegisterRuleBinding;
 
 import org.json.JSONException;

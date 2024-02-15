@@ -2,6 +2,7 @@ package com.example.sotsugyou.Utils;
 
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.util.Log;
 
 import com.example.sotsugyou.Define;
 import com.example.sotsugyou.Enum.SoundIdEnum;
@@ -102,17 +103,19 @@ public class SoundPlay {
             double az = jsonObject.getDouble("az");
             double ax = jsonObject.getDouble("ax");
 
-            if((az >= azMax || az <= azMin) && (ay >= ayMin && ay <= ayMax)) {
+            if((ay >= ayMin && ay <= ayMax)) {
 
                 playSound(Define.ACCTIONTYPE_CODE2);
+                Log.i("action", "action2");
 
             }else if(distance < a3Sensitivity) {
 
                 playSound(Define.ACCTIONTYPE_CODE3);
+                Log.i("action", "action3");
 
             }
 
-            Thread.sleep(1000l);
+            Thread.sleep(3000);
 
         } catch (JSONException e) {
 

@@ -1,11 +1,10 @@
 package com.example.sotsugyou.Setting;
 
 import android.content.Context;
-import android.content.res.AssetFileDescriptor;
 import android.util.Log;
 
 import com.example.sotsugyou.R;
-import com.example.sotsugyou.Utils.JsonHandler;
+import com.example.sotsugyou.Handler.JsonHandler;
 
 import org.json.JSONObject;
 

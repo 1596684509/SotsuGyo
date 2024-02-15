@@ -89,4 +89,15 @@ public class Util{
         return null;
 
     }
+
+    public static Bitmap imageCropUtil(Bitmap bitmap) {
+
+        int size = Math.min(bitmap.getWidth(), bitmap.getHeight());
+
+        int startX = (bitmap.getWidth() - size) / 2;
+        int startY = (bitmap.getHeight() - size) / 2;
+
+        return Bitmap.createBitmap(bitmap, startX, startY, size, size);
+
+    }
 }

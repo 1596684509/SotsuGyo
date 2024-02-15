@@ -3,42 +3,26 @@ package com.example.sotsugyou.Activity.Fragment;
 
 
 import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.example.sotsugyou.Define;
-import com.example.sotsugyou.Enum.SoundIdEnum;
+import com.example.sotsugyou.Handler.MessageHandler;
 import com.example.sotsugyou.Listener.Button.MainDollImageImp;
 import com.example.sotsugyou.Listener.EventClick.ShowHintClickEventImp;
-import com.example.sotsugyou.Listener.EventClick.TestClickImp;
 import com.example.sotsugyou.MainActivity;
-import com.example.sotsugyou.Object.AppObject;
+import com.example.sotsugyou.MyListener.Messageable;
 import com.example.sotsugyou.Object.Doll;
-import com.example.sotsugyou.R;
-import com.example.sotsugyou.Utils.BluetoothHandler;
 import com.example.sotsugyou.Utils.SoundPlay;
 import com.example.sotsugyou.Utils.Util;
 import com.example.sotsugyou.databinding.FragmentMainBinding;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.Random;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class MainFragment extends Fragment {
 
@@ -47,6 +31,7 @@ public class MainFragment extends Fragment {
 
 
     private FragmentMainBinding binding;
+    private MessageHandler messageHandler;
     private SoundPlay soundPlay;
     private boolean isTest = true;
 
@@ -71,6 +56,7 @@ public class MainFragment extends Fragment {
 
         initObj();
         initView();
+        showMessage();
     }
 
     private void initObj() {
@@ -93,6 +79,7 @@ public class MainFragment extends Fragment {
     private void setShowDoll() {
 
         binding.mainDollNameTextView.setText(MainActivity.getApp().getUser().getDoll().getName());
+
         binding.mainDollImageView.setImageDrawable(Util.getIconRadius(getResources(), MainActivity.getApp().getUser().getDoll().getBitmap()));
 
         if(doll.getFrameId() != -1) {
@@ -120,6 +107,26 @@ public class MainFragment extends Fragment {
         binding.exptext.setOnClickListener(new ShowHintClickEventImp(this, "exption_expbar"));
         setShowDoll();
 
+
+    }
+
+    private void showMessage() {
+
+        if(messageHandler == null) {
+
+            messageHandler = new MessageHandler();
+
+        }
+
+        messageHandler.regiserMessageEvent(new Messageable() {
+            @Override
+            public void onMessageChenge(String message) {
+                binding.explanation.setText(message);
+                Log.i("message", message);
+            }
+        });
+
+        new Thread(messageHandler).start();
 
     }
 

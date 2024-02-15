@@ -1,6 +1,7 @@
 package com.example.sotsugyou.Listener.GroupCheckedChanged;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.sotsugyou.Activity.SettingActivity.DollSettingActivity.DollIconSettingActivity;
 import com.example.sotsugyou.Item.Item;
@@ -26,11 +27,15 @@ public class OnDollFrameCheckedChangeImp implements FlowRadioGroup.OnCheckedChan
             DollIconSettingActivity activity = (DollIconSettingActivity) context;
             HashMap<Integer, Item> itemHashMap = activity.getItemHashMap();
 
-            if(itemHashMap.get(checkedId).isLocked()) {
+            if(itemHashMap.get(checkedId) != null) {
 
-                ActivityDollIconSettingBinding binding = activity.getBinding();
-                binding.frame.setImageDrawable(Util.getIconRadius(context.getResources(), itemHashMap.get(checkedId).getId()));
-                activity.setSelectedframeItemId(itemHashMap.get(checkedId).getId());
+                if(itemHashMap.get(checkedId).isLocked()) {
+
+                    ActivityDollIconSettingBinding binding = activity.getBinding();
+                    binding.frame.setImageDrawable(Util.getIconRadius(context.getResources(), itemHashMap.get(checkedId).getId()));
+                    activity.setSelectedframeItemId(itemHashMap.get(checkedId).getId());
+
+                }
 
             }
 

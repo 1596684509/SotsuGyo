@@ -19,7 +19,7 @@ import com.example.sotsugyou.Object.AppObject;
 import com.example.sotsugyou.Object.Doll;
 import com.example.sotsugyou.Object.User;
 import com.example.sotsugyou.R;
-import com.example.sotsugyou.Utils.JsonHandler;
+import com.example.sotsugyou.Handler.JsonHandler;
 import com.example.sotsugyou.Utils.Util;
 import com.example.sotsugyou.databinding.ActivityAccountNameSettingBinding;
 import com.example.sotsugyou.databinding.ActivityAccountPasswordSettingBinding;
@@ -50,16 +50,18 @@ public class UpdataButtonClickImp implements View.OnClickListener{
 
         if(v.getId() == R.id.register_regButton) {
 
-            if (sendData(SendDataTypeEnum.USERREGISTER)) {
+            sendData(SendDataTypeEnum.USERREGISTER);
 
-                if (context instanceof RegisterActivity) {
-
-                    RegisterActivity activity = (RegisterActivity) context;
-                    activity.finish();
-
-                }
-
-            }
+//            if (sendData(SendDataTypeEnum.USERREGISTER)) {
+//
+//                if (context instanceof RegisterActivity) {
+//
+//                    RegisterActivity activity = (RegisterActivity) context;
+//                    activity.finish();
+//
+//                }
+//
+//            }
 
         }else if(v.getId() == R.id.login_loginButton) {
 
@@ -502,7 +504,18 @@ public class UpdataButtonClickImp implements View.OnClickListener{
             switch (type) {
 
                 case USERLOGIN:
-                    login(serverSendSupport.getMsgFromServer());
+
+                    if(serverSendSupport.isOver()) {
+
+                        login(serverSendSupport.getMsgFromServer());
+
+                    }else {
+
+                        Toast.makeText(context, "通信エラー", Toast.LENGTH_SHORT).show();
+
+                    }
+
+
                     break;
 
                 case USERREGISTER:
@@ -510,9 +523,17 @@ public class UpdataButtonClickImp implements View.OnClickListener{
 
                         Toast.makeText(context, "ユーザーは登録しました", Toast.LENGTH_SHORT).show();
 
+                        if (context instanceof RegisterActivity) {
+
+                           RegisterActivity activity = (RegisterActivity) context;
+                           activity.finish();
+
+                        }
+
+
                     }else {
 
-                        Toast.makeText(context, "Error: Register", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "通信エラー", Toast.LENGTH_SHORT).show();
 
                     }
                     break;

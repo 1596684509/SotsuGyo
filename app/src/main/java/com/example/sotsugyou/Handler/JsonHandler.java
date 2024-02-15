@@ -1,10 +1,11 @@
-package com.example.sotsugyou.Utils;
+package com.example.sotsugyou.Handler;
 
 import com.example.sotsugyou.MainActivity;
 import com.example.sotsugyou.Object.Doll;
 import com.example.sotsugyou.Object.Exp;
 import com.example.sotsugyou.Object.User;
 import com.example.sotsugyou.R;
+import com.example.sotsugyou.Utils.Util;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,6 +27,7 @@ public class JsonHandler {
 
         } catch (JSONException e) {
 
+            e.printStackTrace();
 
         }
 

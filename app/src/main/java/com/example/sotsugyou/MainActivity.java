@@ -1,17 +1,13 @@
 package com.example.sotsugyou;
 
-import static com.example.sotsugyou.Utils.BluetoothHandler.REQUESTCODE_ENABLE_BLUETOOTH;
-import static java.security.AccessController.getContext;
+import static com.example.sotsugyou.Handler.BluetoothHandler.REQUESTCODE_ENABLE_BLUETOOTH;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.MenuView;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -19,36 +15,23 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Adapter;
-import android.widget.FrameLayout;
-import android.widget.Toast;
 
-import com.example.sotsugyou.Activity.First.FirstDollImageSettingActivity;
 import com.example.sotsugyou.Activity.First.FirstDollNameSettingActivity;
 import com.example.sotsugyou.Activity.Fragment.MainFragment;
 import com.example.sotsugyou.Activity.Fragment.SettingFragment;
-import com.example.sotsugyou.Activity.SettingActivity.DollSettingActivity.DollNameSettingActivity;
-import com.example.sotsugyou.Activity.View.ListViewItem;
 import com.example.sotsugyou.Data.Data;
 import com.example.sotsugyou.Data.DataHandler;
 import com.example.sotsugyou.Listener.Button.MainDollImageImp;
 import com.example.sotsugyou.Listener.OnNavigationItemSenetedImp;
 import com.example.sotsugyou.Object.AppObject;
-import com.example.sotsugyou.Setting.LanguageHandler;
-import com.example.sotsugyou.Setting.LanguageType;
 import com.example.sotsugyou.Utils.BluetoothConnectEventListener;
-import com.example.sotsugyou.Utils.BluetoothHandler;
+import com.example.sotsugyou.Handler.BluetoothHandler;
 import com.example.sotsugyou.Utils.Util;
 import com.example.sotsugyou.databinding.ActivityMainBinding;
 import com.example.sotsugyou.databinding.FragmentMainBinding;
@@ -56,9 +39,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.concurrent.Executors;
-import java.util.regex.MatchResult;
 
 public class MainActivity extends AppCompatActivity {
 

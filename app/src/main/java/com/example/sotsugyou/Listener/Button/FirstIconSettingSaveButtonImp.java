@@ -33,7 +33,7 @@ public class FirstIconSettingSaveButtonImp implements View.OnClickListener {
 
             MainActivity.getApp().getUser().getDoll().setBitmap(activity.getRotatedBitmap());
             Exp exp = new Exp();
-            exp.initExp(1, 0);
+            exp.initExp(100, 0);
             MainActivity.getApp().getUser().getDoll().setExp(exp);
 
             DataHandler dataHandler = AppObject.getData();

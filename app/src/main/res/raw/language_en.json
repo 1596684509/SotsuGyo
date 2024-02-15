@@ -1,18 +1,18 @@
 {
-    "firstdollnamesetting_title": "Plush Toy Name Setting",
+    "firstdollnamesetting_title": "Plush Doll Name Setting",
     "firstdollnamesetting_inputhint": "Enter a name",
     "firstdollnamesetting_button": "Next",
 
-    "firstdollimagesetting_hint": "Touch above to set a photo",
+    "firstdollimagesetting_hint": "Tap above to set a photo",
 
-    "main_menu1_title": "Home",
+    "main_menu1_title": "Main",
     "main_menu2_title": "Settings",
 
     "mainsetting_accountbar_title": "Account Settings",
-    "mainsetting_listitem1_title": "Plush Toy Settings",
-    "mainsetting_listitem2_title": "Data Storage",
+    "mainsetting_listitem1_title": "Plush Doll Settings",
+    "mainsetting_listitem2_title": "Data Saving",
     "mainsetting_listitem3_title": "Language Settings",
-    "mainsetting_listitem4_title": "Connect to Plush Toy",
+    "mainsetting_listitem4_title": "Connect with Plush Doll",
 
     "login_title": "Login",
     "login_idinputbar_title": "Username",
@@ -25,40 +25,43 @@
     "register_nameinputbar_title": "Display Name",
     "register_passwordinputbar_title": "Password",
     "register_pwagaininputbar_title": "Re-enter Password",
-    "register_rule_title1": "Agree to",
-    "register_rule_title2": "Terms of Use",
+    "register_rule_title1": "Agree to the",
+    "register_rule_title2": "terms of service",
     "register_saveregister": "Register",
 
-    "rule_title": "Please use with enjoyment.",
+    "rule_title": "Please enjoy responsibly.",
 
     "accountsetting_title": "Account Settings",
     "accountsetting_listitem1_title": "Icon Settings",
     "accountsetting_listitem2_title": "Name Settings",
-    "accountsetting_listitem4_title": "Data Download",
     "accountsetting_listitem3_title": "Password Settings",
     "accountsetting_logoutbutton_text": "Logout",
+    "accountsetting_listitem4_title": "Download Data",
 
-    "accountpasswordsetting_newpasswordedittext_hint": "Enter a new password",
-    "accountpasswordsetting_oldpasswordedittext_hint": "Enter the old password",
-
-    "dollsetting_title": "Plush Toy Settings",
+    "dollsetting_title": "Plush Doll Settings",
     "dollsetting_listitem1_title": "Personality Settings",
     "dollsetting_listitem2_title": "Name Settings",
     "dollsetting_listitem3_title": "Sound Settings",
 
-    "dollnamesetting_title": "Plush Toy Name Setting",
+    "accountpasswordsetting_newpasswordedittext_hint": "Enter a new password",
+    "accountpasswordsetting_oldpasswordedittext_hint": "Enter the old password",
+
+    "dollnamesetting_title": "Plush Doll Name Setting",
     "dollnamesetting_inputhint": "Enter a name",
 
-    "dollpersonalitysetting_title": "Plush Toy Personality Setting",
-    "dollpersonalitysetting_title2": "Frame",
-    "dollpersonalitysetting_title3": "Background",
+    "dollsoundsetting_title": "Plush Doll Sound Type Setting",
 
-    "dollsoundsetting_title": "Plush Doll Sound Type Settings",
+    "dollpersonalitysetting_title": "Plush Doll Personality Setting",
+    "dollpersonalitysetting_title2": "Bold Frame",
+    "dollpersonalitysetting_title3": "Background",
 
     "systemsetting_title": "Language Settings",
 
     "save_button": "Save",
 
-    "exption_expbar": "When playing with the stuffed animal, the experience points increase. Upon leveling up, you receive new frames and backgrounds",
+    "exption_expbar": "Playing with the plush doll increases experience points. Level up to receive new bold frames and backgrounds.",
 
+    "message1": "Because I'm lonely, hold me",
+    "message2": "I'm happy when you lift me up",
+    "message3": "May good things happen today"
 }

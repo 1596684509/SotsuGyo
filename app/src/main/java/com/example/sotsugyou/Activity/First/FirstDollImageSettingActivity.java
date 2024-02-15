@@ -70,7 +70,14 @@ public class FirstDollImageSettingActivity extends AppCompatActivity {
 
             Matrix matrix = new Matrix();
             matrix.postRotate(90);
-            rotatedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+
+            int size = Math.min(bitmap.getWidth(), bitmap.getHeight());
+
+            int startX = (bitmap.getWidth() - size) / 2;
+            int startY = (bitmap.getHeight() - size) / 2;
+
+            rotatedBitmap = Bitmap.createBitmap(bitmap, startX, startY, size, size,  matrix, true);
+
 
             icon.setImageDrawable(Util.getIconRadius(getResources(), rotatedBitmap));
 

@@ -58,5 +58,9 @@
     "systemsetting_title": "语言设置",
 
     "exption_expbar": "和玩偶一起玩的话可以获得经验，升级可以解锁新背景和头像框",
-    "save_button": "保存"
+    "save_button": "保存",
+
+    "message1": "有点孤单，抱抱我吧",
+    "message2": "你把我抬起来时我很开心",
+    "message3": "希望今天会发生好事"
 }

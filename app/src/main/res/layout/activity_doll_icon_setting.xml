@@ -33,9 +33,9 @@
 
         <ImageView
             android:id="@+id/ImageViewNowIcon"
-            android:layout_width="120dp"
+            android:layout_width="85dp"
             android:layout_gravity="center"
-            android:layout_height="120dp"/>
+            android:layout_height="85dp"/>
 
         <ImageView
             android:id="@+id/frame"
@@ -79,8 +79,7 @@
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="15dp"
                 android:button="@null"
-                android:drawableStart="@drawable/radio_selector"
-                android:background="@drawable/frame1"/>
+                android:drawableStart="@drawable/radio_selector"/>
 
             <RadioButton
                 android:id="@+id/doll_setting_icon_frameR2"
@@ -89,8 +88,7 @@
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="15dp"
                 android:drawableStart="@drawable/radio_selector"
-                android:button="@null"
-                android:background="@drawable/frame2"/>
+                android:button="@null" />
 
             <RadioButton
                 android:id="@+id/doll_setting_icon_frameR3"
@@ -99,8 +97,7 @@
                 android:drawableStart="@drawable/radio_selector"
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="15dp"
-                android:button="@null"
-                android:background="@drawable/frame3"/>
+                android:button="@null" />
 
         </LinearLayout>
 
@@ -116,8 +113,7 @@
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="15dp"
                 android:button="@null"
-                android:drawableStart="@drawable/radio_selector"
-                android:background="@drawable/frame4"/>
+                android:drawableStart="@drawable/radio_selector" />
 
             <RadioButton
                 android:id="@+id/doll_setting_icon_frameR5"
@@ -126,8 +122,7 @@
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="15dp"
                 android:drawableStart="@drawable/radio_selector"
-                android:button="@null"
-                android:background="@drawable/frame5"/>
+                android:button="@null" />
 
             <RadioButton
                 android:id="@+id/doll_setting_icon_frameR6"
@@ -136,8 +131,7 @@
                 android:drawableStart="@drawable/radio_selector"
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="15dp"
-                android:button="@null"
-                android:background="@drawable/frame6"/>
+                android:button="@null" />
 
         </LinearLayout>
 

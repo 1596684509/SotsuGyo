@@ -1,4 +1,4 @@
-package com.example.sotsugyou.Utils;
+package com.example.sotsugyou.Handler;
 
 
 import android.Manifest;
@@ -20,6 +20,8 @@ import androidx.core.app.ActivityCompat;
 
 import com.example.sotsugyou.Activity.Fragment.MainFragment;
 import com.example.sotsugyou.MainActivity;
+import com.example.sotsugyou.Utils.BluetoothConnectEventListener;
+import com.example.sotsugyou.Utils.SoundPlay;
 import com.example.sotsugyou.databinding.FragmentMainBinding;
 
 import java.io.IOException;

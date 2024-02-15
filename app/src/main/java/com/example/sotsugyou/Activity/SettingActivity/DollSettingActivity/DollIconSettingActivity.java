@@ -2,7 +2,9 @@ package com.example.sotsugyou.Activity.SettingActivity.DollSettingActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.HandlerThread;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -24,6 +26,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.concurrent.ExecutorService;
 
 public class DollIconSettingActivity extends AppCompatActivity {
 
@@ -43,7 +46,7 @@ public class DollIconSettingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        watiImageLoad();
         binding = ActivityDollIconSettingBinding.inflate(getLayoutInflater());
 
         setContentView(binding.getRoot());
@@ -62,6 +65,16 @@ public class DollIconSettingActivity extends AppCompatActivity {
         languageHandler = MainActivity.getApp().getLanguageHandler();
         jsonObject = languageHandler.getLanguageJson();
         itemHashMap = AppObject.getItemHashMap();
+
+    }
+
+    private void watiImageLoad() {
+
+        try {
+            MainActivity.getApp().getImageThread().join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -123,6 +136,7 @@ public class DollIconSettingActivity extends AppCompatActivity {
 
     private void lockImage() {
 
+
         for (Integer integer : itemHashMap.keySet()) {
 
             if(!itemHashMap.get(integer).isLocked()) {
@@ -131,7 +145,7 @@ public class DollIconSettingActivity extends AppCompatActivity {
 
             }else {
 
-                findViewById(integer).setBackground(Util.getIconRadius(getResources(), itemHashMap.get(integer).getId()));
+                findViewById(integer).setBackground(Util.getIconRadius(getResources(), itemHashMap.get(integer).getBitmap()));
 
             }
 

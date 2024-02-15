@@ -3,6 +3,7 @@ package com.example.sotsugyou.Object;
 import android.graphics.Bitmap;
 
 import com.example.sotsugyou.R;
+import com.example.sotsugyou.Utils.Util;
 
 public class Doll {
 
@@ -30,7 +31,10 @@ public class Doll {
     }
 
     public void setBitmap(Bitmap bitmap) {
-        this.bitmap = bitmap;
+
+        Bitmap cropedBitmap = Util.imageCropUtil(bitmap);
+
+        this.bitmap = cropedBitmap;
     }
 
     public String getName() {
