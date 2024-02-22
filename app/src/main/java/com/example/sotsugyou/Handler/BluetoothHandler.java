@@ -118,14 +118,15 @@ public class BluetoothHandler {
 
             Log.i("Bluetooth Handler", "bluetooth loading");
             Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            String[] permissions = {Manifest.permission.BLUETOOTH, Manifest.permission.BLUETOOTH_ADMIN};
 
-            String[] permissions = {android.Manifest.permission.BLUETOOTH_CONNECT, android.Manifest.permission.BLUETOOTH, android.Manifest.permission.BLUETOOTH_SCAN, android.Manifest.permission.BLUETOOTH_ADVERTISE};
-
-            if (ActivityCompat.checkSelfPermission(context, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED ||
+                    ActivityCompat.checkSelfPermission(context, Manifest.permission.BLUETOOTH_ADMIN) != PackageManager.PERMISSION_GRANTED) {
                 Log.e("Bluetooth handler", "permission error");
-                ActivityCompat.requestPermissions(activity, permissions, 1);
+                ActivityCompat.requestPermissions(activity, permissions, 4);
+            } else {
+                activity.startActivityForResult(intent, REQUESTCODE_ENABLE_BLUETOOTH);
             }
-            activity.startActivityForResult(intent, REQUESTCODE_ENABLE_BLUETOOTH);
 
         }
 
@@ -133,9 +134,32 @@ public class BluetoothHandler {
 
     }
 
+    public void checkPermission(Activity activity) {
+
+        if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+            Log.i("bluetoothHandler", "permission: bluetooth_scan");
+            activity.requestPermissions(new String[]{Manifest.permission.BLUETOOTH_SCAN}, 1);
+        } else if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+            // 检查并请求蓝牙连接权限
+            Log.i("bluetoothHandler", "permission: bluetooth_connect");
+            activity.requestPermissions(new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 2);
+        } else if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.BLUETOOTH_ADVERTISE) != PackageManager.PERMISSION_GRANTED) {
+            // 检查并请求蓝牙广播权限
+            Log.i("bluetoothHandler", "permission: bluetooth_adverrtise");
+            activity.requestPermissions(new String[]{Manifest.permission.BLUETOOTH_ADVERTISE}, 3);
+        }else {
+
+
+            Log.i("bluetoothHandler", "permission: isOk");
+        }
+
+    }
+
     public void searchBondedHardWare() {
 
-        if (ActivityCompat.checkSelfPermission(context, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+
+        Log.i("bluetooth", "hardware searching");
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
 
 
         }
@@ -147,6 +171,7 @@ public class BluetoothHandler {
 
             if (BLUETOOTH_NAME.equals(bluetoothDevice.getName())) {
 
+                Log.i("bluetooth", "見つかりました");
                 ConnectThead connectThead = new ConnectThead(bluetoothDevice);
                 connectThead.start();
                 isSearched = true;
@@ -180,7 +205,7 @@ public class BluetoothHandler {
 
             try {
 
-                if (ActivityCompat.checkSelfPermission(context, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.checkSelfPermission(context, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
 
                 }
                 tmp = device.createRfcommSocketToServiceRecord(device.getUuids()[0].getUuid());
@@ -195,8 +220,8 @@ public class BluetoothHandler {
 
         public void run() {
 
-            if (ActivityCompat.checkSelfPermission(context, android.Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
-                return;
+            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+
             }
             adapter.cancelDiscovery();
 
@@ -205,6 +230,7 @@ public class BluetoothHandler {
                 socket.connect();
                 onConnected();
                 isDollConnected = true;
+                Log.i("bluetooth", "設備に接続しました");
 
             } catch (IOException e) {
 

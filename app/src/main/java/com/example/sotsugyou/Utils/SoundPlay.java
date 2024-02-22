@@ -115,7 +115,7 @@ public class SoundPlay {
 
             }
 
-            Thread.sleep(3000);
+            Thread.sleep(1000);
 
         } catch (JSONException e) {
 

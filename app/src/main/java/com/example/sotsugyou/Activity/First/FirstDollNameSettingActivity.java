@@ -28,13 +28,6 @@ public class FirstDollNameSettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_first_doll_name_setting);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions((Activity) this, new String[]{Manifest.permission.BLUETOOTH}, 100);
-
-
-        }
-
         findView();
         initView();
 
